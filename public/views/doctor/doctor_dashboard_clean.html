@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Médico - Salutia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            background-color: white;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .sidebar .nav-link {
+            color: #495057;
+            padding: 10px 20px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+        .sidebar .nav-link:hover {
+            background-color: #e9ecef;
+        }
+        .sidebar .nav-link.active {
+            background-color: #0d6efd;
+            color: white;
+        }
+        .sidebar .nav-link i {
+            margin-right: 10px;
+        }
+        .main-content {
+            padding: 20px;
+        }
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            height: 100%;
+        }
+        .stat-number {
+            font-size: 2.5em;
+            color: #0d6efd;
+            font-weight: bold;
+        }
+        .appointment-card {
+            background: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .appointment-card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .section-title {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .btn-action {
+            margin-right: 5px;
+        }
+        .modal-header {
+            background-color: #0d6efd;
+            color: white;
+        }
+        .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 d-md-block sidebar p-0">
+                <div class="d-flex flex-column p-3">
+                    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
+                        <span class="fs-4 text-primary fw-bold">
+                            <i class="fas fa-heartbeat"></i> Salutia
+                        </span>
+                    </a>
+                    <hr>
+                    <ul class="nav nav-pills flex-column mb-auto">
+                        <li class="nav-item">
+                            <a href="doctor_dashboard.html" class="nav-link active">
+                                <i class="fas fa-tachometer-alt"></i> Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a href="manage_schedule.html" class="nav-link">
+                                <i class="fas fa-calendar-alt"></i> Gestionar horarios
+                            </a>
+                        </li>
+                        <li>
+                            <a href="patients.html" class="nav-link">
+                                <i class="fas fa-user-injured"></i> Pacientes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="messages.html" class="nav-link">
+                                <i class="fas fa-envelope"></i> Mensajes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="profile.html" class="nav-link">
+                                <i class="fas fa-user-md"></i> Mi perfil
+                            </a>
+                        </li>
+                    </ul>
+                    <hr>
+                    <button id="logoutBtn" class="btn btn-danger w-100">
+                        <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-9 col-lg-10 main-content">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h1>Dashboard</h1>
+                    <div class="user-info d-flex align-items-center">
+                        <span class="me-2" id="doctorName">Dr. Juan Pérez</span>
+                        <div class="avatar bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="stat-card">
+                            <h5>Citas hoy</h5>
+                            <div class="stat-number" id="citasHoy">3</div>
+                            <p class="text-muted">Programadas para hoy</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-card">
+                            <h5>Citas pendientes</h5>
+                            <div class="stat-number" id="citasPendientes">5</div>
+                            <p class="text-muted">Por confirmar</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-card">
+                            <h5>Total pacientes</h5>
+                            <div class="stat-number" id="totalPacientes">12</div>
+                            <p class="text-muted">Activos</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Solicitudes de Citas Pendientes -->
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0">Solicitudes de citas pendientes</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="solicitudesCitas">
+                            <!-- Aquí se cargarán las solicitudes de citas -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Próximas Citas -->
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0">Próximas citas</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="proximasCitas">
+                            <!-- Aquí se cargarán las próximas citas -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para redirigir cita -->
+    <div class="modal fade" id="redirectModal" tabindex="-1" aria-labelledby="redirectModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="redirectModalLabel">Redirigir cita a otro médico</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="redirectAppointmentId">
+                    <div class="mb-3">
+                        <label for="doctorSelect" class="form-label">Seleccionar médico</label>
+                        <select class="form-select" id="doctorSelect">
+                            <option value="">Seleccionar médico...</option>
+                            <option value="3">Dra. Laura Sánchez - Cardiología</option>
+                            <option value="4">Dr. Roberto Gómez - Pediatría</option>
+                            <option value="5">Dra. María López - Dermatología</option>
+                            <option value="6">Dr. Carlos Martínez - Traumatología</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="confirmRedirectBtn">Redirigir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Script personalizado para la gestión de citas -->
+    <script src="../../js/appointment_manager.js"></script>
+</body>
+</html>

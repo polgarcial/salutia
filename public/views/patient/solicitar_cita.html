@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitar Cita - Salutia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --primary-dark: #0d47a1;
+            --secondary: #34a853;
+            --accent: #ea4335;
+            --light: #f8f9fa;
+            --dark: #202124;
+            --gray: #5f6368;
+        }
+        
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar {
+            background-color: var(--primary);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .main-container {
+            flex: 1;
+            padding: 2rem 0;
+        }
+        
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 20px;
+            border: none;
+        }
+        
+        .card-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .card-body {
+            padding: 2rem;
+        }
+        
+        .form-label {
+            font-weight: 500;
+            color: var(--gray);
+        }
+        
+        .form-control, .form-select {
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.25);
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 115, 232, 0.4);
+        }
+        
+        .time-slot {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .time-slot:hover {
+            background-color: #f0f7ff;
+            border-color: var(--primary);
+        }
+        
+        .time-slot.selected {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1050;
+        }
+        
+        .toast {
+            background-color: white;
+            color: var(--dark);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .toast.show {
+            opacity: 1;
+        }
+        
+        .toast.success {
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .toast.error {
+            border-left: 4px solid var(--accent);
+        }
+        
+        .footer {
+            margin-top: auto;
+            background-color: #f1f3f4;
+            padding: 20px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-heartbeat"></i> Salutia
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="solicitar_cita.html">Solicitar Cita</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Iniciar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <div class="container">
+            <h1 class="mb-4">Solicitar Cita Médica</h1>
+            
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Formulario de Solicitud</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="appointmentForm">
+                                <!-- Datos del Paciente -->
+                                <div class="mb-4">
+                                    <h5>Datos del Paciente</h5>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="patientName" class="form-label">Nombre completo</label>
+                                            <input type="text" class="form-control" id="patientName" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="patientEmail" class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="patientEmail" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="patientPhone" class="form-label">Teléfono</label>
+                                            <input type="tel" class="form-control" id="patientPhone" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Selección de Médico -->
+                                <div class="mb-4">
+                                    <h5>Seleccionar Médico</h5>
+                                    <div class="mb-3">
+                                        <label for="specialty" class="form-label">Especialidad</label>
+                                        <select class="form-select" id="specialty" required>
+                                            <option value="" selected disabled>Seleccione una especialidad</option>
+                                            <option value="general">Medicina General</option>
+                                            <option value="cardiology">Cardiología</option>
+                                            <option value="dermatology">Dermatología</option>
+                                            <option value="neurology">Neurología</option>
+                                            <option value="pediatrics">Pediatría</option>
+                                            <option value="psychology">Psicología</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="doctor" class="form-label">Médico</label>
+                                        <select class="form-select" id="doctor" required disabled>
+                                            <option value="" selected disabled>Primero seleccione una especialidad</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <!-- Selección de Fecha y Hora -->
+                                <div class="mb-4">
+                                    <h5>Seleccionar Fecha y Hora</h5>
+                                    <div class="mb-3">
+                                        <label for="appointmentDate" class="form-label">Fecha</label>
+                                        <input type="date" class="form-control" id="appointmentDate" required disabled>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Horarios disponibles</label>
+                                        <div id="timeSlots" class="mt-2">
+                                            <p class="text-muted">Seleccione un médico y una fecha para ver los horarios disponibles.</p>
+                                        </div>
+                                        <input type="hidden" id="selectedTime" required>
+                                    </div>
+                                </div>
+                                
+                                <!-- Motivo de la consulta -->
+                                <div class="mb-4">
+                                    <h5>Motivo de la Consulta</h5>
+                                    <div class="mb-3">
+                                        <label for="reason" class="form-label">Describa brevemente el motivo de su consulta</label>
+                                        <textarea class="form-control" id="reason" rows="3" required></textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-primary">Solicitar Cita</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Información</h5>
+                        </div>
+                        <div class="card-body">
+                            <h6>Horario de atención</h6>
+                            <p>Lunes a Viernes: 9:00 AM - 7:00 PM<br>Sábados: 9:00 AM - 1:00 PM</p>
+                            
+                            <h6>Instrucciones</h6>
+                            <ol>
+                                <li>Complete sus datos personales</li>
+                                <li>Seleccione la especialidad y el médico</li>
+                                <li>Elija la fecha y hora que más le convenga</li>
+                                <li>Describa brevemente el motivo de su consulta</li>
+                                <li>Envíe su solicitud</li>
+                            </ol>
+                            
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle"></i> Recibirá un correo de confirmación una vez que su cita haya sido programada.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 Salutia. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Referencias a elementos del formulario
+            const specialtySelect = document.getElementById('specialty');
+            const doctorSelect = document.getElementById('doctor');
+            const dateInput = document.getElementById('appointmentDate');
+            const timeSlotsContainer = document.getElementById('timeSlots');
+            const selectedTimeInput = document.getElementById('selectedTime');
+            const appointmentForm = document.getElementById('appointmentForm');
+            const patientNameInput = document.getElementById('patientName');
+            const patientEmailInput = document.getElementById('patientEmail');
+            const patientPhoneInput = document.getElementById('patientPhone');
+            
+            // Verificar si hay un ID de paciente en la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const patientId = urlParams.get('patient_id');
+            
+            // Si hay un ID de paciente, cargar sus datos
+            if (patientId) {
+                loadPatientData(patientId);
+            }
+            
+            // Inicializar el formulario
+            setupDateInput();
+            loadDoctors();
+            
+            // Función para cargar los datos del paciente
+            async function loadPatientData(patientId) {
+                try {
+                    console.log('Cargando datos del paciente ID:', patientId);
+                    
+                    // Mostrar indicador de carga
+                    patientNameInput.value = 'Cargando...';
+                    patientEmailInput.value = 'Cargando...';
+                    patientPhoneInput.value = 'Cargando...';
+                    
+                    // Deshabilitar campos mientras se cargan los datos
+                    patientNameInput.disabled = true;
+                    patientEmailInput.disabled = true;
+                    patientPhoneInput.disabled = true;
+                    
+                    // Obtener datos del paciente del backend
+                    const url = `./backend/api/get_patient.php?patient_id=${patientId}`;
+                    console.log('Realizando petición a:', url);
+                    
+                    const response = await fetch(url);
+                    console.log('Respuesta recibida:', response.status, response.statusText);
+                    
+                    if (!response.ok) {
+                        throw new Error(`Error HTTP: ${response.status} ${response.statusText}`);
+                    }
+                    
+                    const responseText = await response.text();
+                    console.log('Respuesta texto:', responseText);
+                    
+                    // Intentar parsear la respuesta como JSON
+                    let data;
+                    try {
+                        data = JSON.parse(responseText);
+                        console.log('Datos parseados:', data);
+                    } catch (parseError) {
+                        console.error('Error al parsear JSON:', parseError);
+                        throw new Error('La respuesta del servidor no es un JSON válido');
+                    }
+                    
+                    if (data.success && data.patient) {
+                        console.log('Datos del paciente obtenidos correctamente:', data.patient);
+                        
+                        // Llenar los campos con los datos del paciente
+                        patientNameInput.value = data.patient.name || 'Nombre no disponible';
+                        patientEmailInput.value = data.patient.email || 'Email no disponible';
+                        patientPhoneInput.value = data.patient.phone || '';
+                        
+                        // Guardar el ID del paciente en un campo oculto
+                        const patientIdInput = document.createElement('input');
+                        patientIdInput.type = 'hidden';
+                        patientIdInput.id = 'patientId';
+                        patientIdInput.name = 'patientId';
+                        patientIdInput.value = patientId;
+                        appointmentForm.appendChild(patientIdInput);
+                        
+                        // Mantener los campos deshabilitados para evitar modificaciones
+                        patientNameInput.disabled = true;
+                        patientEmailInput.disabled = true;
+                        patientPhoneInput.disabled = true;
+                        
+                        // Añadir mensaje informativo
+                        const infoDiv = document.createElement('div');
+                        infoDiv.className = 'alert alert-info mt-2';
+                        infoDiv.innerHTML = '<i class="fas fa-info-circle"></i> Datos del paciente cargados automáticamente';
+                        patientNameInput.parentNode.parentNode.appendChild(infoDiv);
+                        
+                        // Enfocar en el siguiente campo (especialidad)
+                        specialtySelect.focus();
+                    } else {
+                        // Mostrar mensaje de error
+                        const errorMsg = data.message || 'Paciente no encontrado';
+                        console.error('Error en la respuesta:', errorMsg);
+                        showToast('Error al cargar datos del paciente: ' + errorMsg, 'error');
+                        
+                        // Habilitar campos para entrada manual
+                        patientNameInput.value = '';
+                        patientEmailInput.value = '';
+                        patientPhoneInput.value = '';
+                        patientNameInput.disabled = false;
+                        patientEmailInput.disabled = false;
+                        patientPhoneInput.disabled = false;
+                    }
+                } catch (error) {
+                    console.error('Error al cargar datos del paciente:', error);
+                    showToast('Error al conectar con el servidor: ' + error.message, 'error');
+                    
+                    // Habilitar campos para entrada manual
+                    patientNameInput.value = '';
+                    patientEmailInput.value = '';
+                    patientPhoneInput.value = '';
+                    patientNameInput.disabled = false;
+                    patientEmailInput.disabled = false;
+                    patientPhoneInput.disabled = false;
+                }
+            }
+            
+            // Función para cargar los médicos según la especialidad seleccionada
+            function loadDoctors() {
+                // Limpiar el select de médicos
+                doctorSelect.innerHTML = '<option value="" selected disabled>Seleccione un médico</option>';
+                
+                // Obtener la especialidad seleccionada
+                const specialty = specialtySelect.value;
+                
+                if (!specialty) {
+                    doctorSelect.disabled = true;
+                    return;
+                }
+                
+                // Habilitar el select de médicos
+                doctorSelect.disabled = false;
+                
+                // Datos de ejemplo para médicos (en una aplicación real, estos datos vendrían de la base de datos)
+                const doctors = {
+                    general: [
+                        { id: 1, name: "Dr. Juan Pérez", available: true },
+                        { id: 2, name: "Dra. María García", available: true }
+                    ],
+                    cardiology: [
+                        { id: 3, name: "Dr. Carlos Rodríguez", available: true },
+                        { id: 4, name: "Dra. Ana Martínez", available: false }
+                    ],
+                    dermatology: [
+                        { id: 5, name: "Dr. Luis Sánchez", available: true }
+                    ],
+                    neurology: [
+                        { id: 6, name: "Dra. Elena Gómez", available: true }
+                    ],
+                    pediatrics: [
+                        { id: 7, name: "Dr. Roberto Fernández", available: true },
+                        { id: 8, name: "Dra. Laura Torres", available: true }
+                    ],
+                    psychology: [
+                        { id: 9, name: "Dr. Miguel Ruiz", available: true },
+                        { id: 10, name: "Dra. Carmen López", available: true }
+                    ]
+                };
+                
+                // Cargar los médicos de la especialidad seleccionada
+                if (doctors[specialty]) {
+                    doctors[specialty].forEach(doctor => {
+                        const option = document.createElement('option');
+                        option.value = doctor.id;
+                        option.textContent = doctor.name;
+                        if (!doctor.available) {
+                            option.disabled = true;
+                            option.textContent += ' (No disponible)';
+                        }
+                        doctorSelect.appendChild(option);
+                    });
+                }
+            }
+            
+            // Función para configurar el input de fecha
+            function setupDateInput() {
+                // Deshabilitar el input de fecha si no se ha seleccionado un médico
+                if (!doctorSelect.value) {
+                    dateInput.disabled = true;
+                    return;
+                }
+                
+                // Habilitar el input de fecha
+                dateInput.disabled = false;
+                
+                // Establecer la fecha mínima como hoy
+                const today = new Date();
+                const yyyy = today.getFullYear();
+                const mm = String(today.getMonth() + 1).padStart(2, '0');
+                const dd = String(today.getDate()).padStart(2, '0');
+                const formattedToday = `${yyyy}-${mm}-${dd}`;
+                
+                dateInput.min = formattedToday;
+                
+                // Establecer la fecha máxima como 3 meses desde hoy
+                const maxDate = new Date();
+                maxDate.setMonth(maxDate.getMonth() + 3);
+                const maxYyyy = maxDate.getFullYear();
+                const maxMm = String(maxDate.getMonth() + 1).padStart(2, '0');
+                const maxDd = String(maxDate.getDate()).padStart(2, '0');
+                const formattedMaxDate = `${maxYyyy}-${maxMm}-${maxDd}`;
+                
+                dateInput.max = formattedMaxDate;
+                
+                // Limpiar el valor actual
+                dateInput.value = '';
+            }
+            
+            // Función para cargar los horarios disponibles
+            function loadTimeSlots() {
+                // Limpiar el contenedor de horarios
+                timeSlotsContainer.innerHTML = '';
+                
+                // Limpiar el valor seleccionado
+                selectedTimeInput.value = '';
+                
+                // Verificar que se haya seleccionado un médico y una fecha
+                if (!doctorSelect.value || !dateInput.value) {
+                    timeSlotsContainer.innerHTML = '<p class="text-muted">Seleccione un médico y una fecha para ver los horarios disponibles.</p>';
+                    return;
+                }
+                
+                // Obtener los horarios disponibles para la fecha seleccionada
+                const availableSlots = getAvailableTimeSlots(dateInput.value);
+                
+                if (availableSlots.length === 0) {
+                    timeSlotsContainer.innerHTML = '<p class="text-danger">No hay horarios disponibles para la fecha seleccionada.</p>';
+                    return;
+                }
+                
+                // Crear los elementos para los horarios disponibles
+                availableSlots.forEach(slot => {
+                    const timeSlot = document.createElement('div');
+                    timeSlot.className = 'time-slot';
+                    timeSlot.textContent = slot;
+                    timeSlot.addEventListener('click', function() {
+                        // Quitar la clase 'selected' de todos los horarios
+                        document.querySelectorAll('.time-slot').forEach(el => {
+                            el.classList.remove('selected');
+                        });
+                        
+                        // Añadir la clase 'selected' al horario seleccionado
+                        this.classList.add('selected');
+                        
+                        // Guardar el valor seleccionado
+                        selectedTimeInput.value = slot;
+                    });
+                    
+                    timeSlotsContainer.appendChild(timeSlot);
+                });
+            }
+            
+            // Función para mostrar mensajes toast
+            function showToast(message, type = 'success') {
+                const toastContainer = document.querySelector('.toast-container');
+                
+                const toast = document.createElement('div');
+                toast.className = `toast ${type}`;
+                toast.innerHTML = message;
+                
+                toastContainer.appendChild(toast);
+                
+                // Mostrar el toast
+                setTimeout(() => {
+                    toast.classList.add('show');
+                }, 100);
+                
+                // Ocultar el toast después de 5 segundos
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    setTimeout(() => {
+                        toast.remove();
+                    }, 300);
+                }, 5000);
+            }
+            
+            // Función para obtener los horarios disponibles para una fecha
+            function getAvailableTimeSlots(dateStr) {
+                const date = new Date(dateStr);
+                const dayOfWeek = date.getDay(); // 0 (domingo) a 6 (sábado)
+                const slots = [];
+                
+                // No hay horarios disponibles los domingos
+                if (dayOfWeek === 0) {
+                    return slots;
+                }
+                
+                // Horarios para días laborables (lunes a viernes)
+                if (dayOfWeek >= 1 && dayOfWeek <= 5) {
+                    const morningStartHour = 9; // 9:00 AM
+                    const morningEndHour = 13; // 1:00 PM
+                    const afternoonStartHour = 15; // 3:00 PM
+                    const afternoonEndHour = 19; // 7:00 PM (última cita a las 7:00 PM)
+                    
+                    // Horarios de mañana
+                    for (let hour = morningStartHour; hour <= morningEndHour; hour++) {
+                        const timeStr = `${hour.toString().padStart(2, '0')}:00`;
+                        
+                        // Simular algunos horarios no disponibles aleatoriamente
+                        if (Math.random() > 0.3) { // 70% de probabilidad de estar disponible
+                            slots.push(timeStr);
+                        }
+                    }
+                    
+                    // Horarios de tarde
+                    for (let hour = afternoonStartHour; hour <= afternoonEndHour; hour++) {
+                        const timeStr = `${hour.toString().padStart(2, '0')}:00`;
+                        
+                        // Simular algunos horarios no disponibles aleatoriamente
+                        if (Math.random() > 0.3) { // 70% de probabilidad de estar disponible
+                            slots.push(timeStr);
+                        }
+                    }
+                } 
+                // Horarios para sábados
+                else if (dayOfWeek === 6) {
+                    const startHour = 9; // 9:00 AM
+                    const endHour = 13; // 1:00 PM (última cita a la 1:00 PM)
+                    
+                    for (let hour = startHour; hour <= endHour; hour++) {
+                        const timeStr = `${hour.toString().padStart(2, '0')}:00`;
+                        
+                        // Simular algunos horarios no disponibles aleatoriamente
+                        if (Math.random() > 0.3) {
+                            slots.push(timeStr);
+                        }
+                    }
+                }
+                
+                return slots;
+            }
+            
+            // Event Listeners
+            specialtySelect.addEventListener('change', loadDoctors);
+            
+            doctorSelect.addEventListener('change', function() {
+                setupDateInput();
+                loadTimeSlots();
+            });
+            
+            dateInput.addEventListener('change', loadTimeSlots);
+            
+            // Manejar envío del formulario
+            appointmentForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validar que se haya seleccionado un horario
+                if (!selectedTimeInput.value) {
+                    showToast('Por favor, seleccione un horario disponible', 'error');
+                    return;
+                }
+                
+                // Recopilar datos del formulario
+                const formData = {
+                    patient_id: document.getElementById('patientId') ? document.getElementById('patientId').value : 1,
+                    doctor_id: parseInt(doctorSelect.value),
+                    date: dateInput.value,
+                    time: selectedTimeInput.value,
+                    reason: document.getElementById('reason').value,
+                    patient_name: patientNameInput.value,
+                    patient_email: patientEmailInput.value,
+                    patient_phone: patientPhoneInput.value
+                };
+                
+                // Enviar solicitud al servidor
+                fetch('./backend/api/request_appointment_fixed.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error en la respuesta del servidor');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        showToast('¡Cita solicitada con éxito! Recibirá un correo de confirmación.', 'success');
+                        
+                        // Si venimos de la página de pacientes, redirigir de vuelta
+                        if (patientId) {
+                            setTimeout(() => {
+                                window.location.href = 'doctor_patients.html';
+                            }, 2000);
+                        } else {
+                            // Resetear el formulario
+                            appointmentForm.reset();
+                            timeSlotsContainer.innerHTML = '<p class="text-muted">Seleccione un médico y una fecha para ver los horarios disponibles.</p>';
+                            doctorSelect.disabled = true;
+                            dateInput.disabled = true;
+                        }
+                    } else {
+                        showToast(data.message || 'Error al solicitar la cita', 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showToast('Error al procesar la solicitud. Por favor, inténtelo de nuevo más tarde.', 'error');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

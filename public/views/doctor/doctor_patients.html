@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Pacientes - Salutia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .patient-card {
+            transition: all 0.3s;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .patient-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .search-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 12px;
+            color: #6c757d;
+        }
+        .search-input {
+            padding-left: 40px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="./">
+                <i class="fas fa-heartbeat"></i> Salutia
+            </a>
+            <div class="d-flex">
+                <button id="logoutBtn" class="btn btn-outline-light">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar y Contenido Principal -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="doctor_dashboard.html">
+                                <i class="fas fa-tachometer-alt"></i> Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="doctor_schedule_manager.html">
+                                <i class="fas fa-calendar-alt"></i> Gestionar horarios
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="doctor_patients.html">
+                                <i class="fas fa-users"></i> Pacientes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-envelope"></i> Mensajes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-user-md"></i> Mi perfil
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Contenido Principal -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1>Gestión de Pacientes</h1>
+                    <div>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPatientModal">
+                            <i class="fas fa-user-plus"></i> Añadir Paciente
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Buscador -->
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchPatient" class="form-control search-input" placeholder="Buscar paciente por nombre, email o teléfono...">
+                </div>
+
+                <!-- Filtros -->
+                <div class="mb-4">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-outline-primary active" data-filter="all">Todos</button>
+                        <button type="button" class="btn btn-outline-primary" data-filter="recent">Recientes</button>
+                        <button type="button" class="btn btn-outline-primary" data-filter="upcoming">Con cita próxima</button>
+                    </div>
+                </div>
+
+                <!-- Lista de Pacientes -->
+                <div class="row" id="patientsList">
+                    <!-- Los pacientes se cargarán dinámicamente aquí -->
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal para Añadir Paciente -->
+    <div class="modal fade" id="addPatientModal" tabindex="-1" aria-labelledby="addPatientModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addPatientModalLabel">Añadir Paciente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs" id="patientTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="existing-tab" data-bs-toggle="tab" data-bs-target="#existing-patients" type="button" role="tab" aria-controls="existing-patients" aria-selected="true">Pacientes Existentes</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="new-tab" data-bs-toggle="tab" data-bs-target="#new-patient" type="button" role="tab" aria-controls="new-patient" aria-selected="false">Nuevo Paciente</button>
+                        </li>
+                    </ul>
+                    
+                    <div class="tab-content pt-3" id="patientTabsContent">
+                        <!-- Pestaña de Pacientes Existentes -->
+                        <div class="tab-pane fade show active" id="existing-patients" role="tabpanel" aria-labelledby="existing-tab">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" id="searchExistingPatient" placeholder="Buscar paciente por nombre o email...">
+                            </div>
+                            
+                            <div id="availablePatientsContainer" class="mt-3">
+                                <div class="text-center">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Cargando...</span>
+                                    </div>
+                                    <p>Cargando pacientes disponibles...</p>
+                                </div>
+                            </div>
+                            
+                            <div class="alert alert-info mt-3">
+                                <i class="fas fa-info-circle"></i> Seleccione un paciente de la lista para asociarlo a su consulta.
+                            </div>
+                        </div>
+                        
+                        <!-- Pestaña de Nuevo Paciente -->
+                        <div class="tab-pane fade" id="new-patient" role="tabpanel" aria-labelledby="new-tab">
+                            <form id="addPatientForm">
+                                <div class="mb-3">
+                                    <label for="patientName" class="form-label">Nombre completo</label>
+                                    <input type="text" class="form-control" id="patientName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="patientEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="patientEmail" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="patientPhone" class="form-label">Teléfono</label>
+                                    <input type="tel" class="form-control" id="patientPhone">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="patientDOB" class="form-label">Fecha de nacimiento</label>
+                                    <input type="date" class="form-control" id="patientDOB">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="patientNotes" class="form-label">Notas médicas</label>
+                                    <textarea class="form-control" id="patientNotes" rows="3"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="savePatientBtn">Guardar</button>
+                    <button type="button" class="btn btn-success d-none" id="associatePatientBtn">Asociar Paciente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Ver Detalles del Paciente -->
+    <div class="modal fade" id="patientDetailsModal" tabindex="-1" aria-labelledby="patientDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="patientDetailsModalLabel">Detalles del Paciente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Información Personal</h6>
+                            <p><strong>Nombre:</strong> <span id="detailName"></span></p>
+                            <p><strong>Email:</strong> <span id="detailEmail"></span></p>
+                            <p><strong>Teléfono:</strong> <span id="detailPhone"></span></p>
+                            <p><strong>Fecha de nacimiento:</strong> <span id="detailDOB"></span></p>
+                            <p><strong>Edad:</strong> <span id="detailAge"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Historial Médico</h6>
+                            <p><strong>Notas:</strong> <span id="detailNotes"></span></p>
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    
+                    <h6>Historial de Citas</h6>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Hora</th>
+                                    <th>Motivo</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="appointmentsHistory">
+                                <!-- El historial de citas se cargará aquí -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="scheduleAppointmentBtn">Programar Cita</button>
+                    <button type="button" class="btn btn-warning" id="editPatientBtn">Editar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Variables para almacenar los datos de pacientes y citas
+        let patients = [];
+        let appointmentsHistory = {};
+
+        // Variable para almacenar el paciente seleccionado para asociar
+        let selectedPatientId = null;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar si hay un usuario logueado
+            const userId = localStorage.getItem('user_id');
+            const userRole = localStorage.getItem('user_role');
+            
+            if (!userId || userRole !== 'doctor') {
+                alert('Debe iniciar sesión como médico para acceder a esta página');
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // Cargar datos de pacientes
+            loadPatients(userId);
+            
+            // Evento para búsqueda de pacientes en la lista principal
+            document.getElementById('searchPatient').addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                filterPatients(searchTerm);
+            });
+            
+            // Evento para búsqueda de pacientes existentes en el modal
+            document.getElementById('searchExistingPatient').addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                filterAvailablePatients(searchTerm);
+            });
+            
+            // Eventos para filtros
+            document.querySelectorAll('[data-filter]').forEach(button => {
+                button.addEventListener('click', function() {
+                    document.querySelectorAll('[data-filter]').forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    filterPatientsByType(this.dataset.filter);
+                });
+            });
+            
+            // Evento para mostrar el modal de añadir paciente
+            document.querySelector('[data-bs-target="#addPatientModal"]').addEventListener('click', function() {
+                // Cargar pacientes disponibles
+                loadAvailablePatients(userId);
+                
+                // Mostrar/ocultar botones según la pestaña activa
+                updateModalButtons();
+            });
+            
+            // Eventos para cambio de pestañas en el modal
+            document.getElementById('existing-tab').addEventListener('click', function() {
+                updateModalButtons();
+            });
+            
+            document.getElementById('new-tab').addEventListener('click', function() {
+                updateModalButtons();
+            });
+            
+            // Evento para guardar nuevo paciente
+            document.getElementById('savePatientBtn').addEventListener('click', function() {
+                savePatient(userId);
+            });
+            
+            // Evento para asociar paciente existente
+            document.getElementById('associatePatientBtn').addEventListener('click', function() {
+                if (selectedPatientId) {
+                    associatePatient(userId, selectedPatientId);
+                } else {
+                    alert('Por favor, seleccione un paciente de la lista');
+                }
+            });
+            
+            // Evento para programar cita
+            document.getElementById('scheduleAppointmentBtn').addEventListener('click', function() {
+                const patientId = this.dataset.patientId;
+                if (patientId) {
+                    window.location.href = `solicitar_cita.html?patient_id=${patientId}`;
+                }
+            });
+            
+            // Evento para cerrar sesión
+            document.getElementById('logoutBtn').addEventListener('click', function() {
+                localStorage.clear();
+                window.location.href = 'login.html';
+            });
+        });
+        
+        // Función para actualizar los botones del modal según la pestaña activa
+        function updateModalButtons() {
+            const isExistingTab = document.getElementById('existing-tab').classList.contains('active');
+            const saveBtn = document.getElementById('savePatientBtn');
+            const associateBtn = document.getElementById('associatePatientBtn');
+            
+            if (isExistingTab) {
+                saveBtn.classList.add('d-none');
+                associateBtn.classList.remove('d-none');
+            } else {
+                saveBtn.classList.remove('d-none');
+                associateBtn.classList.add('d-none');
+            }
+        }
+        
+        // Función para cargar pacientes desde el backend
+        async function loadPatients(doctorId) {
+            const patientsList = document.getElementById('patientsList');
+            patientsList.innerHTML = '<div class="col-12 text-center"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Cargando...</span></div><p>Cargando pacientes...</p></div>';
+            
+            try {
+                // Obtener pacientes del backend
+                const response = await fetch(`./backend/api/patients.php?doctor_id=${doctorId}`);
+                const data = await response.json();
+                
+                if (data.success && data.patients) {
+                    patients = data.patients;
+                    
+                    // Si no hay pacientes, mostrar mensaje
+                    if (patients.length === 0) {
+                        patientsList.innerHTML = '<div class="col-12 text-center"><p>No hay pacientes registrados.</p></div>';
+                        return;
+                    }
+                    
+                    // Limpiar contenedor
+                    patientsList.innerHTML = '';
+                    
+                    // Mostrar cada paciente
+                    patients.forEach(patient => {
+                        const patientCard = document.createElement('div');
+                        patientCard.className = 'col-md-6 col-lg-4';
+                        patientCard.dataset.patientId = patient.id;
+                        
+                        // Calcular edad si hay fecha de nacimiento
+                        let ageText = 'Edad no disponible';
+                        if (patient.dob) {
+                            const dob = new Date(patient.dob);
+                            const today = new Date();
+                            let age = today.getFullYear() - dob.getFullYear();
+                            const monthDiff = today.getMonth() - dob.getMonth();
+                            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+                                age--;
+                            }
+                            ageText = `${age} años`;
+                        }
+                        
+                        // Determinar si tiene cita próxima
+                        const hasUpcoming = patient.nextAppointment !== null;
+                        console.log(`Paciente ${patient.name} - nextAppointment: ${patient.nextAppointment}`);
+                        const upcomingClass = hasUpcoming ? 'border-primary' : '';
+                        const upcomingBadge = hasUpcoming ? `<span class="badge bg-primary">Próxima cita: ${formatDate(patient.nextAppointment)}</span>` : '';
+                        
+                        patientCard.innerHTML = `
+                            <div class="card patient-card ${upcomingClass}">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <h5 class="card-title mb-0">${patient.name}</h5>
+                                        ${upcomingBadge}
+                                    </div>
+                                    <p class="card-text"><i class="fas fa-envelope text-muted me-2"></i>${patient.email}</p>
+                                    <p class="card-text"><i class="fas fa-phone text-muted me-2"></i>${patient.phone || 'No disponible'}</p>
+                                    <p class="card-text"><i class="fas fa-birthday-cake text-muted me-2"></i>${ageText}</p>
+                                    <div class="d-flex justify-content-between mt-3">
+                                        <small class="text-muted">Última visita: ${formatDate(patient.lastVisit)}</small>
+                                        <button class="btn btn-sm btn-outline-primary view-details" data-id="${patient.id}">
+                                            Ver detalles
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        
+                        patientsList.appendChild(patientCard);
+                    });
+                    
+                    // Añadir eventos a los botones de detalles
+                    document.querySelectorAll('.view-details').forEach(button => {
+                        button.addEventListener('click', function() {
+                            const patientId = this.dataset.id;
+                            showPatientDetails(patientId, doctorId);
+                        });
+                    });
+                } else {
+                    // Mostrar mensaje de error
+                    patientsList.innerHTML = `<div class="col-12 text-center"><p class="text-danger">Error al cargar pacientes: ${data.message || 'Error desconocido'}</p></div>`;
+                }
+            } catch (error) {
+                console.error('Error al cargar pacientes:', error);
+                patientsList.innerHTML = `<div class="col-12 text-center"><p class="text-danger">Error al conectar con el servidor: ${error.message}</p></div>`;
+            }
+        }
+        
+        // Función para filtrar pacientes por término de búsqueda
+        function filterPatients(searchTerm) {
+            const patientCards = document.querySelectorAll('[data-patient-id]');
+            
+            patientCards.forEach(card => {
+                const patientId = card.dataset.patientId;
+                const patient = patients.find(p => p.id == patientId);
+                
+                if (patient.name.toLowerCase().includes(searchTerm) || 
+                    patient.email.toLowerCase().includes(searchTerm) || 
+                    patient.phone.includes(searchTerm)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        
+        // Función para filtrar pacientes por tipo
+        function filterPatientsByType(filterType) {
+            const patientCards = document.querySelectorAll('[data-patient-id]');
+            const today = new Date();
+            
+            patientCards.forEach(card => {
+                const patientId = card.dataset.patientId;
+                const patient = patients.find(p => p.id == patientId);
+                
+                if (filterType === 'all') {
+                    card.style.display = '';
+                } else if (filterType === 'recent') {
+                    // Pacientes con visita en los últimos 30 días
+                    const lastVisit = new Date(patient.lastVisit);
+                    const daysDiff = Math.floor((today - lastVisit) / (1000 * 60 * 60 * 24));
+                    
+                    if (daysDiff <= 30) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                } else if (filterType === 'upcoming') {
+                    // Pacientes con cita próxima
+                    if (patient.nextAppointment) {
+                        console.log(`Paciente ${patient.name} tiene cita próxima: ${patient.nextAppointment}`);
+                        card.style.display = '';
+                    } else {
+                        console.log(`Paciente ${patient.name} no tiene cita próxima`);
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        }
+        
+        // Función para mostrar detalles del paciente
+        async function showPatientDetails(patientId, doctorId) {
+            // Mostrar indicador de carga en el modal
+            document.getElementById('detailName').textContent = 'Cargando...';
+            document.getElementById('detailEmail').textContent = 'Cargando...';
+            document.getElementById('detailPhone').textContent = 'Cargando...';
+            document.getElementById('detailDOB').textContent = 'Cargando...';
+            document.getElementById('detailAge').textContent = 'Cargando...';
+            document.getElementById('detailNotes').textContent = 'Cargando...';
+            
+            // Configurar el botón de programar cita
+            const scheduleBtn = document.getElementById('scheduleAppointmentBtn');
+            scheduleBtn.dataset.patientId = patientId;
+            
+            // Mostrar modal mientras se cargan los datos
+            const modal = new bootstrap.Modal(document.getElementById('patientDetailsModal'));
+            modal.show();
+            
+            // Cargar historial de citas con mensaje de carga
+            const appointmentsTable = document.getElementById('appointmentsHistory');
+            appointmentsTable.innerHTML = `
+                <tr>
+                    <td colspan="4" class="text-center">
+                        <div class="spinner-border spinner-border-sm text-primary" role="status">
+                            <span class="visually-hidden">Cargando...</span>
+                        </div>
+                        Cargando historial de citas...
+                    </td>
+                </tr>
+            `;
+            
+            try {
+                // Obtener detalles del paciente del backend
+                const response = await fetch(`./backend/api/patients.php?doctor_id=${doctorId}&patient_id=${patientId}`);
+                const data = await response.json();
+                
+                if (data.success && data.patient) {
+                    const patient = data.patient;
+                    
+                    // Calcular edad si hay fecha de nacimiento
+                    let ageText = 'No disponible';
+                    if (patient.dob) {
+                        const dob = new Date(patient.dob);
+                        const today = new Date();
+                        let age = today.getFullYear() - dob.getFullYear();
+                        const monthDiff = today.getMonth() - dob.getMonth();
+                        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+                            age--;
+                        }
+                        ageText = `${age} años`;
+                    }
+                    
+                    // Llenar datos en el modal
+                    document.getElementById('detailName').textContent = patient.name;
+                    document.getElementById('detailEmail').textContent = patient.email;
+                    document.getElementById('detailPhone').textContent = patient.phone || 'No disponible';
+                    document.getElementById('detailDOB').textContent = formatDate(patient.dob) || 'No disponible';
+                    document.getElementById('detailAge').textContent = ageText;
+                    document.getElementById('detailNotes').textContent = patient.notes || 'Sin notas médicas';
+                    
+                    // Guardar las citas en la variable global para uso posterior
+                    if (patient.appointments && patient.appointments.length > 0) {
+                        appointmentsHistory[patientId] = patient.appointments;
+                    }
+                    
+                    // Cargar historial de citas
+                    appointmentsTable.innerHTML = '';
+                    
+                    console.log('Citas del paciente:', patient.appointments);
+                    
+                    if (patient.appointments && patient.appointments.length > 0) {
+                        patient.appointments.forEach(appointment => {
+                            const row = document.createElement('tr');
+                            
+                            // Determinar clase y texto según estado
+                            let statusClass, statusText;
+                            switch (appointment.status) {
+                                case 'completed':
+                                    statusClass = 'bg-success';
+                                    statusText = 'Completada';
+                                    break;
+                                case 'pending':
+                                    statusClass = 'bg-primary';
+                                    statusText = 'Pendiente';
+                                    break;
+                                case 'cancelled':
+                                    statusClass = 'bg-danger';
+                                    statusText = 'Cancelada';
+                                    break;
+                                default:
+                                    statusClass = 'bg-secondary';
+                                    statusText = 'Desconocido';
+                            }
+                            
+                            // Formatear fecha para mejor visualización
+                            const formattedDate = formatDate(appointment.date);
+                            
+                            row.innerHTML = `
+                                <td>${formattedDate}</td>
+                                <td>${appointment.time}</td>
+                                <td>${appointment.reason}</td>
+                                <td><span class="badge ${statusClass}">${statusText}</span></td>
+                            `;
+                            
+                            appointmentsTable.appendChild(row);
+                        });
+                    } else {
+                        appointmentsTable.innerHTML = `
+                            <tr>
+                                <td colspan="4" class="text-center">No hay citas registradas</td>
+                            </tr>
+                        `;
+                    }
+                    
+                    // Configurar botón para programar cita
+                    document.getElementById('scheduleAppointmentBtn').onclick = function() {
+                        // Cerrar modal actual
+                        modal.hide();
+                        // Redirigir a la página de solicitud de citas con el ID del paciente
+                        window.location.href = `solicitar_cita.html?patient_id=${patientId}`;
+                    };
+                    
+                    // Configurar botón para editar paciente
+                    document.getElementById('editPatientBtn').onclick = function() {
+                        // Implementar lógica para editar paciente
+                        alert('Funcionalidad de edición en desarrollo');
+                    };
+                    
+                } else {
+                    // Mostrar mensaje de error
+                    document.getElementById('detailName').textContent = 'Error al cargar datos';
+                    document.getElementById('detailEmail').textContent = '';
+                    document.getElementById('detailPhone').textContent = '';
+                    document.getElementById('detailDOB').textContent = '';
+                    document.getElementById('detailAge').textContent = '';
+                    document.getElementById('detailNotes').textContent = data.message || 'Error desconocido';
+                    
+                    appointmentsTable.innerHTML = `
+                        <tr>
+                            <td colspan="4" class="text-center text-danger">Error al cargar historial de citas</td>
+                        </tr>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error al cargar detalles del paciente:', error);
+                document.getElementById('detailName').textContent = 'Error de conexión';
+                document.getElementById('detailEmail').textContent = '';
+                document.getElementById('detailPhone').textContent = '';
+                document.getElementById('detailDOB').textContent = '';
+                document.getElementById('detailAge').textContent = '';
+                document.getElementById('detailNotes').textContent = 'Error al conectar con el servidor';
+                
+                appointmentsTable.innerHTML = `
+                    <tr>
+                        <td colspan="4" class="text-center text-danger">Error al conectar con el servidor</td>
+                    </tr>
+                `;
+            }
+        }
+        
+        // Función para guardar nuevo paciente en el backend
+        async function savePatient(doctorId) {
+            const name = document.getElementById('patientName').value;
+            const email = document.getElementById('patientEmail').value;
+            const phone = document.getElementById('patientPhone').value;
+            const dob = document.getElementById('patientDOB').value;
+            const notes = document.getElementById('patientNotes').value;
+            
+            if (!name || !email) {
+                alert('Por favor, complete al menos el nombre y email del paciente');
+                return;
+            }
+            
+            // Deshabilitar botón mientras se guarda
+            const saveButton = document.getElementById('savePatientBtn');
+            const originalText = saveButton.innerHTML;
+            saveButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Guardando...';
+            saveButton.disabled = true;
+            
+            try {
+                // Crear objeto con datos del paciente
+                const patientData = {
+                    name: name,
+                    email: email,
+                    phone: phone || null,
+                    dob: dob || null,
+                    notes: notes || null
+                };
+                
+                // Enviar datos al backend
+                const response = await fetch(`./backend/api/patients.php?doctor_id=${doctorId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(patientData)
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Cerrar modal
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('addPatientModal'));
+                    modal.hide();
+                    
+                    // Limpiar formulario
+                    document.getElementById('addPatientForm').reset();
+                    
+                    // Mostrar mensaje
+                    alert(`Paciente añadido correctamente${data.temp_password ? '. Contraseña temporal: ' + data.temp_password : ''}`);
+                    
+                    // Recargar lista de pacientes
+                    loadPatients(doctorId);
+                } else {
+                    alert(`Error al guardar paciente: ${data.message || 'Error desconocido'}`);
+                }
+            } catch (error) {
+                console.error('Error al guardar paciente:', error);
+                alert(`Error al conectar con el servidor: ${error.message}`);
+            } finally {
+                // Restaurar botón
+                saveButton.innerHTML = originalText;
+                saveButton.disabled = false;
+            }
+        }
+        
+        // Función para cargar pacientes disponibles
+        async function loadAvailablePatients(doctorId) {
+            const container = document.getElementById('availablePatientsContainer');
+            container.innerHTML = `
+                <div class="text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Cargando...</span>
+                    </div>
+                    <p>Cargando pacientes disponibles...</p>
+                </div>
+            `;
+            
+            try {
+                // Obtener pacientes disponibles del backend
+                const response = await fetch(`./backend/api/available_patients.php?doctor_id=${doctorId}`);
+                const data = await response.json();
+                
+                if (data.success && data.patients) {
+                    // Si no hay pacientes disponibles
+                    if (data.patients.length === 0) {
+                        container.innerHTML = `
+                            <div class="alert alert-warning">
+                                <i class="fas fa-exclamation-triangle"></i> No hay pacientes disponibles para asociar.
+                            </div>
+                        `;
+                        return;
+                    }
+                    
+                    // Guardar los pacientes disponibles para búsqueda
+                    window.availablePatients = data.patients;
+                    
+                    // Crear lista de pacientes
+                    container.innerHTML = '';
+                    const list = document.createElement('div');
+                    list.className = 'list-group';
+                    
+                    data.patients.forEach(patient => {
+                        const item = document.createElement('a');
+                        item.href = '#';
+                        item.className = 'list-group-item list-group-item-action';
+                        item.dataset.patientId = patient.id;
+                        
+                        // Calcular edad si hay fecha de nacimiento
+                        let ageText = '';
+                        if (patient.dob) {
+                            const dob = new Date(patient.dob);
+                            const today = new Date();
+                            let age = today.getFullYear() - dob.getFullYear();
+                            const monthDiff = today.getMonth() - dob.getMonth();
+                            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+                                age--;
+                            }
+                            ageText = ` (${age} años)`;
+                        }
+                        
+                        item.innerHTML = `
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">${patient.name}${ageText}</h5>
+                            </div>
+                            <p class="mb-1"><i class="fas fa-envelope text-muted me-2"></i>${patient.email}</p>
+                            <p class="mb-0"><i class="fas fa-phone text-muted me-2"></i>${patient.phone || 'No disponible'}</p>
+                        `;
+                        
+                        // Evento para seleccionar paciente
+                        item.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            
+                            // Quitar selección anterior
+                            document.querySelectorAll('#availablePatientsContainer .list-group-item').forEach(el => {
+                                el.classList.remove('active');
+                            });
+                            
+                            // Marcar como seleccionado
+                            this.classList.add('active');
+                            selectedPatientId = this.dataset.patientId;
+                        });
+                        
+                        list.appendChild(item);
+                    });
+                    
+                    container.appendChild(list);
+                } else {
+                    container.innerHTML = `
+                        <div class="alert alert-danger">
+                            <i class="fas fa-exclamation-circle"></i> Error al cargar pacientes: ${data.message || 'Error desconocido'}
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error al cargar pacientes disponibles:', error);
+                container.innerHTML = `
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-circle"></i> Error al conectar con el servidor: ${error.message}
+        }
+    } catch (error) {
+        console.error('Error al cargar pacientes disponibles:', error);
+        container.innerHTML = `
+            <div class="alert alert-danger">
+                <i class="fas fa-exclamation-circle"></i> Error al conectar con el servidor: ${error.message}
+            </div>
+        `;
+    }
+}
+
+// Función para filtrar pacientes
+function filterPatients() {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    const filterType = document.getElementById('filterSelect').value;
+    const patientsList = document.getElementById('patientsList');
+    
+    // Si no hay pacientes, no hacer nada
+    if (!patients || patients.length === 0) return;
+    
+    // Limpiar lista
+    patientsList.innerHTML = '';
+    
+    // Registrar para depuración
+    console.log(`Filtrando pacientes: ${patients.length} total, tipo: ${filterType}, búsqueda: "${searchTerm}"`);
+    
+    // Filtrar pacientes
+    let filteredPatients = patients.filter(patient => {
+        // Filtrar por término de búsqueda
+        const nameMatch = patient.name.toLowerCase().includes(searchTerm);
+        const emailMatch = patient.email.toLowerCase().includes(searchTerm);
+        const searchMatch = nameMatch || emailMatch;
+        
+        // Si no hay término de búsqueda, mostrar todos
+        if (searchTerm === '') return true;
+        
+        return searchMatch;
+    });
+    
+    // Aplicar filtro adicional
+    if (filterType === 'upcoming') {
+        console.log('Filtrando pacientes con cita próxima');
+        filteredPatients = filteredPatients.filter(patient => {
+            console.log(`Paciente ${patient.name}: nextAppointment = ${patient.nextAppointment}`);
+            return patient.nextAppointment !== null;
+        });
+        console.log(`Pacientes con cita próxima: ${filteredPatients.length}`);
+    } else if (filterType === 'recent') {
+        // Implementar lógica para pacientes recientes si es necesario
+    }
+    
+    // Mostrar pacientes filtrados
+    filteredPatients.forEach(patient => {
+        const item = document.createElement('div');
+        item.className = 'list-group-item';
+                const response = await fetch('./backend/api/associate_patient.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        doctor_id: doctorId,
+                        patient_id: patientId
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Cerrar modal
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('addPatientModal'));
+                    modal.hide();
+                    
+                    // Mostrar mensaje
+                    alert('Paciente asociado correctamente');
+                    
+                    // Recargar lista de pacientes
+                    loadPatients(doctorId);
+                } else {
+                    alert(`Error al asociar paciente: ${data.message || 'Error desconocido'}`);
+                }
+            } catch (error) {
+                console.error('Error al asociar paciente:', error);
+                alert(`Error al conectar con el servidor: ${error.message}`);
+            } finally {
+                // Restaurar botón
+                associateBtn.innerHTML = originalText;
+                associateBtn.disabled = false;
+                selectedPatientId = null;
+            }
+        }
+        
+        // Función para formatear fechas
+        function formatDate(dateString) {
+            if (!dateString) return 'N/A';
+            
+            const date = new Date(dateString);
+            return date.toLocaleDateString('es-ES', {
+                day: '2-digit',
+                month: 'long',
+                year: 'numeric'
+            });
+        }
+    </script>
+</body>
+</html>

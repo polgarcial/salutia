@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Base de Datos - Salutia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --primary-dark: #2980b9;
+            --secondary-color: #2ecc71;
+            --secondary-dark: #27ae60;
+            --danger-color: #e74c3c;
+            --danger-dark: #c0392b;
+            --light-bg: #f8f9fa;
+            --border-color: #e0e0e0;
+            --text-color: #333;
+            --text-light: #666;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: var(--text-color);
+            background-color: #f5f8fa;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3 {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            padding: 25px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+        }
+        
+        .card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: white;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .card-description {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .btn-success {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-success:hover {
+            background-color: var(--secondary-dark);
+        }
+        
+        .btn-danger {
+            background-color: var(--danger-color);
+        }
+        
+        .btn-danger:hover {
+            background-color: var(--danger-dark);
+        }
+        
+        .links {
+            margin-bottom: 20px;
+        }
+        
+        .links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-right: 15px;
+        }
+        
+        .links a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+        
+        .result-container {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--light-bg);
+        }
+        
+        .result-container h3 {
+            margin-top: 0;
+        }
+        
+        iframe {
+            width: 100%;
+            height: 400px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1><i class="fas fa-database"></i> Actualizar Base de Datos - Salutia</h1>
+    
+    <div class="links">
+        <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+        <a href="appointments.html"><i class="fas fa-calendar-check"></i> Gestión de Citas</a>
+        <a href="login_simple.html"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
+        <a href="register_simple.html"><i class="fas fa-user-plus"></i> Registrarse</a>
+    </div>
+    
+    <div class="container">
+        <h2><i class="fas fa-tools"></i> Herramientas de Base de Datos</h2>
+        
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-user-md"></i> Actualizar tabla de usuarios
+            </div>
+            <div class="card-description">
+                Este script creará la tabla de usuarios si no existe, añadirá la columna de especialidad para los médicos e insertará algunos usuarios de ejemplo.
+            </div>
+            <a href="backend/database/update_users_table.php" target="resultFrame" class="btn btn-success">
+                <i class="fas fa-play"></i> Ejecutar script
+            </a>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-table"></i> Crear tablas del sistema
+            </div>
+            <div class="card-description">
+                Este script creará todas las tablas necesarias para el funcionamiento del sistema (citas, historial médico, mensajes, etc.).
+            </div>
+            <a href="backend/database/create_tables.php" target="resultFrame" class="btn">
+                <i class="fas fa-play"></i> Ejecutar script
+            </a>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-wrench"></i> Corregir tabla de disponibilidad
+            </div>
+            <div class="card-description">
+                Este script corregirá la estructura de la tabla de disponibilidad de médicos para asegurar que sea compatible con el sistema.
+            </div>
+            <a href="backend/database/fix_doctor_availability.php" target="resultFrame" class="btn btn-danger">
+                <i class="fas fa-play"></i> Ejecutar script
+            </a>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-calendar-alt"></i> Configurar disponibilidad de médicos
+            </div>
+            <div class="card-description">
+                Este script generará horarios disponibles para los médicos en los próximos 30 días, permitiendo a los pacientes agendar citas.
+            </div>
+            <a href="backend/database/add_doctor_availability.php" target="resultFrame" class="btn btn-success">
+                <i class="fas fa-play"></i> Ejecutar script
+            </a>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-database"></i> Probar conexión a MySQL
+            </div>
+            <div class="card-description">
+                Este script verificará la conexión a MySQL, comprobará si existe la base de datos 'salutia' y la creará si es necesario.
+            </div>
+            <a href="backend/test_mysql_connection.php" target="resultFrame" class="btn btn-success">
+                <i class="fas fa-play"></i> Ejecutar script
+            </a>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-check-circle"></i> Verificar conexión a la base de datos
+            </div>
+            <div class="card-description">
+                Este script verificará la conexión a la base de datos y mostrará información sobre los usuarios registrados.
+            </div>
+            <a href="backend/test_database.php" target="resultFrame" class="btn">
+                <i class="fas fa-play"></i> Ejecutar script
+            </a>
+        </div>
+        
+        <div class="result-container">
+            <h3><i class="fas fa-terminal"></i> Resultado de la ejecución</h3>
+            <iframe name="resultFrame" id="resultFrame" title="Resultado de la ejecución"></iframe>
+        </div>
+    </div>
+</body>
+</html>

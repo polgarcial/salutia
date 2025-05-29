@@ -1,0 +1,4 @@
+2025-05-28 21:29:13 - Iniciando corrección de la tabla appointments
+2025-05-28 21:29:13 - Conexión a la base de datos establecida
+2025-05-28 21:29:13 - La tabla appointments no existe, creándola
+2025-05-28 21:29:13 - Error al corregir la tabla appointments: {"error":"SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'appointments' already exists"}

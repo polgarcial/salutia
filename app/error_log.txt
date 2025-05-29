@@ -1,0 +1,1 @@
+2025-05-29 11:15:23 - Excepción no capturada: Call to undefined method PDO::real_escape_string() en C:\Users\polga\OneDrive\Escriptori\salutia\app\create_appointment_request.php:123

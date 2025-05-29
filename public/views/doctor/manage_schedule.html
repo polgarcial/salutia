@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionar Horarios - Salutia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            background-color: white;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .sidebar .nav-link {
+            color: #495057;
+            padding: 10px 20px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+        .sidebar .nav-link:hover {
+            background-color: #e9ecef;
+        }
+        .sidebar .nav-link.active {
+            background-color: #0d6efd;
+            color: white;
+        }
+        .sidebar .nav-link i {
+            margin-right: 10px;
+        }
+        .main-content {
+            padding: 20px;
+        }
+        .time-slot {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .time-slot:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .day-column {
+            border-right: 1px solid #dee2e6;
+        }
+        .day-column:last-child {
+            border-right: none;
+        }
+        .day-header {
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 d-md-block sidebar p-0">
+                <div class="d-flex flex-column p-3">
+                    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
+                        <span class="fs-4 text-primary fw-bold">
+                            <i class="fas fa-heartbeat"></i> Salutia
+                        </span>
+                    </a>
+                    <hr>
+                    <ul class="nav nav-pills flex-column mb-auto">
+                        <li class="nav-item">
+                            <a href="doctor_dashboard.html" class="nav-link">
+                                <i class="fas fa-tachometer-alt"></i> Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a href="manage_schedule.html" class="nav-link active">
+                                <i class="fas fa-calendar-alt"></i> Gestionar horarios
+                            </a>
+                        </li>
+                        <li>
+                            <a href="patients.html" class="nav-link">
+                                <i class="fas fa-user-injured"></i> Pacientes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="messages.html" class="nav-link">
+                                <i class="fas fa-envelope"></i> Mensajes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="profile.html" class="nav-link">
+                                <i class="fas fa-user-md"></i> Mi perfil
+                            </a>
+                        </li>
+                    </ul>
+                    <hr>
+                    <button id="logoutBtn" class="btn btn-danger w-100">
+                        <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-9 col-lg-10 main-content">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h1>Gestionar Horarios</h1>
+                    <div class="user-info d-flex align-items-center">
+                        <span class="me-2" id="doctorName">Dr. Juan Pérez</span>
+                        <div class="avatar bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Horario Semanal -->
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h3 class="mb-0">Horario Semanal</h3>
+                            <button class="btn btn-light btn-sm" id="addScheduleBtn">
+                                <i class="fas fa-plus"></i> Añadir horario
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <div class="alert alert-info">
+                                    <i class="fas fa-info-circle me-2"></i>
+                                    Configure su horario semanal para que los pacientes puedan solicitar citas en los horarios disponibles.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <!-- Lunes -->
+                            <div class="col-md-2 day-column">
+                                <div class="day-header">Lunes</div>
+                                <div class="time-slots" id="monday-slots">
+                                    <!-- Aquí se cargarán los horarios del lunes -->
+                                </div>
+                            </div>
+                            
+                            <!-- Martes -->
+                            <div class="col-md-2 day-column">
+                                <div class="day-header">Martes</div>
+                                <div class="time-slots" id="tuesday-slots">
+                                    <!-- Aquí se cargarán los horarios del martes -->
+                                </div>
+                            </div>
+                            
+                            <!-- Miércoles -->
+                            <div class="col-md-2 day-column">
+                                <div class="day-header">Miércoles</div>
+                                <div class="time-slots" id="wednesday-slots">
+                                    <!-- Aquí se cargarán los horarios del miércoles -->
+                                </div>
+                            </div>
+                            
+                            <!-- Jueves -->
+                            <div class="col-md-2 day-column">
+                                <div class="day-header">Jueves</div>
+                                <div class="time-slots" id="thursday-slots">
+                                    <!-- Aquí se cargarán los horarios del jueves -->
+                                </div>
+                            </div>
+                            
+                            <!-- Viernes -->
+                            <div class="col-md-2 day-column">
+                                <div class="day-header">Viernes</div>
+                                <div class="time-slots" id="friday-slots">
+                                    <!-- Aquí se cargarán los horarios del viernes -->
+                                </div>
+                            </div>
+                            
+                            <!-- Sábado -->
+                            <div class="col-md-2 day-column">
+                                <div class="day-header">Sábado</div>
+                                <div class="time-slots" id="saturday-slots">
+                                    <!-- Aquí se cargarán los horarios del sábado -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Días de Vacaciones -->
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h3 class="mb-0">Días no disponibles</h3>
+                            <button class="btn btn-light btn-sm" id="addUnavailableDayBtn">
+                                <i class="fas fa-plus"></i> Añadir día no disponible
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha inicio</th>
+                                        <th>Fecha fin</th>
+                                        <th>Motivo</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="unavailableDaysTable">
+                                    <!-- Aquí se cargarán los días no disponibles -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para añadir horario -->
+    <div class="modal fade" id="addScheduleModal" tabindex="-1" aria-labelledby="addScheduleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="addScheduleModalLabel">Añadir horario</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="scheduleForm">
+                        <input type="hidden" id="scheduleId" value="">
+                        <div class="mb-3">
+                            <label for="dayOfWeek" class="form-label">Día de la semana</label>
+                            <select class="form-select" id="dayOfWeek" required>
+                                <option value="">Seleccionar día...</option>
+                                <option value="1">Lunes</option>
+                                <option value="2">Martes</option>
+                                <option value="3">Miércoles</option>
+                                <option value="4">Jueves</option>
+                                <option value="5">Viernes</option>
+                                <option value="6">Sábado</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="startTime" class="form-label">Hora inicio</label>
+                                <input type="time" class="form-control" id="startTime" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="endTime" class="form-label">Hora fin</label>
+                                <input type="time" class="form-control" id="endTime" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="repeatWeekly" class="form-check-label">
+                                <input type="checkbox" class="form-check-input" id="repeatWeekly" checked>
+                                Repetir semanalmente
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="saveScheduleBtn">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para añadir día no disponible -->
+    <div class="modal fade" id="addUnavailableDayModal" tabindex="-1" aria-labelledby="addUnavailableDayModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="addUnavailableDayModalLabel">Añadir día no disponible</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="unavailableDayForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="startDate" class="form-label">Fecha inicio</label>
+                                <input type="date" class="form-control" id="startDate" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="endDate" class="form-label">Fecha fin</label>
+                                <input type="date" class="form-control" id="endDate" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="reason" class="form-label">Motivo</label>
+                            <input type="text" class="form-control" id="reason" placeholder="Vacaciones, conferencia, etc." required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="saveUnavailableDayBtn">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/doctor_schedule.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mostrar nombre del doctor
+            document.getElementById('doctorName').textContent = localStorage.getItem('user_name') || 'Doctor';
+            
+            // Configurar evento de logout
+            document.getElementById('logoutBtn').addEventListener('click', function() {
+                localStorage.removeItem('user_id');
+                localStorage.removeItem('user_role');
+                localStorage.removeItem('user_name');
+                localStorage.removeItem('token');
+                window.location.href = '../../index.html';
+            });
+            
+            // Configurar botones para abrir modales
+            document.getElementById('addScheduleBtn').addEventListener('click', function() {
+                const modal = new bootstrap.Modal(document.getElementById('addScheduleModal'));
+                modal.show();
+            });
+            
+            document.getElementById('addUnavailableDayBtn').addEventListener('click', function() {
+                const modal = new bootstrap.Modal(document.getElementById('addUnavailableDayModal'));
+                modal.show();
+            });
+        });
+    </script>
+</body>
+</html>

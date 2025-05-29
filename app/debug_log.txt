@@ -1,0 +1,1862 @@
+2025-05-28 17:13:15 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 17:13:15 - Especialidad solicitada: Cardiología
+2025-05-28 17:13:15 - Conexión a la base de datos establecida
+2025-05-28 17:13:15 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.sqlite_master' doesn't exist
+2025-05-28 17:13:15 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 17:13:15 - Especialidad solicitada: Cardiología
+2025-05-28 17:13:15 - Conexión a la base de datos establecida
+2025-05-28 17:13:15 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.sqlite_master' doesn't exist
+2025-05-28 17:13:25 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 17:13:25 - Especialidad solicitada: Cardiología
+2025-05-28 17:13:25 - Conexión a la base de datos establecida
+2025-05-28 17:13:25 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.sqlite_master' doesn't exist
+2025-05-28 17:16:18 - Solicitud recibida: {"specialty":"Dermatolog\u00eda"}
+2025-05-28 17:16:18 - Especialidad solicitada: Dermatología
+2025-05-28 17:16:18 - Conexión a la base de datos establecida
+2025-05-28 17:16:18 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.sqlite_master' doesn't exist
+2025-05-28 17:16:18 - Solicitud recibida: {"specialty":"Dermatolog\u00eda"}
+2025-05-28 17:16:18 - Especialidad solicitada: Dermatología
+2025-05-28 17:16:18 - Conexión a la base de datos establecida
+2025-05-28 17:16:18 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.sqlite_master' doesn't exist
+2025-05-28 17:18:48 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 17:18:48 - Especialidad solicitada: Cardiología
+2025-05-28 17:18:48 - Conexión a la base de datos establecida
+2025-05-28 17:18:48 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.sqlite_master' doesn't exist
+2025-05-28 17:18:48 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 17:18:48 - Especialidad solicitada: Cardiología
+2025-05-28 17:18:48 - Conexión a la base de datos establecida
+2025-05-28 17:18:48 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.sqlite_master' doesn't exist
+2025-05-28 17:23:54 - Solicitud recibida: {"specialty":"Ginecolog\u00eda"}
+2025-05-28 17:23:54 - Especialidad solicitada: Ginecología
+2025-05-28 17:23:54 - Conexión a la base de datos establecida
+2025-05-28 17:23:54 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.sqlite_master' doesn't exist
+2025-05-28 17:23:54 - Solicitud recibida: {"specialty":"Ginecolog\u00eda"}
+2025-05-28 17:23:54 - Especialidad solicitada: Ginecología
+2025-05-28 17:23:54 - Conexión a la base de datos establecida
+2025-05-28 17:23:54 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.sqlite_master' doesn't exist
+2025-05-28 17:23:56 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 17:23:56 - Especialidad solicitada: Cardiología
+2025-05-28 17:23:56 - Conexión a la base de datos establecida
+2025-05-28 17:23:56 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.sqlite_master' doesn't exist
+2025-05-28 17:23:56 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 17:23:56 - Especialidad solicitada: Cardiología
+2025-05-28 17:23:56 - Conexión a la base de datos establecida
+2025-05-28 17:23:56 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.sqlite_master' doesn't exist
+2025-05-28 17:38:25 - Inicio de solicitud doctor_auth.php: {"method":"POST","action":"login"}
+2025-05-28 17:38:25 - Datos recibidos: {"input":"{\"email\":\"doctor@gmail.com\",\"password\":\"123456\",\"role\":\"doctor\"}"}
+2025-05-28 17:38:25 - Datos decodificados: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-28 17:38:25 - Procesando acción: {"action":"login"}
+2025-05-28 17:38:25 - Procesando login de médico
+2025-05-28 17:38:25 - Iniciando proceso de login de médico: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-28 17:38:25 - Médico encontrado: {"id":1,"name":"Dr. Juan Pérez"}
+2025-05-28 17:38:25 - Login exitoso: {"doctor_id":1}
+2025-05-28 17:38:25 - Respuesta enviada: {"success":true,"message":"Inicio de sesión exitoso","user":{"id":1,"email":"doctor@gmail.com","name":"Dr. Juan Pérez","role":"doctor","specialty":"Cardiología"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImRvY3RvckBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiZXhwIjoxNzQ4NTQwMzA1fQ==.hkYptm8s4bTs\/JF+IMPvki\/gop0Rptz2Ds3Nm7wpdl0="}
+2025-05-28 17:53:29 - Inicio de solicitud doctor_auth.php: {"method":"POST","action":"login"}
+2025-05-28 17:53:29 - Datos recibidos: {"input":"{\"email\":\"doctor@gmail.com\",\"password\":\"123456\",\"role\":\"doctor\"}"}
+2025-05-28 17:53:29 - Datos decodificados: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-28 17:53:29 - Procesando acción: {"action":"login"}
+2025-05-28 17:53:29 - Procesando login de médico
+2025-05-28 17:53:29 - Iniciando proceso de login de médico: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-28 17:53:29 - Médico encontrado: {"id":1,"name":"Dr. Juan Pérez"}
+2025-05-28 17:53:29 - Login exitoso: {"doctor_id":1}
+2025-05-28 17:53:29 - Respuesta enviada: {"success":true,"message":"Inicio de sesión exitoso","user":{"id":1,"email":"doctor@gmail.com","name":"Dr. Juan Pérez","role":"doctor","specialty":"Cardiología"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImRvY3RvckBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiZXhwIjoxNzQ4NTQxMjA5fQ==.SiZ9PhXOePJMc+jR7wCS2vDWvHl9rcquC\/AGBaJIluA="}
+2025-05-28 17:54:29 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 17:54:29 - Especialidad solicitada: Cardiología
+2025-05-28 17:54:29 - Conexión a la base de datos establecida
+2025-05-28 17:54:29 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.sqlite_master' doesn't exist
+2025-05-28 17:54:29 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 17:54:29 - Especialidad solicitada: Cardiología
+2025-05-28 17:54:29 - Conexión a la base de datos establecida
+2025-05-28 17:54:29 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.sqlite_master' doesn't exist
+2025-05-28 17:54:31 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 17:54:31 - Especialidad solicitada: Cardiología
+2025-05-28 17:54:31 - Conexión a la base de datos establecida
+2025-05-28 17:54:31 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.sqlite_master' doesn't exist
+2025-05-28 17:55:14 - Inicio de solicitud doctor_auth.php: {"method":"POST","action":"login"}
+2025-05-28 17:55:14 - Datos recibidos: {"input":"{\"email\":\"doctor@gmail.com\",\"password\":\"123456\",\"role\":\"doctor\"}"}
+2025-05-28 17:55:14 - Datos decodificados: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-28 17:55:15 - Procesando acción: {"action":"login"}
+2025-05-28 17:55:15 - Procesando login de médico
+2025-05-28 17:55:15 - Iniciando proceso de login de médico: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-28 17:55:15 - Médico encontrado: {"id":1,"name":"Dr. Juan Pérez"}
+2025-05-28 17:55:15 - Login exitoso: {"doctor_id":1}
+2025-05-28 17:55:15 - Respuesta enviada: {"success":true,"message":"Inicio de sesión exitoso","user":{"id":1,"email":"doctor@gmail.com","name":"Dr. Juan Pérez","role":"doctor","specialty":"Cardiología"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImRvY3RvckBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiZXhwIjoxNzQ4NTQxMzE1fQ==.c19zLeaX+2wN5tW+hdEa5euOwP+Kx8GDmU3CsR4heAc="}
+2025-05-28 18:34:18 - Inicio de solicitud doctor_auth.php: {"method":"POST","action":"login"}
+2025-05-28 18:34:18 - Datos recibidos: {"input":"{\"email\":\"doctor@gmail.com\",\"password\":\"123456\",\"role\":\"doctor\"}"}
+2025-05-28 18:34:18 - Datos decodificados: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-28 18:34:18 - Procesando acción: {"action":"login"}
+2025-05-28 18:34:18 - Procesando login de médico
+2025-05-28 18:34:18 - Iniciando proceso de login de médico: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-28 18:34:18 - Médico encontrado: {"id":1,"name":"Dr. Juan Pérez"}
+2025-05-28 18:34:18 - Login exitoso: {"doctor_id":1}
+2025-05-28 18:34:18 - Respuesta enviada: {"success":true,"message":"Inicio de sesión exitoso","user":{"id":1,"email":"doctor@gmail.com","name":"Dr. Juan Pérez","role":"doctor","specialty":"Cardiología"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImRvY3RvckBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiZXhwIjoxNzQ4NTQzNjU4fQ==.wCjBYqAS0gX3HZOjU3JiV21GdUXyXopY0pmKdpen6Y8="}
+2025-05-28 19:06:36 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 19:06:36 - Especialidad solicitada: Cardiología
+2025-05-28 19:06:36 - Conexión a la base de datos establecida
+2025-05-28 19:06:36 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 19:06:36 - Médicos encontrados: 2
+2025-05-28 19:06:36 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 19:06:36 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 19:06:36 - Especialidad solicitada: Cardiología
+2025-05-28 19:06:36 - Conexión a la base de datos establecida
+2025-05-28 19:06:36 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 19:06:36 - Médicos encontrados: 2
+2025-05-28 19:06:36 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 19:06:36 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 19:06:36 - Especialidad solicitada: Cardiología
+2025-05-28 19:06:36 - Conexión a la base de datos establecida
+2025-05-28 19:06:36 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 19:06:36 - Médicos encontrados: 2
+2025-05-28 19:06:36 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 20:13:48 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 20:13:48 - Especialidad solicitada: Cardiología
+2025-05-28 20:13:48 - Conexión a la base de datos establecida
+2025-05-28 20:13:48 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 20:13:48 - Médicos encontrados: 2
+2025-05-28 20:13:48 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 20:13:48 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 20:13:48 - Especialidad solicitada: Cardiología
+2025-05-28 20:13:48 - Conexión a la base de datos establecida
+2025-05-28 20:13:48 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 20:13:48 - Médicos encontrados: 2
+2025-05-28 20:13:48 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 20:13:48 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 20:13:48 - Especialidad solicitada: Cardiología
+2025-05-28 20:13:48 - Conexión a la base de datos establecida
+2025-05-28 20:13:48 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 20:13:48 - Médicos encontrados: 2
+2025-05-28 20:13:48 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 20:48:46 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 20:48:46 - Especialidad solicitada: Cardiología
+2025-05-28 20:48:46 - Conexión a la base de datos establecida
+2025-05-28 20:48:46 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 20:48:46 - Médicos encontrados: 2
+2025-05-28 20:48:46 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 20:48:46 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 20:48:46 - Especialidad solicitada: Cardiología
+2025-05-28 20:48:46 - Conexión a la base de datos establecida
+2025-05-28 20:48:46 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 20:48:46 - Médicos encontrados: 2
+2025-05-28 20:48:46 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 20:48:46 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 20:48:46 - Especialidad solicitada: Cardiología
+2025-05-28 20:48:46 - Conexión a la base de datos establecida
+2025-05-28 20:48:46 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 20:48:46 - Médicos encontrados: 2
+2025-05-28 20:48:46 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 20:49:36 - Inicio de solicitud doctor_auth.php: {"method":"POST","action":"login"}
+2025-05-28 20:49:36 - Datos recibidos: {"input":"{\"email\":\"doctor@gmail.com\",\"password\":\"123456\",\"role\":\"doctor\"}"}
+2025-05-28 20:49:36 - Datos decodificados: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-28 20:49:36 - Procesando acción: {"action":"login"}
+2025-05-28 20:49:36 - Procesando login de médico
+2025-05-28 20:49:36 - Iniciando proceso de login de médico: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-28 20:49:36 - Médico encontrado: {"id":1,"name":"Dr. Juan Pérez"}
+2025-05-28 20:49:36 - Login exitoso: {"doctor_id":1}
+2025-05-28 20:49:36 - Respuesta enviada: {"success":true,"message":"Inicio de sesión exitoso","user":{"id":1,"email":"doctor@gmail.com","name":"Dr. Juan Pérez","role":"doctor","specialty":"Cardiología"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImRvY3RvckBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiZXhwIjoxNzQ4NTUxNzc2fQ==.EgehmQbp5biWdBFCwX6GN9P4dyUs9X9falasauTcIeA="}
+2025-05-28 21:05:35 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-28 21:05:35 - Verificando si existe la tabla appointments: {"exists":false}
+2025-05-28 21:05:35 - La tabla appointments no existe
+2025-05-28 21:06:39 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 21:06:39 - Especialidad solicitada: Cardiología
+2025-05-28 21:06:39 - Conexión a la base de datos establecida
+2025-05-28 21:06:39 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 21:06:39 - Médicos encontrados: 2
+2025-05-28 21:06:39 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 21:06:39 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 21:06:39 - Especialidad solicitada: Cardiología
+2025-05-28 21:06:39 - Conexión a la base de datos establecida
+2025-05-28 21:06:39 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 21:06:39 - Médicos encontrados: 2
+2025-05-28 21:06:39 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 21:06:39 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 21:06:39 - Especialidad solicitada: Cardiología
+2025-05-28 21:06:39 - Conexión a la base de datos establecida
+2025-05-28 21:06:39 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 21:06:39 - Médicos encontrados: 2
+2025-05-28 21:06:39 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 21:06:57 - Datos recibidos en create_appointment_request.php: {"input":"{\"patient_id\":18,\"patient_name\":\"pol garcia\",\"patient_email\":\"pol@gmail.com\",\"doctor_id\":1,\"doctor_name\":\"Dr. Juan Pérez (Datos de emergencia)\",\"reason\":\"Consulta por dolor\",\"requested_date\":\"2025-06-04\",\"requested_time\":\"10:00\",\"details\":\"Me duele la barriga\"}"}
+2025-05-28 21:08:14 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 21:08:14 - Especialidad solicitada: Cardiología
+2025-05-28 21:08:14 - Conexión a la base de datos establecida
+2025-05-28 21:08:14 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 21:08:14 - Médicos encontrados: 2
+2025-05-28 21:08:14 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 21:08:14 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 21:08:14 - Especialidad solicitada: Cardiología
+2025-05-28 21:08:14 - Conexión a la base de datos establecida
+2025-05-28 21:08:14 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 21:08:14 - Médicos encontrados: 2
+2025-05-28 21:08:14 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 21:08:14 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 21:08:14 - Especialidad solicitada: Cardiología
+2025-05-28 21:08:14 - Conexión a la base de datos establecida
+2025-05-28 21:08:14 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 21:08:14 - Médicos encontrados: 2
+2025-05-28 21:08:14 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 21:08:29 - Datos recibidos en create_appointment_request.php: {"input":"{\"patient_id\":18,\"patient_name\":\"pol garcia\",\"patient_email\":\"pol@gmail.com\",\"doctor_id\":1,\"doctor_name\":\"Dr. Juan Pérez (Datos de emergencia)\",\"reason\":\"Consulta por dolor\",\"requested_date\":\"2025-06-04\",\"requested_time\":\"10:00\",\"details\":\"Me duele la barriga\"}"}
+2025-05-28 21:08:29 - Conexión a la base de datos establecida
+2025-05-28 21:08:29 - Error al crear la solicitud de cita: {"error":"SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'appointments' already exists"}
+2025-05-28 21:13:41 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 21:13:41 - Especialidad solicitada: Cardiología
+2025-05-28 21:13:41 - Conexión a la base de datos establecida
+2025-05-28 21:13:41 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 21:13:41 - Médicos encontrados: 2
+2025-05-28 21:13:41 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 21:13:41 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 21:13:41 - Especialidad solicitada: Cardiología
+2025-05-28 21:13:41 - Conexión a la base de datos establecida
+2025-05-28 21:13:41 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 21:13:41 - Médicos encontrados: 2
+2025-05-28 21:13:41 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 21:13:41 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 21:13:41 - Especialidad solicitada: Cardiología
+2025-05-28 21:13:41 - Conexión a la base de datos establecida
+2025-05-28 21:13:41 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 21:13:41 - Médicos encontrados: 2
+2025-05-28 21:13:41 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 21:13:58 - Datos recibidos en create_appointment_request.php: {"input":"{\"patient_id\":18,\"patient_name\":\"pol garcia\",\"patient_email\":\"pol@gmail.com\",\"doctor_id\":1,\"doctor_name\":\"Dr. Juan Pérez (Datos de emergencia)\",\"reason\":\"Consulta por dolor\",\"requested_date\":\"2025-06-04\",\"requested_time\":\"10:00\",\"details\":\"Dolor de barriga\"}"}
+2025-05-28 21:13:58 - Conexión a la base de datos establecida
+2025-05-28 21:13:58 - Error al crear la solicitud de cita: {"error":"SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'appointments' already exists"}
+2025-05-28 21:17:03 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 21:17:03 - Especialidad solicitada: Cardiología
+2025-05-28 21:17:03 - Conexión a la base de datos establecida
+2025-05-28 21:17:03 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 21:17:03 - Médicos encontrados: 2
+2025-05-28 21:17:03 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 21:17:03 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 21:17:03 - Especialidad solicitada: Cardiología
+2025-05-28 21:17:03 - Conexión a la base de datos establecida
+2025-05-28 21:17:03 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 21:17:03 - Médicos encontrados: 2
+2025-05-28 21:17:03 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 21:17:03 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 21:17:03 - Especialidad solicitada: Cardiología
+2025-05-28 21:17:03 - Conexión a la base de datos establecida
+2025-05-28 21:17:03 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 21:17:03 - Médicos encontrados: 2
+2025-05-28 21:17:03 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 21:17:26 - Datos recibidos en create_appointment_request.php: {"input":"{\"patient_id\":18,\"patient_name\":\"pol garcia\",\"patient_email\":\"pol@gmail.com\",\"doctor_id\":1,\"doctor_name\":\"Dr. Juan Pérez (Datos de emergencia)\",\"reason\":\"Consulta por dolor\",\"requested_date\":\"2025-06-04\",\"requested_time\":\"09:00\",\"details\":\"Dolor de barriga\"}"}
+2025-05-28 21:17:26 - Conexión a la base de datos establecida
+2025-05-28 21:17:26 - Error al crear la solicitud de cita: {"error":"SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'appointments' already exists"}
+2025-05-28 21:19:57 - Solicitud recibida: {"specialty":"Dermatolog\u00eda"}
+2025-05-28 21:19:57 - Especialidad solicitada: Dermatología
+2025-05-28 21:19:57 - Conexión a la base de datos establecida
+2025-05-28 21:19:57 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 21:19:57 - Médicos encontrados: 2
+2025-05-28 21:19:57 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 21:19:57 - Solicitud recibida: {"specialty":"Dermatolog\u00eda"}
+2025-05-28 21:19:57 - Especialidad solicitada: Dermatología
+2025-05-28 21:19:57 - Conexión a la base de datos establecida
+2025-05-28 21:19:57 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 21:19:57 - Médicos encontrados: 2
+2025-05-28 21:19:57 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 21:19:57 - Solicitud recibida: {"specialty":"Dermatolog\u00eda"}
+2025-05-28 21:19:57 - Especialidad solicitada: Dermatología
+2025-05-28 21:19:57 - Conexión a la base de datos establecida
+2025-05-28 21:19:57 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 21:19:57 - Médicos encontrados: 2
+2025-05-28 21:19:57 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 21:19:59 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 21:19:59 - Especialidad solicitada: Cardiología
+2025-05-28 21:19:59 - Conexión a la base de datos establecida
+2025-05-28 21:19:59 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 21:19:59 - Médicos encontrados: 2
+2025-05-28 21:19:59 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 21:19:59 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 21:19:59 - Especialidad solicitada: Cardiología
+2025-05-28 21:19:59 - Conexión a la base de datos establecida
+2025-05-28 21:19:59 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 21:19:59 - Médicos encontrados: 2
+2025-05-28 21:19:59 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 21:19:59 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 21:19:59 - Especialidad solicitada: Cardiología
+2025-05-28 21:19:59 - Conexión a la base de datos establecida
+2025-05-28 21:19:59 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 21:19:59 - Médicos encontrados: 2
+2025-05-28 21:19:59 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 21:20:21 - Datos recibidos en create_appointment_request.php: {"input":"{\"patient_id\":18,\"patient_name\":\"pol garcia\",\"patient_email\":\"pol@gmail.com\",\"doctor_id\":1,\"doctor_name\":\"Dr. Juan Pérez (Datos de emergencia)\",\"reason\":\"Consulta por dolor\",\"requested_date\":\"2025-06-04\",\"requested_time\":\"09:00\",\"details\":\"Dolor de barriga\"}"}
+2025-05-28 21:20:21 - Conexión a la base de datos establecida
+2025-05-28 21:20:21 - Verificando si existe la tabla appointments: {"exists":false}
+2025-05-28 21:20:21 - Intentando crear la tabla appointments
+2025-05-28 21:20:21 - Tabla appointments creada correctamente
+2025-05-28 21:20:21 - Preparando consulta para insertar cita
+2025-05-28 21:20:21 - Verificando columnas de fecha/hora: {"appointment_date_exists":false,"appointment_time_exists":false}
+2025-05-28 21:20:21 - Query SQL: {"query":"INSERT INTO appointments \n                      (patient_id, patient_name, patient_email, doctor_id, doctor_name, reason, date, time, status) \n                      VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'pending')"}
+2025-05-28 21:20:21 - Error en la inserción de la cita: {"error":"SQLSTATE[42S22]: Column not found: 1054 Unknown column 'patient_name' in 'field list'"}
+2025-05-28 21:20:21 - Error al crear la solicitud de cita: {"error":"SQLSTATE[42S22]: Column not found: 1054 Unknown column 'patient_name' in 'field list'"}
+2025-05-28 21:23:59 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 21:23:59 - Especialidad solicitada: Cardiología
+2025-05-28 21:23:59 - Conexión a la base de datos establecida
+2025-05-28 21:23:59 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 21:23:59 - Médicos encontrados: 2
+2025-05-28 21:23:59 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 21:23:59 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 21:23:59 - Especialidad solicitada: Cardiología
+2025-05-28 21:23:59 - Conexión a la base de datos establecida
+2025-05-28 21:23:59 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 21:23:59 - Médicos encontrados: 2
+2025-05-28 21:23:59 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 21:23:59 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 21:23:59 - Especialidad solicitada: Cardiología
+2025-05-28 21:23:59 - Conexión a la base de datos establecida
+2025-05-28 21:23:59 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 21:23:59 - Médicos encontrados: 2
+2025-05-28 21:23:59 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 21:24:18 - Datos recibidos en create_appointment_request.php: {"input":"{\"patient_id\":18,\"patient_name\":\"pol garcia\",\"patient_email\":\"pol@gmail.com\",\"doctor_id\":1,\"doctor_name\":\"Dr. Juan Pérez (Datos de emergencia)\",\"reason\":\"Consulta por dolor\",\"requested_date\":\"2025-06-04\",\"requested_time\":\"09:00\",\"details\":\"Dolor de barriga\"}"}
+2025-05-28 21:24:18 - Conexión a la base de datos establecida
+2025-05-28 21:24:18 - Ejecutando consulta SQL: {"query":"INSERT INTO appointments \n              (patient_id, patient_name, patient_email, doctor_id, doctor_name, reason, date, time, status) \n              VALUES ('18', 'pol garcia', 'pol@gmail.com', \n                     '1', 'Dr. Juan Pérez (Datos de emergencia)', 'Consulta por dolor', \n                     '2025-06-04', '09:00', 'pending')"}
+2025-05-28 21:24:18 - Error al crear la solicitud de cita: {"error":"SQLSTATE[42S22]: Column not found: 1054 Unknown column 'patient_name' in 'field list'"}
+2025-05-28 21:31:54 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 21:31:54 - Especialidad solicitada: Cardiología
+2025-05-28 21:31:54 - Conexión a la base de datos establecida
+2025-05-28 21:31:54 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 21:31:54 - Médicos encontrados: 2
+2025-05-28 21:31:54 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 21:31:54 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 21:31:54 - Especialidad solicitada: Cardiología
+2025-05-28 21:31:54 - Conexión a la base de datos establecida
+2025-05-28 21:31:54 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 21:31:54 - Médicos encontrados: 2
+2025-05-28 21:31:54 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 21:31:54 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-28 21:31:54 - Especialidad solicitada: Cardiología
+2025-05-28 21:31:54 - Conexión a la base de datos establecida
+2025-05-28 21:31:54 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-28 21:31:54 - Médicos encontrados: 2
+2025-05-28 21:31:54 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-28 21:32:08 - Datos recibidos en create_appointment_request.php: {"input":"{\"patient_id\":18,\"patient_name\":\"pol garcia\",\"patient_email\":\"pol@gmail.com\",\"doctor_id\":1,\"doctor_name\":\"Dr. Juan Pérez (Datos de emergencia)\",\"reason\":\"Consulta por dolor\",\"requested_date\":\"2025-06-04\",\"requested_time\":\"09:00\",\"details\":\"Dolor de barriga\"}"}
+2025-05-28 21:32:08 - Conexión a la base de datos establecida
+2025-05-29 11:09:49 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:09:49 - Especialidad solicitada: Cardiología
+2025-05-29 11:09:49 - Conexión a la base de datos establecida
+2025-05-29 11:09:49 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:09:49 - Médicos encontrados: 2
+2025-05-29 11:09:49 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:09:49 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:09:49 - Especialidad solicitada: Cardiología
+2025-05-29 11:09:49 - Conexión a la base de datos establecida
+2025-05-29 11:09:49 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:09:49 - Médicos encontrados: 2
+2025-05-29 11:09:49 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:09:49 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:09:49 - Especialidad solicitada: Cardiología
+2025-05-29 11:09:49 - Conexión a la base de datos establecida
+2025-05-29 11:09:49 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:09:49 - Médicos encontrados: 2
+2025-05-29 11:09:49 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:10:09 - Datos recibidos en create_appointment_request.php: {"input":"{\"patient_id\":18,\"patient_name\":\"pol garcia\",\"patient_email\":\"pol@gmail.com\",\"doctor_id\":1,\"doctor_name\":\"Dr. Juan Pérez (Datos de emergencia)\",\"reason\":\"Consulta por dolor\",\"requested_date\":\"2025-06-04\",\"requested_time\":\"09:00\",\"details\":\"Dolor de barriga\"}"}
+2025-05-29 11:10:09 - Conexión a la base de datos establecida
+2025-05-29 11:15:10 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:15:10 - Especialidad solicitada: Cardiología
+2025-05-29 11:15:10 - Conexión a la base de datos establecida
+2025-05-29 11:15:10 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:15:10 - Médicos encontrados: 2
+2025-05-29 11:15:10 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:15:10 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:15:10 - Especialidad solicitada: Cardiología
+2025-05-29 11:15:10 - Conexión a la base de datos establecida
+2025-05-29 11:15:10 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:15:10 - Médicos encontrados: 2
+2025-05-29 11:15:10 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:15:10 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:15:10 - Especialidad solicitada: Cardiología
+2025-05-29 11:15:10 - Conexión a la base de datos establecida
+2025-05-29 11:15:10 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:15:10 - Médicos encontrados: 2
+2025-05-29 11:15:10 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:15:23 - Datos recibidos en create_appointment_request.php: {"input":"{\"patient_id\":18,\"patient_name\":\"pol garcia\",\"patient_email\":\"pol@gmail.com\",\"doctor_id\":1,\"doctor_name\":\"Dr. Juan Pérez (Datos de emergencia)\",\"reason\":\"Consulta por dolor\",\"requested_date\":\"2025-06-04\",\"requested_time\":\"09:00\",\"details\":\"Dolor de barriga\"}"}
+2025-05-29 11:15:23 - Conexión a la base de datos establecida
+2025-05-29 11:18:54 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:18:54 - Especialidad solicitada: Cardiología
+2025-05-29 11:18:54 - Conexión a la base de datos establecida
+2025-05-29 11:18:54 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:18:54 - Médicos encontrados: 2
+2025-05-29 11:18:54 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:18:54 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:18:54 - Especialidad solicitada: Cardiología
+2025-05-29 11:18:54 - Conexión a la base de datos establecida
+2025-05-29 11:18:54 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:18:54 - Médicos encontrados: 2
+2025-05-29 11:18:54 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:18:54 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:18:54 - Especialidad solicitada: Cardiología
+2025-05-29 11:18:54 - Conexión a la base de datos establecida
+2025-05-29 11:18:54 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:18:54 - Médicos encontrados: 2
+2025-05-29 11:18:54 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:19:06 - Datos recibidos en create_appointment_request.php: {"input":"{\"patient_id\":18,\"patient_name\":\"pol garcia\",\"patient_email\":\"pol@gmail.com\",\"doctor_id\":1,\"doctor_name\":\"Dr. Juan Pérez (Datos de emergencia)\",\"reason\":\"Consulta por dolor\",\"requested_date\":\"2025-06-04\",\"requested_time\":\"09:00\",\"details\":\"Dolor de barriga\"}"}
+2025-05-29 11:19:06 - Conexión a la base de datos establecida
+2025-05-29 11:19:06 - Datos preparados para inserción: {"patient_id":18,"patient_name":"pol garcia","patient_email":"pol@gmail.com","doctor_id":1,"doctor_name":"Dr. Juan Pérez (Datos de emergencia)","reason":"Consulta por dolor","date":"2025-06-04","time":"09:00"}
+2025-05-29 11:19:06 - Preparando consulta SQL con PDO
+2025-05-29 11:19:06 - Ejecutando consulta SQL preparada con PDO
+2025-05-29 11:19:06 - Error PDO al ejecutar la primera consulta: {"error":"SQLSTATE[HY000]: General error: 1364 Field 'appointment_date' doesn't have a default value"}
+2025-05-29 11:19:06 - Preparando consulta SQL alternativa con PDO
+2025-05-29 11:19:06 - Ejecutando consulta SQL alternativa con PDO
+2025-05-29 11:19:06 - Error PDO al ejecutar la segunda consulta: {"error":"SQLSTATE[HY000]: General error: 1364 Field 'start_time' doesn't have a default value"}
+2025-05-29 11:19:06 - Error al crear la solicitud de cita: {"error":"Error al insertar la cita: SQLSTATE[HY000]: General error: 1364 Field 'start_time' doesn't have a default value"}
+2025-05-29 11:23:57 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:23:57 - Especialidad solicitada: Cardiología
+2025-05-29 11:23:57 - Conexión a la base de datos establecida
+2025-05-29 11:23:57 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:23:57 - Médicos encontrados: 2
+2025-05-29 11:23:57 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:23:57 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:23:57 - Especialidad solicitada: Cardiología
+2025-05-29 11:23:57 - Conexión a la base de datos establecida
+2025-05-29 11:23:57 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:23:57 - Médicos encontrados: 2
+2025-05-29 11:23:57 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:23:57 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:23:57 - Especialidad solicitada: Cardiología
+2025-05-29 11:23:57 - Conexión a la base de datos establecida
+2025-05-29 11:23:57 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:23:57 - Médicos encontrados: 2
+2025-05-29 11:23:57 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:24:14 - Datos recibidos en create_appointment_request.php: {"input":"{\"patient_id\":18,\"patient_name\":\"pol garcia\",\"patient_email\":\"pol@gmail.com\",\"doctor_id\":1,\"doctor_name\":\"Dr. Juan Pérez (Datos de emergencia)\",\"reason\":\"Consulta por dolor\",\"requested_date\":\"2025-06-04\",\"requested_time\":\"09:00\",\"details\":\"Dolor de barriga\"}"}
+2025-05-29 11:24:14 - Conexión a la base de datos establecida
+2025-05-29 11:24:14 - Datos preparados para inserción: {"patient_id":18,"patient_name":"pol garcia","patient_email":"pol@gmail.com","doctor_id":1,"doctor_name":"Dr. Juan Pérez (Datos de emergencia)","reason":"Consulta por dolor","date":"2025-06-04","time":"09:00"}
+2025-05-29 11:24:14 - Horarios calculados: {"start_time":"09:00:00","end_time":"10:00:00"}
+2025-05-29 11:24:14 - Fecha formateada: {"appointment_date":"2025-06-04"}
+2025-05-29 11:24:14 - Preparando consulta SQL con PDO
+2025-05-29 11:24:14 - Parámetros vinculados: {"patient_id":18,"doctor_id":1,"appointment_date":"2025-06-04","start_time":"09:00:00","end_time":"10:00:00"}
+2025-05-29 11:24:14 - Error PDO al ejecutar la consulta: {"error":"SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`salutia`.`appointments`, CONSTRAINT `appointments_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `patients` (`id`) ON DELETE CASCADE)"}
+2025-05-29 11:24:14 - Preparando consulta SQL mínima con PDO
+2025-05-29 11:24:14 - Ejecutando consulta SQL mínima
+2025-05-29 11:24:14 - Error PDO al ejecutar la consulta mínima: {"error":"SQLSTATE[HY000]: General error: 1364 Field 'patient_name' doesn't have a default value"}
+2025-05-29 11:24:14 - Error al crear la solicitud de cita: {"error":"Error al insertar la cita: SQLSTATE[HY000]: General error: 1364 Field 'patient_name' doesn't have a default value"}
+2025-05-29 11:32:18 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:32:18 - Especialidad solicitada: Cardiología
+2025-05-29 11:32:18 - Conexión a la base de datos establecida
+2025-05-29 11:32:18 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:32:18 - Médicos encontrados: 2
+2025-05-29 11:32:18 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:32:18 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:32:18 - Especialidad solicitada: Cardiología
+2025-05-29 11:32:18 - Conexión a la base de datos establecida
+2025-05-29 11:32:18 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:32:18 - Médicos encontrados: 2
+2025-05-29 11:32:18 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:32:18 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:32:18 - Especialidad solicitada: Cardiología
+2025-05-29 11:32:18 - Conexión a la base de datos establecida
+2025-05-29 11:32:18 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:32:18 - Médicos encontrados: 2
+2025-05-29 11:32:18 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:32:28 - Datos recibidos en create_appointment_request.php: {"input":"{\"patient_id\":18,\"patient_name\":\"pol garcia\",\"patient_email\":\"pol@gmail.com\",\"doctor_id\":1,\"doctor_name\":\"Dr. Juan Pérez (Datos de emergencia)\",\"reason\":\"Consulta por dolor\",\"requested_date\":\"2025-06-04\",\"requested_time\":\"09:00\",\"details\":\"Dolor de barriga\"}"}
+2025-05-29 11:32:28 - Conexión a la base de datos establecida
+2025-05-29 11:32:28 - Datos preparados para inserción: {"patient_id":18,"patient_name":"pol garcia","patient_email":"pol@gmail.com","doctor_id":1,"doctor_name":"Dr. Juan Pérez (Datos de emergencia)","reason":"Consulta por dolor","date":"2025-06-04","time":"09:00"}
+2025-05-29 11:32:28 - Horarios calculados: {"start_time":"09:00:00","end_time":"10:00:00"}
+2025-05-29 11:32:28 - Fecha formateada: {"appointment_date":"2025-06-04"}
+2025-05-29 11:32:28 - Preparando consulta SQL con PDO
+2025-05-29 11:32:28 - Parámetros vinculados: {"patient_id":18,"doctor_id":1,"appointment_date":"2025-06-04","start_time":"09:00:00","end_time":"10:00:00"}
+2025-05-29 11:32:28 - Error PDO al ejecutar la consulta: {"error":"SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`salutia`.`appointments`, CONSTRAINT `appointments_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `patients` (`id`) ON DELETE CASCADE)"}
+2025-05-29 11:32:28 - Preparando consulta SQL completa con PDO
+2025-05-29 11:32:28 - Ejecutando consulta SQL mínima
+2025-05-29 11:32:28 - Error PDO al ejecutar la consulta mínima: {"error":"SQLSTATE[HY000]: General error: 1364 Field 'date' doesn't have a default value"}
+2025-05-29 11:32:28 - Error al crear la solicitud de cita: {"error":"Error al insertar la cita: SQLSTATE[HY000]: General error: 1364 Field 'date' doesn't have a default value"}
+2025-05-29 11:37:38 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:37:38 - Especialidad solicitada: Cardiología
+2025-05-29 11:37:38 - Conexión a la base de datos establecida
+2025-05-29 11:37:38 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:37:38 - Médicos encontrados: 2
+2025-05-29 11:37:38 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:37:38 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:37:38 - Especialidad solicitada: Cardiología
+2025-05-29 11:37:38 - Conexión a la base de datos establecida
+2025-05-29 11:37:38 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:37:38 - Médicos encontrados: 2
+2025-05-29 11:37:38 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:37:38 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:37:38 - Especialidad solicitada: Cardiología
+2025-05-29 11:37:38 - Conexión a la base de datos establecida
+2025-05-29 11:37:38 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:37:38 - Médicos encontrados: 2
+2025-05-29 11:37:38 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:37:50 - Datos recibidos en create_appointment_request.php: {"input":"{\"patient_id\":18,\"patient_name\":\"pol garcia\",\"patient_email\":\"pol@gmail.com\",\"doctor_id\":1,\"doctor_name\":\"Dr. Juan Pérez (Datos de emergencia)\",\"reason\":\"Consulta por dolor\",\"requested_date\":\"2025-06-04\",\"requested_time\":\"09:00\",\"details\":\"Dolor de barriga\"}"}
+2025-05-29 11:37:50 - Datos procesados: {"patient_id":18,"patient_name":"pol garcia","doctor_id":1,"doctor_name":"Dr. Juan Pérez (Datos de emergencia)","date_str":"2025-06-04","time_str":"09:00","appointment_date":"2025-06-04","start_time":"09:00:00","end_time":"10:00:00"}
+2025-05-29 11:37:50 - Error al procesar la solicitud: {"error":"SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`salutia`.`appointments`, CONSTRAINT `appointments_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `patients` (`id`) ON DELETE CASCADE)"}
+2025-05-29 11:39:16 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:39:16 - Especialidad solicitada: Cardiología
+2025-05-29 11:39:16 - Conexión a la base de datos establecida
+2025-05-29 11:39:16 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:39:16 - Médicos encontrados: 2
+2025-05-29 11:39:16 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:39:16 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:39:16 - Especialidad solicitada: Cardiología
+2025-05-29 11:39:16 - Conexión a la base de datos establecida
+2025-05-29 11:39:16 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:39:16 - Médicos encontrados: 2
+2025-05-29 11:39:16 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:39:16 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:39:16 - Especialidad solicitada: Cardiología
+2025-05-29 11:39:16 - Conexión a la base de datos establecida
+2025-05-29 11:39:16 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:39:16 - Médicos encontrados: 2
+2025-05-29 11:39:16 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:39:29 - Datos recibidos en create_appointment_request.php: {"input":"{\"patient_id\":18,\"patient_name\":\"pol garcia\",\"patient_email\":\"pol@gmail.com\",\"doctor_id\":1,\"doctor_name\":\"Dr. Juan Pérez (Datos de emergencia)\",\"reason\":\"Consulta por dolor\",\"requested_date\":\"2025-06-04\",\"requested_time\":\"09:00\",\"details\":\"Dolor de barriga\"}"}
+2025-05-29 11:39:29 - Datos procesados: {"patient_id":18,"patient_name":"pol garcia","doctor_id":1,"doctor_name":"Dr. Juan Pérez (Datos de emergencia)","date_str":"2025-06-04","time_str":"09:00","appointment_date":"2025-06-04","start_time":"09:00:00","end_time":"10:00:00"}
+2025-05-29 11:39:29 - Eliminando restricciones de clave foránea temporalmente
+2025-05-29 11:39:29 - Restricción de clave foránea eliminada: appointments_ibfk_1
+2025-05-29 11:39:29 - Paciente no encontrado, usando paciente de prueba: {"original_id":18}
+2025-05-29 11:39:29 - Médico no encontrado, usando médico de prueba: {"original_id":1}
+2025-05-29 11:39:29 - IDs verificados: {"patient_id":1,"doctor_id":1}
+2025-05-29 11:39:29 - Error al procesar la solicitud: {"error":"SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`salutia`.`appointments`, CONSTRAINT `appointments_ibfk_2` FOREIGN KEY (`doctor_id`) REFERENCES `doctors` (`id`) ON DELETE CASCADE)"}
+2025-05-29 11:39:43 - Datos recibidos en create_appointment_request.php: {"input":"{\"patient_id\":18,\"patient_name\":\"pol garcia\",\"patient_email\":\"pol@gmail.com\",\"doctor_id\":1,\"doctor_name\":\"Dr. Juan Pérez (Datos de emergencia)\",\"reason\":\"Consulta por dolor\",\"requested_date\":\"2025-06-04\",\"requested_time\":\"09:00\",\"details\":\"Dolor de barriga\"}"}
+2025-05-29 11:39:43 - Datos procesados: {"patient_id":18,"patient_name":"pol garcia","doctor_id":1,"doctor_name":"Dr. Juan Pérez (Datos de emergencia)","date_str":"2025-06-04","time_str":"09:00","appointment_date":"2025-06-04","start_time":"09:00:00","end_time":"10:00:00"}
+2025-05-29 11:39:43 - Eliminando restricciones de clave foránea temporalmente
+2025-05-29 11:39:43 - Paciente no encontrado, usando paciente de prueba: {"original_id":18}
+2025-05-29 11:39:43 - Médico no encontrado, usando médico de prueba: {"original_id":1}
+2025-05-29 11:39:43 - IDs verificados: {"patient_id":1,"doctor_id":1}
+2025-05-29 11:39:43 - Error al procesar la solicitud: {"error":"SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`salutia`.`appointments`, CONSTRAINT `appointments_ibfk_2` FOREIGN KEY (`doctor_id`) REFERENCES `doctors` (`id`) ON DELETE CASCADE)"}
+2025-05-29 11:40:32 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:40:32 - Especialidad solicitada: Cardiología
+2025-05-29 11:40:32 - Conexión a la base de datos establecida
+2025-05-29 11:40:32 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:40:32 - Médicos encontrados: 2
+2025-05-29 11:40:32 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:40:32 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:40:32 - Especialidad solicitada: Cardiología
+2025-05-29 11:40:32 - Conexión a la base de datos establecida
+2025-05-29 11:40:32 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:40:32 - Médicos encontrados: 2
+2025-05-29 11:40:32 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:40:32 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:40:32 - Especialidad solicitada: Cardiología
+2025-05-29 11:40:32 - Conexión a la base de datos establecida
+2025-05-29 11:40:32 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:40:32 - Médicos encontrados: 2
+2025-05-29 11:40:32 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:40:46 - Datos recibidos en create_appointment_request.php: {"input":"{\"patient_id\":18,\"patient_name\":\"pol garcia\",\"patient_email\":\"pol@gmail.com\",\"doctor_id\":1,\"doctor_name\":\"Dr. Juan Pérez (Datos de emergencia)\",\"reason\":\"Consulta por dolor\",\"requested_date\":\"2025-06-04\",\"requested_time\":\"09:00\",\"details\":\"Dolor de barriga\"}"}
+2025-05-29 11:40:46 - Datos procesados: {"patient_id":18,"patient_name":"pol garcia","doctor_id":1,"doctor_name":"Dr. Juan Pérez (Datos de emergencia)","date_str":"2025-06-04","time_str":"09:00","appointment_date":"2025-06-04","start_time":"09:00:00","end_time":"10:00:00"}
+2025-05-29 11:40:46 - Eliminando restricciones de clave foránea temporalmente
+2025-05-29 11:40:46 - Paciente no encontrado, usando paciente de prueba: {"original_id":18}
+2025-05-29 11:40:46 - Médico no encontrado, usando médico de prueba: {"original_id":1}
+2025-05-29 11:40:46 - IDs verificados: {"patient_id":1,"doctor_id":1}
+2025-05-29 11:40:46 - Error al procesar la solicitud: {"error":"SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`salutia`.`appointments`, CONSTRAINT `appointments_ibfk_2` FOREIGN KEY (`doctor_id`) REFERENCES `doctors` (`id`) ON DELETE CASCADE)"}
+2025-05-29 11:41:49 - Solicitud recibida: {"specialty":"Dermatolog\u00eda"}
+2025-05-29 11:41:49 - Especialidad solicitada: Dermatología
+2025-05-29 11:41:50 - Conexión a la base de datos establecida
+2025-05-29 11:41:50 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:41:50 - Médicos encontrados: 2
+2025-05-29 11:41:50 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:41:50 - Solicitud recibida: {"specialty":"Dermatolog\u00eda"}
+2025-05-29 11:41:50 - Especialidad solicitada: Dermatología
+2025-05-29 11:41:50 - Conexión a la base de datos establecida
+2025-05-29 11:41:50 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:41:50 - Médicos encontrados: 2
+2025-05-29 11:41:50 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:41:50 - Solicitud recibida: {"specialty":"Dermatolog\u00eda"}
+2025-05-29 11:41:50 - Especialidad solicitada: Dermatología
+2025-05-29 11:41:50 - Conexión a la base de datos establecida
+2025-05-29 11:41:50 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:41:50 - Médicos encontrados: 2
+2025-05-29 11:41:50 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:41:51 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:41:51 - Especialidad solicitada: Cardiología
+2025-05-29 11:41:51 - Conexión a la base de datos establecida
+2025-05-29 11:41:51 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:41:51 - Médicos encontrados: 2
+2025-05-29 11:41:51 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:41:51 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:41:51 - Especialidad solicitada: Cardiología
+2025-05-29 11:41:51 - Conexión a la base de datos establecida
+2025-05-29 11:41:51 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:41:51 - Médicos encontrados: 2
+2025-05-29 11:41:51 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:41:51 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:41:51 - Especialidad solicitada: Cardiología
+2025-05-29 11:41:51 - Conexión a la base de datos establecida
+2025-05-29 11:41:51 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:41:51 - Médicos encontrados: 2
+2025-05-29 11:41:51 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:42:05 - Datos recibidos en create_appointment_request.php: {"input":"{\"patient_id\":18,\"patient_name\":\"pol garcia\",\"patient_email\":\"pol@gmail.com\",\"doctor_id\":1,\"doctor_name\":\"Dr. Juan Pérez (Datos de emergencia)\",\"reason\":\"Consulta por dolor\",\"requested_date\":\"2025-06-04\",\"requested_time\":\"09:00\",\"details\":\"Dolor de barriga\"}"}
+2025-05-29 11:42:05 - Datos procesados: {"patient_id":18,"patient_name":"pol garcia","doctor_id":1,"doctor_name":"Dr. Juan Pérez (Datos de emergencia)","date_str":"2025-06-04","time_str":"09:00","appointment_date":"2025-06-04","start_time":"09:00:00","end_time":"10:00:00"}
+2025-05-29 11:42:05 - Verificando restricciones de clave foránea
+2025-05-29 11:42:05 - Encontradas 1 restricciones de clave foránea
+2025-05-29 11:42:05 - Restricción de clave foránea eliminada: appointments_ibfk_2
+2025-05-29 11:42:05 - Paciente no encontrado, usando paciente de prueba: {"original_id":18}
+2025-05-29 11:42:05 - Médico no encontrado, usando médico de prueba: {"original_id":1}
+2025-05-29 11:42:05 - IDs verificados: {"patient_id":1,"doctor_id":1}
+2025-05-29 11:42:05 - Cita insertada correctamente: {"id":"21"}
+[2025-05-29 11:54:04] Conectando a la base de datos
+[2025-05-29 11:54:04] Conexión establecida correctamente
+[2025-05-29 11:54:04] Datos recibidos: {"patient_id":"1","patient_name":"Paciente de Prueba","doctor_id":"1","doctor_name":"Dr. Juan Pérez","date":"2025-05-29","time":"09:00"}
+[2025-05-29 11:54:04] Cita creada correctamente: {"id":"22"}
+2025-05-29 11:58:49 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:58:49 - Especialidad solicitada: Cardiología
+2025-05-29 11:58:49 - Conexión a la base de datos establecida
+2025-05-29 11:58:49 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:58:49 - Médicos encontrados: 2
+2025-05-29 11:58:49 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:58:49 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:58:49 - Especialidad solicitada: Cardiología
+2025-05-29 11:58:49 - Conexión a la base de datos establecida
+2025-05-29 11:58:49 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:58:49 - Médicos encontrados: 2
+2025-05-29 11:58:49 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:58:49 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 11:58:49 - Especialidad solicitada: Cardiología
+2025-05-29 11:58:49 - Conexión a la base de datos establecida
+2025-05-29 11:58:49 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 11:58:49 - Médicos encontrados: 2
+2025-05-29 11:58:49 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 11:59:00 - Datos recibidos en create_appointment_request.php: {"input":"{\"patient_id\":18,\"patient_name\":\"pol garcia\",\"patient_email\":\"pol@gmail.com\",\"doctor_id\":1,\"doctor_name\":\"Dr. Juan Pérez (Datos de emergencia)\",\"reason\":\"Consulta por dolor\",\"requested_date\":\"2025-06-04\",\"requested_time\":\"09:00\",\"details\":\"Dolor de barriga\"}"}
+2025-05-29 11:59:00 - Datos procesados: {"patient_id":18,"patient_name":"pol garcia","doctor_id":1,"doctor_name":"Dr. Juan Pérez (Datos de emergencia)","date_str":"2025-06-04","time_str":"09:00","appointment_date":"2025-06-04","start_time":"09:00:00","end_time":"10:00:00"}
+2025-05-29 11:59:01 - Verificando restricciones de clave foránea
+2025-05-29 11:59:01 - No se encontraron restricciones de clave foránea en el formato esperado
+2025-05-29 11:59:01 - Tabla appointments recreada sin restricciones de clave foránea
+2025-05-29 11:59:01 - Paciente no encontrado, usando paciente de prueba: {"original_id":18}
+2025-05-29 11:59:01 - Médico no encontrado, usando médico de prueba: {"original_id":1}
+2025-05-29 11:59:01 - IDs verificados: {"patient_id":1,"doctor_id":1}
+2025-05-29 11:59:01 - Cita insertada correctamente: {"id":"23"}
+2025-05-29 12:01:14 - Solicitud recibida: {"specialty":"Dermatolog\u00eda"}
+2025-05-29 12:01:14 - Especialidad solicitada: Dermatología
+2025-05-29 12:01:14 - Conexión a la base de datos establecida
+2025-05-29 12:01:14 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 12:01:14 - Médicos encontrados: 2
+2025-05-29 12:01:14 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 12:01:14 - Solicitud recibida: {"specialty":"Dermatolog\u00eda"}
+2025-05-29 12:01:14 - Especialidad solicitada: Dermatología
+2025-05-29 12:01:14 - Conexión a la base de datos establecida
+2025-05-29 12:01:14 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 12:01:14 - Médicos encontrados: 2
+2025-05-29 12:01:14 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 12:01:14 - Solicitud recibida: {"specialty":"Dermatolog\u00eda"}
+2025-05-29 12:01:14 - Especialidad solicitada: Dermatología
+2025-05-29 12:01:14 - Conexión a la base de datos establecida
+2025-05-29 12:01:14 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 12:01:14 - Médicos encontrados: 2
+2025-05-29 12:01:14 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 12:01:15 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 12:01:15 - Especialidad solicitada: Cardiología
+2025-05-29 12:01:15 - Conexión a la base de datos establecida
+2025-05-29 12:01:15 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 12:01:15 - Médicos encontrados: 2
+2025-05-29 12:01:15 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 12:01:15 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 12:01:15 - Especialidad solicitada: Cardiología
+2025-05-29 12:01:15 - Conexión a la base de datos establecida
+2025-05-29 12:01:15 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 12:01:15 - Médicos encontrados: 2
+2025-05-29 12:01:15 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 12:01:15 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 12:01:15 - Especialidad solicitada: Cardiología
+2025-05-29 12:01:15 - Conexión a la base de datos establecida
+2025-05-29 12:01:15 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 12:01:15 - Médicos encontrados: 2
+2025-05-29 12:01:15 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 12:02:07 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 12:02:07 - Especialidad solicitada: Cardiología
+2025-05-29 12:02:07 - Conexión a la base de datos establecida
+2025-05-29 12:02:07 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 12:02:07 - Médicos encontrados: 2
+2025-05-29 12:02:07 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 12:02:07 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 12:02:07 - Especialidad solicitada: Cardiología
+2025-05-29 12:02:07 - Conexión a la base de datos establecida
+2025-05-29 12:02:07 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 12:02:07 - Médicos encontrados: 2
+2025-05-29 12:02:07 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 12:02:07 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 12:02:07 - Especialidad solicitada: Cardiología
+2025-05-29 12:02:07 - Conexión a la base de datos establecida
+2025-05-29 12:02:07 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 12:02:07 - Médicos encontrados: 2
+2025-05-29 12:02:07 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 12:02:35 - Inicio de solicitud doctor_auth.php: {"method":"POST","action":"login"}
+2025-05-29 12:02:35 - Datos recibidos: {"input":"{\"email\":\"doctor@gmail.com\",\"password\":\"123456\",\"role\":\"doctor\"}"}
+2025-05-29 12:02:35 - Datos decodificados: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 12:02:35 - Procesando acción: {"action":"login"}
+2025-05-29 12:02:35 - Procesando login de médico
+2025-05-29 12:02:35 - Iniciando proceso de login de médico: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 12:02:35 - Médico encontrado: {"id":1,"name":"Dr. Juan Pérez"}
+2025-05-29 12:02:35 - Login exitoso: {"doctor_id":1}
+2025-05-29 12:02:35 - Respuesta enviada: {"success":true,"message":"Inicio de sesión exitoso","user":{"id":1,"email":"doctor@gmail.com","name":"Dr. Juan Pérez","role":"doctor","specialty":"Cardiología"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImRvY3RvckBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiZXhwIjoxNzQ4NjA2NTU1fQ==.k16K+S3xy7ym\/yeOlDn\/VBM6WmUYdRCdAOTi5KxEUa8="}
+2025-05-29 12:02:37 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 12:02:37 - Verificando si existe la tabla appointments: {"exists":false}
+2025-05-29 12:02:37 - La tabla appointments no existe
+2025-05-29 12:08:30 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 12:08:30 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 12:08:30 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 12:08:30 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 12:08:30 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 12:08:30 - Usando columnas appointment_date y appointment_time
+2025-05-29 12:10:38 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 12:10:38 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 12:10:38 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 12:10:38 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 12:10:38 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 12:10:38 - Columna notes existe: {"exists":true}
+2025-05-29 12:10:38 - Usando columnas appointment_date y appointment_time
+2025-05-29 12:10:38 - Usando consulta con columna notes real
+2025-05-29 12:15:36 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 12:15:36 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 12:15:36 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 12:15:36 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 12:15:36 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 12:15:36 - Columna notes existe: {"exists":true}
+2025-05-29 12:15:36 - Usando columnas appointment_date y appointment_time
+2025-05-29 12:15:36 - Usando consulta con columna notes real
+2025-05-29 12:16:00 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 12:16:00 - Especialidad solicitada: Cardiología
+2025-05-29 12:16:00 - Conexión a la base de datos establecida
+2025-05-29 12:16:00 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 12:16:00 - Médicos encontrados: 2
+2025-05-29 12:16:00 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 12:16:00 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 12:16:00 - Especialidad solicitada: Cardiología
+2025-05-29 12:16:00 - Conexión a la base de datos establecida
+2025-05-29 12:16:00 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 12:16:00 - Médicos encontrados: 2
+2025-05-29 12:16:00 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 12:16:00 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 12:16:00 - Especialidad solicitada: Cardiología
+2025-05-29 12:16:00 - Conexión a la base de datos establecida
+2025-05-29 12:16:00 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 12:16:00 - Médicos encontrados: 2
+2025-05-29 12:16:00 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 12:16:13 - Datos recibidos como JSON: {"input":"{\"patient_id\":18,\"patient_name\":\"pol garcia\",\"patient_email\":\"pol@gmail.com\",\"doctor_id\":1,\"doctor_name\":\"Dr. Juan Pérez (Datos de emergencia)\",\"reason\":\"Consulta por dolor\",\"requested_date\":\"2025-06-04\",\"requested_time\":\"09:00\",\"details\":\"Dolor de barriga\"}"}
+2025-05-29 12:16:13 - Datos procesados: {"patient_id":18,"patient_name":"pol garcia","doctor_id":1,"doctor_name":"Dr. Juan Pérez (Datos de emergencia)","date_str":"2025-06-04","time_str":"09:00","appointment_date":"2025-06-04","start_time":"09:00:00","end_time":"10:00:00"}
+2025-05-29 12:16:13 - Verificando restricciones de clave foránea
+2025-05-29 12:16:13 - No se encontraron restricciones de clave foránea en el formato esperado
+2025-05-29 12:16:13 - Tabla appointments recreada sin restricciones de clave foránea
+2025-05-29 12:16:13 - Paciente no encontrado, usando paciente de prueba: {"original_id":18}
+2025-05-29 12:16:13 - Médico no encontrado, usando médico de prueba: {"original_id":1}
+2025-05-29 12:16:13 - IDs verificados: {"patient_id":1,"doctor_id":1}
+2025-05-29 12:16:13 - Cita insertada correctamente: {"id":"24"}
+2025-05-29 12:16:25 - Inicio de solicitud doctor_auth.php: {"method":"POST","action":"login"}
+2025-05-29 12:16:25 - Datos recibidos: {"input":"{\"email\":\"doctor@gmail.com\",\"password\":\"123456\",\"role\":\"doctor\"}"}
+2025-05-29 12:16:25 - Datos decodificados: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 12:16:25 - Procesando acción: {"action":"login"}
+2025-05-29 12:16:25 - Procesando login de médico
+2025-05-29 12:16:25 - Iniciando proceso de login de médico: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 12:16:25 - Médico encontrado: {"id":1,"name":"Dr. Juan Pérez"}
+2025-05-29 12:16:25 - Login exitoso: {"doctor_id":1}
+2025-05-29 12:16:25 - Respuesta enviada: {"success":true,"message":"Inicio de sesión exitoso","user":{"id":1,"email":"doctor@gmail.com","name":"Dr. Juan Pérez","role":"doctor","specialty":"Cardiología"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImRvY3RvckBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiZXhwIjoxNzQ4NjA3Mzg1fQ==.Gnd7ofPgLFOLXowjhTrSrjDTV+DX37+T11MfNHh1fF8="}
+2025-05-29 12:16:26 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 12:16:26 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 12:16:26 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 12:16:26 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 12:16:26 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 12:16:26 - Columna notes existe: {"exists":true}
+2025-05-29 12:16:26 - Usando columnas appointment_date y appointment_time
+2025-05-29 12:16:26 - Usando consulta con columna notes real
+2025-05-29 12:16:32 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 12:16:32 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 12:16:32 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 12:16:32 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 12:16:32 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 12:16:32 - Columna notes existe: {"exists":true}
+2025-05-29 12:16:32 - Usando columnas appointment_date y appointment_time
+2025-05-29 12:16:32 - Usando consulta con columna notes real
+2025-05-29 12:16:33 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 12:16:33 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 12:16:33 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 12:16:33 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 12:16:33 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 12:16:33 - Columna notes existe: {"exists":true}
+2025-05-29 12:16:33 - Usando columnas appointment_date y appointment_time
+2025-05-29 12:16:33 - Usando consulta con columna notes real
+2025-05-29 12:16:34 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 12:16:34 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 12:16:34 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 12:16:34 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 12:16:34 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 12:16:34 - Columna notes existe: {"exists":true}
+2025-05-29 12:16:34 - Usando columnas appointment_date y appointment_time
+2025-05-29 12:16:34 - Usando consulta con columna notes real
+2025-05-29 12:16:38 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 12:16:38 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 12:16:38 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 12:16:38 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 12:16:38 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 12:16:38 - Columna notes existe: {"exists":true}
+2025-05-29 12:16:38 - Usando columnas appointment_date y appointment_time
+2025-05-29 12:16:38 - Usando consulta con columna notes real
+2025-05-29 12:18:56 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 12:18:56 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 12:18:56 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 12:18:56 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 12:18:56 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 12:18:57 - Columna notes existe: {"exists":true}
+2025-05-29 12:18:57 - Usando columnas appointment_date y appointment_time
+2025-05-29 12:18:57 - Usando consulta con columna notes real
+2025-05-29 12:19:21 - Inicio de solicitud doctor_auth.php: {"method":"POST","action":"login"}
+2025-05-29 12:19:21 - Datos recibidos: {"input":"{\"email\":\"pol@gmail.com\",\"password\":\"123456\",\"role\":\"doctor\"}"}
+2025-05-29 12:19:21 - Datos decodificados: {"email":"pol@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 12:19:21 - Procesando acción: {"action":"login"}
+2025-05-29 12:19:21 - Procesando login de médico
+2025-05-29 12:19:21 - Iniciando proceso de login de médico: {"email":"pol@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 12:19:21 - Médico no encontrado: {"email":"pol@gmail.com"}
+2025-05-29 12:19:21 - Respuesta enviada: {"success":false,"message":"Usuario no encontrado"}
+2025-05-29 12:19:25 - Inicio de solicitud doctor_auth.php: {"method":"POST","action":"login"}
+2025-05-29 12:19:25 - Datos recibidos: {"input":"{\"email\":\"doctor@gmail.com\",\"password\":\"123456\",\"role\":\"doctor\"}"}
+2025-05-29 12:19:25 - Datos decodificados: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 12:19:25 - Procesando acción: {"action":"login"}
+2025-05-29 12:19:25 - Procesando login de médico
+2025-05-29 12:19:25 - Iniciando proceso de login de médico: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 12:19:25 - Médico encontrado: {"id":1,"name":"Dr. Juan Pérez"}
+2025-05-29 12:19:25 - Login exitoso: {"doctor_id":1}
+2025-05-29 12:19:25 - Respuesta enviada: {"success":true,"message":"Inicio de sesión exitoso","user":{"id":1,"email":"doctor@gmail.com","name":"Dr. Juan Pérez","role":"doctor","specialty":"Cardiología"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImRvY3RvckBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiZXhwIjoxNzQ4NjA3NTY1fQ==.nawmEYa97iH4ZyKiSI9dGdJ6UxsGM4jvz2QWW+OLm9k="}
+2025-05-29 12:19:27 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 12:19:27 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 12:19:27 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 12:19:27 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 12:19:27 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 12:19:27 - Columna notes existe: {"exists":true}
+2025-05-29 12:19:27 - Usando columnas appointment_date y appointment_time
+2025-05-29 12:19:27 - Usando consulta con columna notes real
+2025-05-29 12:22:50 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 12:22:50 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 12:22:50 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 12:22:50 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 12:22:50 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 12:22:50 - Columna notes existe: {"exists":true}
+2025-05-29 12:22:50 - Usando columnas appointment_date y appointment_time
+2025-05-29 12:22:50 - Usando consulta con columna notes real
+2025-05-29 12:25:02 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 12:25:02 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 12:25:02 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 12:25:02 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 12:25:02 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 12:25:02 - Columna notes existe: {"exists":true}
+2025-05-29 12:25:02 - Usando columnas appointment_date y appointment_time
+2025-05-29 12:25:02 - Usando consulta con columna notes real
+2025-05-29 12:27:25 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 12:27:25 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 12:27:25 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 12:27:25 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 12:27:25 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 12:27:25 - Columna notes existe: {"exists":true}
+2025-05-29 12:27:25 - Usando columnas appointment_date y appointment_time
+2025-05-29 12:27:25 - Usando consulta con columna notes real
+2025-05-29 12:29:42 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 12:29:42 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 12:29:42 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 12:29:42 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 12:29:42 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 12:29:42 - Columna notes existe: {"exists":true}
+2025-05-29 12:29:42 - Usando columnas appointment_date y appointment_time
+2025-05-29 12:29:42 - Usando consulta con columna notes real
+2025-05-29 12:29:57 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 12:29:57 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 12:29:57 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 12:29:57 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 12:29:57 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 12:29:57 - Columna notes existe: {"exists":true}
+2025-05-29 12:29:57 - Usando columnas appointment_date y appointment_time
+2025-05-29 12:29:57 - Usando consulta con columna notes real
+2025-05-29 12:34:10 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 12:34:10 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 12:34:10 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 12:34:10 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 12:34:10 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 12:34:10 - Columna notes existe: {"exists":true}
+2025-05-29 12:34:10 - Usando columnas appointment_date y appointment_time
+2025-05-29 12:34:10 - Usando consulta con columna notes real
+2025-05-29 12:34:18 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 12:34:18 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 12:34:18 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 12:34:18 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 12:34:18 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 12:34:18 - Columna notes existe: {"exists":true}
+2025-05-29 12:34:18 - Usando columnas appointment_date y appointment_time
+2025-05-29 12:34:18 - Usando consulta con columna notes real
+2025-05-29 12:36:08 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 12:36:08 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 12:36:08 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 12:36:08 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 12:36:08 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 12:36:08 - Columna notes existe: {"exists":true}
+2025-05-29 12:36:08 - Usando columnas appointment_date y appointment_time
+2025-05-29 12:36:08 - Usando consulta con columna notes real
+2025-05-29 12:36:13 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 12:36:13 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 12:36:13 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 12:36:13 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 12:36:13 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 12:36:13 - Columna notes existe: {"exists":true}
+2025-05-29 12:36:13 - Usando columnas appointment_date y appointment_time
+2025-05-29 12:36:13 - Usando consulta con columna notes real
+2025-05-29 12:38:15 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 12:38:15 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 12:38:15 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 12:38:15 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 12:38:15 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 12:38:15 - Columna notes existe: {"exists":true}
+2025-05-29 12:38:15 - Usando columnas appointment_date y appointment_time
+2025-05-29 12:38:15 - Usando consulta con columna notes real
+2025-05-29 12:38:43 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 12:38:43 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 12:38:43 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 12:38:43 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 12:38:43 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 12:38:43 - Columna notes existe: {"exists":true}
+2025-05-29 12:38:43 - Usando columnas appointment_date y appointment_time
+2025-05-29 12:38:43 - Usando consulta con columna notes real
+2025-05-29 12:47:50 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 12:47:50 - Especialidad solicitada: Cardiología
+2025-05-29 12:47:50 - Conexión a la base de datos establecida
+2025-05-29 12:47:50 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 12:47:50 - Médicos encontrados: 2
+2025-05-29 12:47:50 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 12:47:50 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 12:47:50 - Especialidad solicitada: Cardiología
+2025-05-29 12:47:50 - Conexión a la base de datos establecida
+2025-05-29 12:47:50 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 12:47:50 - Médicos encontrados: 2
+2025-05-29 12:47:50 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 12:47:50 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 12:47:50 - Especialidad solicitada: Cardiología
+2025-05-29 12:47:50 - Conexión a la base de datos establecida
+2025-05-29 12:47:50 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 12:47:50 - Médicos encontrados: 2
+2025-05-29 12:47:50 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 12:47:58 - Inicio de solicitud doctor_auth.php: {"method":"POST","action":"login"}
+2025-05-29 12:47:58 - Datos recibidos: {"input":"{\"email\":\"doctor@gmail.com\",\"password\":\"123456\",\"role\":\"doctor\"}"}
+2025-05-29 12:47:58 - Datos decodificados: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 12:47:58 - Procesando acción: {"action":"login"}
+2025-05-29 12:47:58 - Procesando login de médico
+2025-05-29 12:47:58 - Iniciando proceso de login de médico: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 12:47:58 - Médico encontrado: {"id":1,"name":"Dr. Juan Pérez"}
+2025-05-29 12:47:58 - Login exitoso: {"doctor_id":1}
+2025-05-29 12:47:58 - Respuesta enviada: {"success":true,"message":"Inicio de sesión exitoso","user":{"id":1,"email":"doctor@gmail.com","name":"Dr. Juan Pérez","role":"doctor","specialty":"Cardiología"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImRvY3RvckBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiZXhwIjoxNzQ4NjA5Mjc4fQ==.wwU1YRfajGq2\/0R6JulWECZYQ5BbGlkW\/mjfM1AuiLc="}
+2025-05-29 12:48:00 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 12:48:00 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 12:48:00 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 12:48:00 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 12:48:00 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 12:48:00 - Columna notes existe: {"exists":true}
+2025-05-29 12:48:00 - Usando columnas appointment_date y appointment_time
+2025-05-29 12:48:00 - Usando consulta con columna notes real
+2025-05-29 12:48:03 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 12:48:03 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 12:48:03 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 12:48:03 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 12:48:03 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 12:48:03 - Columna notes existe: {"exists":true}
+2025-05-29 12:48:03 - Usando columnas appointment_date y appointment_time
+2025-05-29 12:48:03 - Usando consulta con columna notes real
+2025-05-29 12:51:37 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 12:51:37 - Especialidad solicitada: Cardiología
+2025-05-29 12:51:37 - Conexión a la base de datos establecida
+2025-05-29 12:51:37 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 12:51:37 - Médicos encontrados: 2
+2025-05-29 12:51:37 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 12:51:37 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 12:51:37 - Especialidad solicitada: Cardiología
+2025-05-29 12:51:37 - Conexión a la base de datos establecida
+2025-05-29 12:51:37 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 12:51:37 - Médicos encontrados: 2
+2025-05-29 12:51:37 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 12:51:37 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 12:51:37 - Especialidad solicitada: Cardiología
+2025-05-29 12:51:37 - Conexión a la base de datos establecida
+2025-05-29 12:51:37 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 12:51:37 - Médicos encontrados: 2
+2025-05-29 12:51:37 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 12:51:57 - Datos recibidos como JSON: {"input":"{\"patient_id\":18,\"patient_name\":\"pol garcia\",\"patient_email\":\"pol@gmail.com\",\"doctor_id\":1,\"doctor_name\":\"Dr. Juan Pérez (Datos de emergencia)\",\"reason\":\"Consulta por dolor\",\"requested_date\":\"2025-06-04\",\"requested_time\":\"10:00\",\"details\":\"Lele panxa\"}"}
+2025-05-29 12:51:57 - Datos procesados: {"patient_id":18,"patient_name":"pol garcia","doctor_id":1,"doctor_name":"Dr. Juan Pérez (Datos de emergencia)","date_str":"2025-06-04","time_str":"10:00","appointment_date":"2025-06-04","start_time":"10:00:00","end_time":"11:00:00"}
+2025-05-29 12:51:57 - Verificando restricciones de clave foránea
+2025-05-29 12:51:57 - No se encontraron restricciones de clave foránea en el formato esperado
+2025-05-29 12:51:57 - Tabla appointments recreada sin restricciones de clave foránea
+2025-05-29 12:51:57 - Paciente no encontrado, usando paciente de prueba: {"original_id":18}
+2025-05-29 12:51:57 - Médico no encontrado, usando médico de prueba: {"original_id":1}
+2025-05-29 12:51:57 - IDs verificados: {"patient_id":1,"doctor_id":1}
+2025-05-29 12:51:57 - Cita insertada correctamente: {"id":"25"}
+2025-05-29 12:53:42 - Inicio de solicitud doctor_auth.php: {"method":"POST","action":"login"}
+2025-05-29 12:53:42 - Datos recibidos: {"input":"{\"email\":\"doctor@gmail.com\",\"password\":\"123456\",\"role\":\"doctor\"}"}
+2025-05-29 12:53:42 - Datos decodificados: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 12:53:43 - Procesando acción: {"action":"login"}
+2025-05-29 12:53:43 - Procesando login de médico
+2025-05-29 12:53:43 - Iniciando proceso de login de médico: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 12:53:43 - Médico encontrado: {"id":1,"name":"Dr. Juan Pérez"}
+2025-05-29 12:53:43 - Login exitoso: {"doctor_id":1}
+2025-05-29 12:53:43 - Respuesta enviada: {"success":true,"message":"Inicio de sesión exitoso","user":{"id":1,"email":"doctor@gmail.com","name":"Dr. Juan Pérez","role":"doctor","specialty":"Cardiología"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImRvY3RvckBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiZXhwIjoxNzQ4NjA5NjIzfQ==.aJz7YWU6eW2upl23mMSDmE\/VkMTRXpMq5UPOz3GmFek="}
+2025-05-29 12:53:44 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 12:53:44 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 12:53:44 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 12:53:44 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 12:53:44 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 12:53:44 - Columna notes existe: {"exists":true}
+2025-05-29 12:53:44 - Usando columnas appointment_date y appointment_time
+2025-05-29 12:53:44 - Usando consulta con columna notes real
+2025-05-29 12:54:49 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 12:54:49 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 12:54:49 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 12:54:49 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 12:54:49 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 12:54:49 - Columna notes existe: {"exists":true}
+2025-05-29 12:54:49 - Usando columnas appointment_date y appointment_time
+2025-05-29 12:54:49 - Usando consulta con columna notes real
+2025-05-29 12:56:11 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 12:56:11 - Especialidad solicitada: Cardiología
+2025-05-29 12:56:11 - Conexión a la base de datos establecida
+2025-05-29 12:56:11 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 12:56:11 - Médicos encontrados: 2
+2025-05-29 12:56:11 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 12:56:11 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 12:56:11 - Especialidad solicitada: Cardiología
+2025-05-29 12:56:11 - Conexión a la base de datos establecida
+2025-05-29 12:56:11 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 12:56:11 - Médicos encontrados: 2
+2025-05-29 12:56:11 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 12:56:11 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 12:56:11 - Especialidad solicitada: Cardiología
+2025-05-29 12:56:11 - Conexión a la base de datos establecida
+2025-05-29 12:56:11 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 12:56:11 - Médicos encontrados: 2
+2025-05-29 12:56:11 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 12:57:11 - Inicio de solicitud doctor_auth.php: {"method":"POST","action":"login"}
+2025-05-29 12:57:11 - Datos recibidos: {"input":"{\"email\":\"pol@gmail.com\",\"password\":\"123456\",\"role\":\"doctor\"}"}
+2025-05-29 12:57:11 - Datos decodificados: {"email":"pol@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 12:57:11 - Procesando acción: {"action":"login"}
+2025-05-29 12:57:11 - Procesando login de médico
+2025-05-29 12:57:11 - Iniciando proceso de login de médico: {"email":"pol@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 12:57:11 - Médico no encontrado: {"email":"pol@gmail.com"}
+2025-05-29 12:57:11 - Respuesta enviada: {"success":false,"message":"Usuario no encontrado"}
+2025-05-29 12:57:15 - Inicio de solicitud doctor_auth.php: {"method":"POST","action":"login"}
+2025-05-29 12:57:15 - Datos recibidos: {"input":"{\"email\":\"doctor@gmail.com\",\"password\":\"123456\",\"role\":\"doctor\"}"}
+2025-05-29 12:57:15 - Datos decodificados: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 12:57:16 - Procesando acción: {"action":"login"}
+2025-05-29 12:57:16 - Procesando login de médico
+2025-05-29 12:57:16 - Iniciando proceso de login de médico: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 12:57:16 - Médico encontrado: {"id":1,"name":"Dr. Juan Pérez"}
+2025-05-29 12:57:16 - Login exitoso: {"doctor_id":1}
+2025-05-29 12:57:16 - Respuesta enviada: {"success":true,"message":"Inicio de sesión exitoso","user":{"id":1,"email":"doctor@gmail.com","name":"Dr. Juan Pérez","role":"doctor","specialty":"Cardiología"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImRvY3RvckBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiZXhwIjoxNzQ4NjA5ODM2fQ==.n54JCUtSKs3QdgLnvWDWvlksgPXaX6r2lSst3gHXCSE="}
+2025-05-29 12:57:17 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 12:57:17 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 12:57:17 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 12:57:17 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 12:57:17 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 12:57:17 - Columna notes existe: {"exists":true}
+2025-05-29 12:57:17 - Usando columnas appointment_date y appointment_time
+2025-05-29 12:57:17 - Usando consulta con columna notes real
+2025-05-29 13:13:43 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 13:13:43 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 13:13:43 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 13:13:43 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 13:13:43 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 13:13:43 - Columna notes existe: {"exists":true}
+2025-05-29 13:13:43 - Usando columnas appointment_date y appointment_time
+2025-05-29 13:13:43 - Usando consulta con columna notes real
+2025-05-29 13:13:43 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 13:13:43 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 13:13:43 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 13:13:43 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 13:13:43 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 13:13:43 - Columna notes existe: {"exists":true}
+2025-05-29 13:13:43 - Usando columnas appointment_date y appointment_time
+2025-05-29 13:13:43 - Usando consulta con columna notes real
+2025-05-29 13:13:43 - ID del médico recibido: {"doctor_id":"1"}
+2025-05-29 13:13:43 - Conexión a la base de datos establecida para obtener citas pendientes
+2025-05-29 13:13:43 - Verificando si existe la tabla appointments: {"exists":true}
+2025-05-29 13:13:43 - Estructura de la tabla appointments: [{"Field":"id","Type":"int","Null":"NO","Key":"PRI","Default":null,"Extra":"auto_increment"},{"Field":"patient_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"patient_email","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_id","Type":"int","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"doctor_name","Type":"varchar(100)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"reason","Type":"text","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"date","Type":"varchar(20)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"time","Type":"varchar(10)","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_date","Type":"date","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"appointment_time","Type":"varchar(8)","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"start_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"end_time","Type":"time","Null":"NO","Key":"","Default":null,"Extra":""},{"Field":"status","Type":"enum('pending','confirmed','cancelled','completed')","Null":"NO","Key":"","Default":"pending","Extra":""},{"Field":"notes","Type":"text","Null":"YES","Key":"","Default":null,"Extra":""},{"Field":"created_at","Type":"timestamp","Null":"YES","Key":"","Default":"CURRENT_TIMESTAMP","Extra":"DEFAULT_GENERATED"}]
+2025-05-29 13:13:43 - Verificando columnas: {"appointment_date_exists":true,"date_exists":true}
+2025-05-29 13:13:43 - Columna notes existe: {"exists":true}
+2025-05-29 13:13:43 - Usando columnas appointment_date y appointment_time
+2025-05-29 13:13:43 - Usando consulta con columna notes real
+2025-05-29 14:29:48 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 14:29:48 - Especialidad solicitada: Cardiología
+2025-05-29 14:29:48 - Conexión a la base de datos establecida
+2025-05-29 14:29:49 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 14:29:49 - Médicos encontrados: 2
+2025-05-29 14:29:49 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 14:29:49 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 14:29:49 - Especialidad solicitada: Cardiología
+2025-05-29 14:29:49 - Conexión a la base de datos establecida
+2025-05-29 14:29:49 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 14:29:49 - Médicos encontrados: 2
+2025-05-29 14:29:49 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 14:29:49 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 14:29:49 - Especialidad solicitada: Cardiología
+2025-05-29 14:29:49 - Conexión a la base de datos establecida
+2025-05-29 14:29:49 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 14:29:49 - Médicos encontrados: 2
+2025-05-29 14:29:49 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 14:30:02 - Datos recibidos como JSON: {"input":"{\"patient_id\":18,\"patient_name\":\"pol garcia\",\"patient_email\":\"pol@gmail.com\",\"doctor_id\":1,\"doctor_name\":\"Dr. Juan Pérez (Datos de emergencia)\",\"reason\":\"Consulta por dolor\",\"requested_date\":\"2025-06-04\",\"requested_time\":\"09:00\",\"details\":\"Dolor de barriga\"}"}
+2025-05-29 14:30:02 - Datos procesados: {"patient_id":18,"patient_name":"pol garcia","doctor_id":1,"doctor_name":"Dr. Juan Pérez (Datos de emergencia)","date_str":"2025-06-04","time_str":"09:00","appointment_date":"2025-06-04","start_time":"09:00:00","end_time":"10:00:00"}
+2025-05-29 14:30:02 - Verificando restricciones de clave foránea
+2025-05-29 14:30:02 - No se encontraron restricciones de clave foránea en el formato esperado
+2025-05-29 14:30:02 - Tabla appointments recreada sin restricciones de clave foránea
+2025-05-29 14:30:02 - Paciente no encontrado, usando paciente de prueba: {"original_id":18}
+2025-05-29 14:30:02 - Médico no encontrado, usando médico de prueba: {"original_id":1}
+2025-05-29 14:30:02 - IDs verificados: {"patient_id":1,"doctor_id":1}
+2025-05-29 14:30:02 - Cita insertada correctamente: {"id":"26"}
+2025-05-29 14:30:13 - Inicio de solicitud doctor_auth.php: {"method":"POST","action":"login"}
+2025-05-29 14:30:13 - Datos recibidos: {"input":"{\"email\":\"doctor@gmail.com\",\"password\":\"123456\",\"role\":\"doctor\"}"}
+2025-05-29 14:30:13 - Datos decodificados: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 14:30:14 - Procesando acción: {"action":"login"}
+2025-05-29 14:30:14 - Procesando login de médico
+2025-05-29 14:30:14 - Iniciando proceso de login de médico: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 14:30:14 - Médico encontrado: {"id":1,"name":"Dr. Juan Pérez"}
+2025-05-29 14:30:14 - Login exitoso: {"doctor_id":1}
+2025-05-29 14:30:14 - Respuesta enviada: {"success":true,"message":"Inicio de sesión exitoso","user":{"id":1,"email":"doctor@gmail.com","name":"Dr. Juan Pérez","role":"doctor","specialty":"Cardiología"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImRvY3RvckBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiZXhwIjoxNzQ4NjE1NDE0fQ==.7ag0i10lTuKobCX6fAtTnsM8ffNo1NoKJuNcNsm8vJI="}
+2025-05-29 14:45:51 - Inicio de solicitud doctor_auth.php: {"method":"POST","action":"login"}
+2025-05-29 14:45:51 - Datos recibidos: {"input":"{\"email\":\"doctor@gmail.com\",\"password\":\"123456\",\"role\":\"doctor\"}"}
+2025-05-29 14:45:51 - Datos decodificados: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 14:45:51 - Procesando acción: {"action":"login"}
+2025-05-29 14:45:51 - Procesando login de médico
+2025-05-29 14:45:51 - Iniciando proceso de login de médico: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 14:45:51 - Médico encontrado: {"id":1,"name":"Dr. Juan Pérez"}
+2025-05-29 14:45:51 - Login exitoso: {"doctor_id":1}
+2025-05-29 14:45:51 - Respuesta enviada: {"success":true,"message":"Inicio de sesión exitoso","user":{"id":1,"email":"doctor@gmail.com","name":"Dr. Juan Pérez","role":"doctor","specialty":"Cardiología"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImRvY3RvckBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiZXhwIjoxNzQ4NjE2MzUxfQ==.59GDuURNCQJ+pOkBEQi1VytNp8q5DnjNUhS2B+Qi8hM="}
+2025-05-29 14:46:16 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 14:46:16 - Especialidad solicitada: Cardiología
+2025-05-29 14:46:16 - Conexión a la base de datos establecida
+2025-05-29 14:46:16 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 14:46:16 - Médicos encontrados: 2
+2025-05-29 14:46:16 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 14:46:16 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 14:46:16 - Especialidad solicitada: Cardiología
+2025-05-29 14:46:16 - Conexión a la base de datos establecida
+2025-05-29 14:46:16 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 14:46:16 - Médicos encontrados: 2
+2025-05-29 14:46:16 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 14:46:16 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 14:46:16 - Especialidad solicitada: Cardiología
+2025-05-29 14:46:16 - Conexión a la base de datos establecida
+2025-05-29 14:46:16 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 14:46:16 - Médicos encontrados: 2
+2025-05-29 14:46:16 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 14:46:42 - Datos recibidos como JSON: {"input":"{\"patient_id\":18,\"patient_name\":\"pol garcia\",\"patient_email\":\"pol@gmail.com\",\"doctor_id\":1,\"doctor_name\":\"Dr. Juan Pérez (Datos de emergencia)\",\"reason\":\"Consulta por dolor\",\"requested_date\":\"2025-06-04\",\"requested_time\":\"11:00\",\"details\":\"Dolor de barriga\"}"}
+2025-05-29 14:46:42 - Datos procesados: {"patient_id":18,"patient_name":"pol garcia","doctor_id":1,"doctor_name":"Dr. Juan Pérez (Datos de emergencia)","date_str":"2025-06-04","time_str":"11:00","appointment_date":"2025-06-04","start_time":"11:00:00","end_time":"12:00:00"}
+2025-05-29 14:46:42 - Verificando restricciones de clave foránea
+2025-05-29 14:46:42 - No se encontraron restricciones de clave foránea en el formato esperado
+2025-05-29 14:46:42 - Tabla appointments recreada sin restricciones de clave foránea
+2025-05-29 14:46:42 - Paciente no encontrado, usando paciente de prueba: {"original_id":18}
+2025-05-29 14:46:42 - Médico no encontrado, usando médico de prueba: {"original_id":1}
+2025-05-29 14:46:42 - IDs verificados: {"patient_id":1,"doctor_id":1}
+2025-05-29 14:46:42 - Cita insertada correctamente: {"id":"27"}
+2025-05-29 14:46:54 - Inicio de solicitud doctor_auth.php: {"method":"POST","action":"login"}
+2025-05-29 14:46:54 - Datos recibidos: {"input":"{\"email\":\"doctor@gmail.com\",\"password\":\"123456\",\"role\":\"doctor\"}"}
+2025-05-29 14:46:54 - Datos decodificados: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 14:46:54 - Procesando acción: {"action":"login"}
+2025-05-29 14:46:54 - Procesando login de médico
+2025-05-29 14:46:54 - Iniciando proceso de login de médico: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 14:46:54 - Médico encontrado: {"id":1,"name":"Dr. Juan Pérez"}
+2025-05-29 14:46:54 - Login exitoso: {"doctor_id":1}
+2025-05-29 14:46:54 - Respuesta enviada: {"success":true,"message":"Inicio de sesión exitoso","user":{"id":1,"email":"doctor@gmail.com","name":"Dr. Juan Pérez","role":"doctor","specialty":"Cardiología"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImRvY3RvckBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiZXhwIjoxNzQ4NjE2NDE0fQ==.+dAT3HP9N1zhLiw1\/BE0HuG6h4eqcbi1ddAAawxYfaA="}
+2025-05-29 14:50:03 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 14:50:03 - Especialidad solicitada: Cardiología
+2025-05-29 14:50:03 - Conexión a la base de datos establecida
+2025-05-29 14:50:03 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 14:50:03 - Médicos encontrados: 2
+2025-05-29 14:50:03 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 14:50:03 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 14:50:03 - Especialidad solicitada: Cardiología
+2025-05-29 14:50:03 - Conexión a la base de datos establecida
+2025-05-29 14:50:03 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 14:50:03 - Médicos encontrados: 2
+2025-05-29 14:50:03 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 14:50:03 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 14:50:03 - Especialidad solicitada: Cardiología
+2025-05-29 14:50:03 - Conexión a la base de datos establecida
+2025-05-29 14:50:03 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 14:50:03 - Médicos encontrados: 2
+2025-05-29 14:50:03 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 14:50:17 - Datos recibidos como JSON: {"input":"{\"patient_id\":18,\"patient_name\":\"pol garcia\",\"patient_email\":\"pol@gmail.com\",\"doctor_id\":1,\"doctor_name\":\"Dr. Juan Pérez (Datos de emergencia)\",\"reason\":\"Consulta por dolor\",\"requested_date\":\"2025-06-04\",\"requested_time\":\"12:00\",\"details\":\"Dolor de barriga\"}"}
+2025-05-29 14:50:17 - Datos procesados: {"patient_id":18,"patient_name":"pol garcia","doctor_id":1,"doctor_name":"Dr. Juan Pérez (Datos de emergencia)","date_str":"2025-06-04","time_str":"12:00","appointment_date":"2025-06-04","start_time":"12:00:00","end_time":"13:00:00"}
+2025-05-29 14:50:17 - Verificando restricciones de clave foránea
+2025-05-29 14:50:17 - No se encontraron restricciones de clave foránea en el formato esperado
+2025-05-29 14:50:17 - Tabla appointments recreada sin restricciones de clave foránea
+2025-05-29 14:50:17 - Paciente no encontrado, usando paciente de prueba: {"original_id":18}
+2025-05-29 14:50:17 - Médico no encontrado, usando médico de prueba: {"original_id":1}
+2025-05-29 14:50:17 - IDs verificados: {"patient_id":1,"doctor_id":1}
+2025-05-29 14:50:17 - Cita insertada correctamente: {"id":"28"}
+2025-05-29 14:50:26 - Inicio de solicitud doctor_auth.php: {"method":"POST","action":"login"}
+2025-05-29 14:50:26 - Datos recibidos: {"input":"{\"email\":\"doctor@gmail.com\",\"password\":\"123456\",\"role\":\"doctor\"}"}
+2025-05-29 14:50:26 - Datos decodificados: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 14:50:26 - Procesando acción: {"action":"login"}
+2025-05-29 14:50:26 - Procesando login de médico
+2025-05-29 14:50:26 - Iniciando proceso de login de médico: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 14:50:26 - Médico encontrado: {"id":1,"name":"Dr. Juan Pérez"}
+2025-05-29 14:50:27 - Login exitoso: {"doctor_id":1}
+2025-05-29 14:50:27 - Respuesta enviada: {"success":true,"message":"Inicio de sesión exitoso","user":{"id":1,"email":"doctor@gmail.com","name":"Dr. Juan Pérez","role":"doctor","specialty":"Cardiología"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImRvY3RvckBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiZXhwIjoxNzQ4NjE2NjI3fQ==.N3FlAo7sPtRrpTF9+jIQdmEVRyDS657cVbTTSNtwG3g="}
+2025-05-29 15:04:43 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 15:04:43 - Especialidad solicitada: Cardiología
+2025-05-29 15:04:43 - Conexión a la base de datos establecida
+2025-05-29 15:04:43 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 15:04:43 - Médicos encontrados: 2
+2025-05-29 15:04:43 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 15:04:43 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 15:04:43 - Especialidad solicitada: Cardiología
+2025-05-29 15:04:43 - Conexión a la base de datos establecida
+2025-05-29 15:04:43 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 15:04:43 - Médicos encontrados: 2
+2025-05-29 15:04:43 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 15:04:43 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 15:04:43 - Especialidad solicitada: Cardiología
+2025-05-29 15:04:43 - Conexión a la base de datos establecida
+2025-05-29 15:04:43 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 15:04:43 - Médicos encontrados: 2
+2025-05-29 15:04:43 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 15:04:59 - Datos recibidos como JSON: {"input":"{\"patient_id\":18,\"patient_name\":\"pol garcia\",\"patient_email\":\"pol@gmail.com\",\"doctor_id\":1,\"doctor_name\":\"Dr. Juan Pérez (Datos de emergencia)\",\"reason\":\"Consulta por dolor\",\"requested_date\":\"2025-06-04\",\"requested_time\":\"12:00\",\"details\":\"Dolor de barriga\"}"}
+2025-05-29 15:04:59 - Datos procesados: {"patient_id":18,"patient_name":"pol garcia","doctor_id":1,"doctor_name":"Dr. Juan Pérez (Datos de emergencia)","date_str":"2025-06-04","time_str":"12:00","appointment_date":"2025-06-04","start_time":"12:00:00","end_time":"13:00:00"}
+2025-05-29 15:04:59 - Verificando restricciones de clave foránea
+2025-05-29 15:04:59 - No se encontraron restricciones de clave foránea en el formato esperado
+2025-05-29 15:04:59 - Tabla appointments recreada sin restricciones de clave foránea
+2025-05-29 15:04:59 - Paciente no encontrado, usando paciente de prueba: {"original_id":18}
+2025-05-29 15:04:59 - Médico no encontrado, usando médico de prueba: {"original_id":1}
+2025-05-29 15:04:59 - IDs verificados: {"patient_id":1,"doctor_id":1}
+2025-05-29 15:04:59 - Cita insertada correctamente: {"id":"29"}
+2025-05-29 15:05:14 - Inicio de solicitud doctor_auth.php: {"method":"POST","action":"login"}
+2025-05-29 15:05:14 - Datos recibidos: {"input":"{\"email\":\"doctor@gmail.com\",\"password\":\"123456\",\"role\":\"doctor\"}"}
+2025-05-29 15:05:14 - Datos decodificados: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 15:05:15 - Procesando acción: {"action":"login"}
+2025-05-29 15:05:15 - Procesando login de médico
+2025-05-29 15:05:15 - Iniciando proceso de login de médico: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 15:05:15 - Médico encontrado: {"id":1,"name":"Dr. Juan Pérez"}
+2025-05-29 15:05:15 - Login exitoso: {"doctor_id":1}
+2025-05-29 15:05:15 - Respuesta enviada: {"success":true,"message":"Inicio de sesión exitoso","user":{"id":1,"email":"doctor@gmail.com","name":"Dr. Juan Pérez","role":"doctor","specialty":"Cardiología"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImRvY3RvckBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiZXhwIjoxNzQ4NjE3NTE1fQ==.6uhFc6sEiTaSSZyHV7zxnk92VNRsUWf8QU+qBVuoFOI="}
+2025-05-29 15:59:18 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 15:59:18 - Especialidad solicitada: Cardiología
+2025-05-29 15:59:18 - Conexión a la base de datos establecida
+2025-05-29 15:59:18 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 15:59:18 - Médicos encontrados: 2
+2025-05-29 15:59:18 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 15:59:18 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 15:59:18 - Especialidad solicitada: Cardiología
+2025-05-29 15:59:18 - Conexión a la base de datos establecida
+2025-05-29 15:59:18 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 15:59:18 - Médicos encontrados: 2
+2025-05-29 15:59:18 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 15:59:18 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 15:59:18 - Especialidad solicitada: Cardiología
+2025-05-29 15:59:18 - Conexión a la base de datos establecida
+2025-05-29 15:59:18 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 15:59:18 - Médicos encontrados: 2
+2025-05-29 15:59:18 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 15:59:33 - Solicitud recibida: {"specialty":"Dermatolog\u00eda"}
+2025-05-29 15:59:33 - Especialidad solicitada: Dermatología
+2025-05-29 15:59:33 - Conexión a la base de datos establecida
+2025-05-29 15:59:33 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 15:59:33 - Médicos encontrados: 2
+2025-05-29 15:59:33 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 15:59:33 - Solicitud recibida: {"specialty":"Dermatolog\u00eda"}
+2025-05-29 15:59:33 - Especialidad solicitada: Dermatología
+2025-05-29 15:59:33 - Conexión a la base de datos establecida
+2025-05-29 15:59:33 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 15:59:33 - Médicos encontrados: 2
+2025-05-29 15:59:33 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 15:59:33 - Solicitud recibida: {"specialty":"Dermatolog\u00eda"}
+2025-05-29 15:59:33 - Especialidad solicitada: Dermatología
+2025-05-29 15:59:33 - Conexión a la base de datos establecida
+2025-05-29 15:59:33 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 15:59:33 - Médicos encontrados: 2
+2025-05-29 15:59:33 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 15:59:35 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 15:59:35 - Especialidad solicitada: Cardiología
+2025-05-29 15:59:35 - Conexión a la base de datos establecida
+2025-05-29 15:59:35 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 15:59:35 - Médicos encontrados: 2
+2025-05-29 15:59:35 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 15:59:35 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 15:59:35 - Especialidad solicitada: Cardiología
+2025-05-29 15:59:35 - Conexión a la base de datos establecida
+2025-05-29 15:59:35 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 15:59:35 - Médicos encontrados: 2
+2025-05-29 15:59:35 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 15:59:35 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 15:59:35 - Especialidad solicitada: Cardiología
+2025-05-29 15:59:35 - Conexión a la base de datos establecida
+2025-05-29 15:59:35 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 15:59:35 - Médicos encontrados: 2
+2025-05-29 15:59:35 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 16:04:45 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 16:04:45 - Especialidad solicitada: Cardiología
+2025-05-29 16:04:45 - Conexión a la base de datos establecida
+2025-05-29 16:04:45 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 16:04:45 - Médicos encontrados: 2
+2025-05-29 16:04:45 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 16:04:45 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 16:04:45 - Especialidad solicitada: Cardiología
+2025-05-29 16:04:45 - Conexión a la base de datos establecida
+2025-05-29 16:04:45 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 16:04:45 - Médicos encontrados: 2
+2025-05-29 16:04:45 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 16:04:45 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 16:04:45 - Especialidad solicitada: Cardiología
+2025-05-29 16:04:45 - Conexión a la base de datos establecida
+2025-05-29 16:04:45 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 16:04:45 - Médicos encontrados: 2
+2025-05-29 16:04:45 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 16:12:39 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 16:12:39 - Especialidad solicitada: Cardiología
+2025-05-29 16:12:39 - Conexión a la base de datos establecida
+2025-05-29 16:12:39 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 16:12:39 - Médicos encontrados: 2
+2025-05-29 16:12:39 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 16:12:39 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 16:12:39 - Especialidad solicitada: Cardiología
+2025-05-29 16:12:39 - Conexión a la base de datos establecida
+2025-05-29 16:12:39 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 16:12:39 - Médicos encontrados: 2
+2025-05-29 16:12:39 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 16:12:39 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 16:12:39 - Especialidad solicitada: Cardiología
+2025-05-29 16:12:40 - Conexión a la base de datos establecida
+2025-05-29 16:12:40 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 16:12:40 - Médicos encontrados: 2
+2025-05-29 16:12:40 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 16:12:56 - Datos recibidos como JSON: {"input":"{\"patient_id\":18,\"patient_name\":\"pol garcia\",\"patient_email\":\"pol@gmail.com\",\"doctor_id\":1,\"doctor_name\":\"Dr. Juan Pérez (Datos de emergencia)\",\"reason\":\"Consulta por dolor\",\"requested_date\":\"2025-06-02\",\"requested_time\":\"11:00\",\"details\":\"Dolor de espalda\"}"}
+2025-05-29 16:12:56 - Datos procesados: {"patient_id":18,"patient_name":"pol garcia","doctor_id":1,"doctor_name":"Dr. Juan Pérez (Datos de emergencia)","date_str":"2025-06-02","time_str":"11:00","appointment_date":"2025-06-02","start_time":"11:00:00","end_time":"12:00:00"}
+2025-05-29 16:12:56 - Verificando restricciones de clave foránea
+2025-05-29 16:12:56 - No se encontraron restricciones de clave foránea en el formato esperado
+2025-05-29 16:12:57 - Tabla appointments recreada sin restricciones de clave foránea
+2025-05-29 16:12:57 - Paciente no encontrado, usando paciente de prueba: {"original_id":18}
+2025-05-29 16:12:57 - Médico no encontrado, usando médico de prueba: {"original_id":1}
+2025-05-29 16:12:57 - IDs verificados: {"patient_id":1,"doctor_id":1}
+2025-05-29 16:12:57 - Cita insertada correctamente: {"id":"30"}
+2025-05-29 16:13:10 - Inicio de solicitud doctor_auth.php: {"method":"POST","action":"login"}
+2025-05-29 16:13:10 - Datos recibidos: {"input":"{\"email\":\"doctor@gmail.com\",\"password\":\"123456\",\"role\":\"doctor\"}"}
+2025-05-29 16:13:10 - Datos decodificados: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 16:13:10 - Procesando acción: {"action":"login"}
+2025-05-29 16:13:10 - Procesando login de médico
+2025-05-29 16:13:10 - Iniciando proceso de login de médico: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 16:13:10 - Médico encontrado: {"id":1,"name":"Dr. Juan Pérez"}
+2025-05-29 16:13:10 - Login exitoso: {"doctor_id":1}
+2025-05-29 16:13:10 - Respuesta enviada: {"success":true,"message":"Inicio de sesión exitoso","user":{"id":1,"email":"doctor@gmail.com","name":"Dr. Juan Pérez","role":"doctor","specialty":"Cardiología"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImRvY3RvckBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiZXhwIjoxNzQ4NjIxNTkwfQ==.ZMbbzeZ8Z72HIVYePiIL+hM0Y8j3CuvEM3W6j0DuuN8="}
+2025-05-29 16:27:27 - Inicio de solicitud doctor_auth.php: {"method":"POST","action":"login"}
+2025-05-29 16:27:27 - Datos recibidos: {"input":"{\"email\":\"doctor@gmail.com\",\"password\":\"123456\",\"role\":\"doctor\"}"}
+2025-05-29 16:27:27 - Datos decodificados: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 16:27:27 - Procesando acción: {"action":"login"}
+2025-05-29 16:27:27 - Procesando login de médico
+2025-05-29 16:27:27 - Iniciando proceso de login de médico: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 16:27:27 - Médico encontrado: {"id":1,"name":"Dr. Juan Pérez"}
+2025-05-29 16:27:27 - Login exitoso: {"doctor_id":1}
+2025-05-29 16:27:27 - Respuesta enviada: {"success":true,"message":"Inicio de sesión exitoso","user":{"id":1,"email":"doctor@gmail.com","name":"Dr. Juan Pérez","role":"doctor","specialty":"Cardiología"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImRvY3RvckBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiZXhwIjoxNzQ4NjIyNDQ3fQ==.tRS\/NcoCA15Ue1kvQ45I4G4drWc4TbZXr3Ks8eM\/ZuA="}
+2025-05-29 16:33:23 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 16:33:23 - Especialidad solicitada: Cardiología
+2025-05-29 16:33:23 - Conexión a la base de datos establecida
+2025-05-29 16:33:23 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 16:33:23 - Médicos encontrados: 2
+2025-05-29 16:33:23 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 16:33:23 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 16:33:23 - Especialidad solicitada: Cardiología
+2025-05-29 16:33:23 - Conexión a la base de datos establecida
+2025-05-29 16:33:23 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 16:33:23 - Médicos encontrados: 2
+2025-05-29 16:33:23 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 16:33:23 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 16:33:23 - Especialidad solicitada: Cardiología
+2025-05-29 16:33:23 - Conexión a la base de datos establecida
+2025-05-29 16:33:23 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 16:33:23 - Médicos encontrados: 2
+2025-05-29 16:33:23 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 16:37:56 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 16:37:56 - Especialidad solicitada: Cardiología
+2025-05-29 16:37:56 - Conexión a la base de datos establecida
+2025-05-29 16:37:56 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 16:37:56 - Médicos encontrados: 2
+2025-05-29 16:37:56 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 16:37:56 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 16:37:56 - Especialidad solicitada: Cardiología
+2025-05-29 16:37:56 - Conexión a la base de datos establecida
+2025-05-29 16:37:56 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 16:37:56 - Médicos encontrados: 2
+2025-05-29 16:37:56 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 16:37:56 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 16:37:56 - Especialidad solicitada: Cardiología
+2025-05-29 16:37:56 - Conexión a la base de datos establecida
+2025-05-29 16:37:56 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 16:37:56 - Médicos encontrados: 2
+2025-05-29 16:37:56 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 16:38:14 - Datos recibidos como JSON: {"input":"{\"patient_id\":18,\"patient_name\":\"pol garcia\",\"patient_email\":\"pol@gmail.com\",\"doctor_id\":1,\"doctor_name\":\"Dr. Juan Pérez (Datos de emergencia)\",\"reason\":\"Consulta por dolor\",\"requested_date\":\"2025-06-02\",\"requested_time\":\"10:00\",\"details\":\"Dolor de rodilla\"}"}
+2025-05-29 16:38:14 - Datos procesados: {"patient_id":18,"patient_name":"pol garcia","doctor_id":1,"doctor_name":"Dr. Juan Pérez (Datos de emergencia)","date_str":"2025-06-02","time_str":"10:00","appointment_date":"2025-06-02","start_time":"10:00:00","end_time":"11:00:00"}
+2025-05-29 16:38:14 - Verificando restricciones de clave foránea
+2025-05-29 16:38:14 - No se encontraron restricciones de clave foránea en el formato esperado
+2025-05-29 16:38:14 - Tabla appointments recreada sin restricciones de clave foránea
+2025-05-29 16:38:14 - Paciente no encontrado, usando paciente de prueba: {"original_id":18}
+2025-05-29 16:38:14 - Médico no encontrado, usando médico de prueba: {"original_id":1}
+2025-05-29 16:38:14 - IDs verificados: {"patient_id":1,"doctor_id":1}
+2025-05-29 16:38:14 - Cita insertada correctamente: {"id":"31"}
+2025-05-29 16:38:26 - Inicio de solicitud doctor_auth.php: {"method":"POST","action":"login"}
+2025-05-29 16:38:26 - Datos recibidos: {"input":"{\"email\":\"doctor@gmail.com\",\"password\":\"123456\",\"role\":\"doctor\"}"}
+2025-05-29 16:38:26 - Datos decodificados: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 16:38:26 - Procesando acción: {"action":"login"}
+2025-05-29 16:38:26 - Procesando login de médico
+2025-05-29 16:38:26 - Iniciando proceso de login de médico: {"email":"doctor@gmail.com","password":"123456","role":"doctor"}
+2025-05-29 16:38:26 - Médico encontrado: {"id":1,"name":"Dr. Juan Pérez"}
+2025-05-29 16:38:27 - Login exitoso: {"doctor_id":1}
+2025-05-29 16:38:27 - Respuesta enviada: {"success":true,"message":"Inicio de sesión exitoso","user":{"id":1,"email":"doctor@gmail.com","name":"Dr. Juan Pérez","role":"doctor","specialty":"Cardiología"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImRvY3RvckBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiZXhwIjoxNzQ4NjIzMTA3fQ==.y5r2o9lnJZcf30xF4Gdv4lQ\/KStPYi9bDesDgYahYKw="}

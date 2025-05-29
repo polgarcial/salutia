@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <style>
+    .st0{fill:#F5F7FA;}
+    .st1{fill:#3498DB;}
+    .st2{fill:#2ECC71;}
+    .st3{fill:#ECF0F1;}
+    .st4{fill:#2C3E50;}
+    .st5{fill:#E74C3C;}
+    .st6{fill:#FFFFFF;}
+    .st7{fill:none;stroke:#3498DB;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+  </style>
+  <rect class="st0" width="600" height="400"/>
+  
+  <!-- Background Elements -->
+  <circle class="st1" opacity="0.1" cx="100" cy="100" r="80"/>
+  <circle class="st2" opacity="0.1" cx="500" cy="300" r="80"/>
+  <circle class="st5" opacity="0.1" cx="300" cy="80" r="40"/>
+  
+  <!-- Hospital Building -->
+  <rect class="st3" x="100" y="150" width="200" height="200" rx="5"/>
+  <rect class="st6" x="130" y="180" width="40" height="40"/>
+  <rect class="st6" x="190" y="180" width="40" height="40"/>
+  <rect class="st6" x="130" y="240" width="40" height="40"/>
+  <rect class="st6" x="190" y="240" width="40" height="40"/>
+  <rect class="st1" x="160" y="300" width="80" height="50"/>
+  <rect class="st4" x="90" y="140" width="220" height="15"/>
+  
+  <!-- Medical Cross -->
+  <rect class="st5" x="180" y="100" width="40" height="80"/>
+  <rect class="st5" x="160" y="120" width="80" height="40"/>
+  
+  <!-- Doctor with Patient -->
+  <circle class="st4" cx="400" cy="200" r="30"/> <!-- Doctor head -->
+  <rect class="st4" x="385" y="230" width="30" height="60"/> <!-- Doctor body -->
+  <rect class="st4" x="385" y="290" width="10" height="40"/> <!-- Doctor leg -->
+  <rect class="st4" x="405" y="290" width="10" height="40"/> <!-- Doctor leg -->
+  <rect class="st6" x="385" y="230" width="30" height="20"/> <!-- Doctor coat -->
+  <line class="st7" x1="370" y1="250" x2="385" y2="240"/> <!-- Doctor arm -->
+  <line class="st7" x1="415" y1="240" x2="430" y2="250"/> <!-- Doctor arm -->
+  
+  <circle class="st4" cx="480" cy="220" r="25"/> <!-- Patient head -->
+  <rect class="st3" x="465" y="245" width="30" height="50"/> <!-- Patient body -->
+  <rect class="st3" x="465" y="295" width="10" height="35"/> <!-- Patient leg -->
+  <rect class="st3" x="485" y="295" width="10" height="35"/> <!-- Patient leg -->
+  
+  <!-- Stethoscope -->
+  <path class="st7" d="M430,250 C450,270 470,260 470,245"/> 
+  
+  <!-- Digital Elements -->
+  <rect class="st1" x="350" y="100" width="150" height="80" rx="5"/>
+  <rect class="st6" x="360" y="110" width="130" height="60" rx="3"/>
+  <line class="st7" x1="370" y1="130" x2="450" y2="130"/>
+  <line class="st7" x1="370" y1="150" x2="420" y2="150"/>
+  
+  <!-- Calendar -->
+  <rect class="st2" x="520" y="150" width="60" height="60" rx="5"/>
+  <rect class="st6" x="530" y="160" width="40" height="40" rx="3"/>
+  <line class="st7" x1="540" y1="170" x2="560" y2="170"/>
+  <line class="st7" x1="540" y1="180" x2="560" y2="180"/>
+  <line class="st7" x1="540" y1="190" x2="550" y2="190"/>
+  
+  <!-- Heartbeat Line -->
+  <polyline class="st7" points="50,350 80,350 90,330 100,370 110,330 120,350 150,350"/>
+  <polyline class="st7" points="450,350 480,350 490,330 500,370 510,330 520,350 550,350"/>
+</svg>

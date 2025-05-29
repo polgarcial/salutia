@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Médico - Salutia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f8fa;
+            color: #333;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+            height: 80vh;
+        }
+        .chat-sidebar {
+            flex: 1;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .chat-main {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .chat-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            background-color: #f8f9fa;
+            border-radius: 10px 10px 0 0;
+        }
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .chat-input {
+            padding: 15px 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 10px;
+        }
+        .chat-input textarea {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: none;
+        }
+        .chat-input button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .message {
+            max-width: 70%;
+            padding: 10px 15px;
+            border-radius: 10px;
+            position: relative;
+        }
+        .message-user {
+            align-self: flex-end;
+            background-color: #dcf8c6;
+        }
+        .message-ai {
+            align-self: flex-start;
+            background-color: #f0f0f0;
+        }
+        .message-doctor {
+            align-self: flex-start;
+            background-color: #e3f2fd;
+        }
+        .message-time {
+            font-size: 0.7em;
+            color: #999;
+            margin-top: 5px;
+            text-align: right;
+        }
+        .user-info {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .chat-option {
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .chat-option:hover {
+            background-color: #f0f0f0;
+        }
+        .chat-option.active {
+            background-color: #e3f2fd;
+            border-color: #3498db;
+        }
+        .error {
+            color: red;
+            background-color: #ffeeee;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: none;
+        }
+        .success {
+            color: green;
+            background-color: #eeffee;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: none;
+        }
+        .typing-indicator {
+            display: none;
+            align-self: flex-start;
+            background-color: #f0f0f0;
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .typing-indicator span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #999;
+            border-radius: 50%;
+            margin-right: 5px;
+            animation: typing 1s infinite;
+        }
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+            margin-right: 0;
+        }
+        @keyframes typing {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
+        }
+        .links {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chat Médico - Salutia</h1>
+    
+    <div class="links">
+        <a href="login_simple.html">Iniciar Sesión</a> | 
+        <a href="register_simple.html">Registrarse</a> | 
+        <a href="appointments.html">Gestionar Citas</a> | 
+        <a href="backend/test_database.php" target="_blank">Ver usuarios registrados</a>
+    </div>
+    
+    <div id="error" class="error"></div>
+    <div id="success" class="success"></div>
+    
+    <div class="user-info">
+        <div class="form-group">
+            <label for="user_id">ID de Usuario:</label>
+            <input type="number" id="user_id" name="user_id" required>
+            <button id="loadUserButton">Cargar Usuario</button>
+        </div>
+        <div id="userDetails" style="display: none;">
+            <p><strong>Nombre:</strong> <span id="userName"></span></p>
+            <p><strong>Email:</strong> <span id="userEmail"></span></p>
+            <p><strong>Rol:</strong> <span id="userRole"></span></p>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="chat-sidebar">
+            <h2>Opciones de Chat</h2>
+            
+            <div class="chat-option active" data-type="ai">
+                <h3>Asistente Virtual</h3>
+                <p>Consulta con nuestra IA médica para obtener información general sobre salud.</p>
+            </div>
+            
+            <div class="chat-option" data-type="doctors">
+                <h3>Médicos Disponibles</h3>
+                <p>Chatea directamente con un médico para consultas específicas.</p>
+                <div id="doctorsList" style="display: none;">
+                    <!-- Lista de médicos se cargará aquí -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-main">
+            <div class="chat-header">
+                <h2 id="chatTitle">Chat con Asistente Virtual</h2>
+                <p id="chatSubtitle">Pregunta cualquier duda sobre salud y recibirás orientación médica general.</p>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <div class="message message-ai">
+                    <div class="message-content">
+                        Hola, soy el asistente virtual de Salutia. ¿En qué puedo ayudarte hoy?
+                    </div>
+                    <div class="message-time">Ahora</div>
+                </div>
+                
+                <div class="typing-indicator" id="typingIndicator">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            
+            <div class="chat-input">
+                <textarea id="messageInput" placeholder="Escribe tu mensaje aquí..." rows="2"></textarea>
+                <button id="sendButton">Enviar</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Variables globales
+        let currentUserId = null;
+        let currentChatType = 'ai';
+        let currentDoctorId = null;
+        let currentDoctorName = '';
+        
+        // Elementos DOM
+        const userIdInput = document.getElementById('user_id');
+        const loadUserButton = document.getElementById('loadUserButton');
+        const userDetails = document.getElementById('userDetails');
+        const userName = document.getElementById('userName');
+        const userEmail = document.getElementById('userEmail');
+        const userRole = document.getElementById('userRole');
+        const chatOptions = document.querySelectorAll('.chat-option');
+        const doctorsList = document.getElementById('doctorsList');
+        const chatTitle = document.getElementById('chatTitle');
+        const chatSubtitle = document.getElementById('chatSubtitle');
+        const chatMessages = document.getElementById('chatMessages');
+        const messageInput = document.getElementById('messageInput');
+        const sendButton = document.getElementById('sendButton');
+        const typingIndicator = document.getElementById('typingIndicator');
+        
+        // Función para mostrar mensajes de error
+        function showError(message) {
+            const errorDiv = document.getElementById('error');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            
+            // Ocultar después de 5 segundos
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 5000);
+        }
+        
+        // Función para mostrar mensajes de éxito
+        function showSuccess(message) {
+            const successDiv = document.getElementById('success');
+            successDiv.textContent = message;
+            successDiv.style.display = 'block';
+            
+            // Ocultar después de 5 segundos
+            setTimeout(() => {
+                successDiv.style.display = 'none';
+            }, 5000);
+        }
+        
+        // Función para formatear la fecha
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleTimeString('es-ES', {
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+        
+        // Función para cargar un usuario
+        loadUserButton.addEventListener('click', async function() {
+            const userId = userIdInput.value;
+            
+            if (!userId) {
+                showError('Por favor, introduce un ID de usuario');
+                return;
+            }
+            
+            try {
+                // En una aplicación real, aquí verificaríamos el usuario con el servidor
+                // Para este ejemplo, simularemos la carga del usuario
+                
+                // Verificar si el usuario existe
+                const response = await fetch(`/backend/test_database.php?user_id=${userId}`);
+                const responseText = await response.text();
+                
+                // Buscar datos del usuario en la respuesta HTML
+                const userMatch = responseText.match(new RegExp(`<tr>\\s*<td>${userId}</td>\\s*<td>([^<]+)</td>\\s*<td>([^<]+)</td>\\s*<td>([^<]+)</td>\\s*<td>([^<]+)</td>`));
+                
+                if (userMatch) {
+                    currentUserId = userId;
+                    const email = userMatch[1];
+                    const firstName = userMatch[2];
+                    const lastName = userMatch[3];
+                    const role = userMatch[4];
+                    
+                    userName.textContent = `${firstName} ${lastName}`;
+                    userEmail.textContent = email;
+                    userRole.textContent = role;
+                    userDetails.style.display = 'block';
+                    
+                    showSuccess('Usuario cargado correctamente');
+                    
+                    // Cargar mensajes anteriores
+                    loadMessages();
+                    
+                    // Si el usuario es médico, mostrar opción diferente
+                    if (role === 'doctor') {
+                        // Cargar pacientes
+                        loadPatients();
+                    } else {
+                        // Cargar médicos disponibles
+                        loadDoctors();
+                    }
+                } else {
+                    showError('Usuario no encontrado');
+                }
+            } catch (error) {
+                console.error('Error al cargar usuario:', error);
+                showError('Error al cargar usuario: ' + error.message);
+            }
+        });
+        
+        // Función para cargar médicos disponibles
+        async function loadDoctors() {
+            try {
+                // En una aplicación real, aquí cargaríamos los médicos desde el servidor
+                // Para este ejemplo, simularemos algunos médicos
+                
+                const doctors = [
+                    { id: 1, name: 'Dr. Juan Pérez', specialty: 'Medicina General' },
+                    { id: 2, name: 'Dra. María López', specialty: 'Cardiología' },
+                    { id: 3, name: 'Dr. Carlos Rodríguez', specialty: 'Pediatría' }
+                ];
+                
+                doctorsList.innerHTML = '';
+                
+                doctors.forEach(doctor => {
+                    const doctorElement = document.createElement('div');
+                    doctorElement.classList.add('doctor-item');
+                    doctorElement.innerHTML = `
+                        <h4>${doctor.name}</h4>
+                        <p>${doctor.specialty}</p>
+                        <button class="select-doctor-btn" data-id="${doctor.id}" data-name="${doctor.name}">Chatear</button>
+                    `;
+                    doctorsList.appendChild(doctorElement);
+                });
+                
+                // Añadir eventos a los botones
+                document.querySelectorAll('.select-doctor-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const doctorId = this.dataset.id;
+                        const doctorName = this.dataset.name;
+                        selectDoctor(doctorId, doctorName);
+                    });
+                });
+            } catch (error) {
+                console.error('Error al cargar médicos:', error);
+                showError('Error al cargar médicos: ' + error.message);
+            }
+        }
+        
+        // Función para cargar pacientes (si el usuario es médico)
+        async function loadPatients() {
+            try {
+                // En una aplicación real, aquí cargaríamos los pacientes desde el servidor
+                // Para este ejemplo, simularemos algunos pacientes
+                
+                const patients = [
+                    { id: 4, name: 'Ana Martínez' },
+                    { id: 5, name: 'Pedro Sánchez' },
+                    { id: 6, name: 'Laura García' }
+                ];
+                
+                doctorsList.innerHTML = '<h3>Mis Pacientes</h3>';
+                
+                patients.forEach(patient => {
+                    const patientElement = document.createElement('div');
+                    patientElement.classList.add('doctor-item');
+                    patientElement.innerHTML = `
+                        <h4>${patient.name}</h4>
+                        <button class="select-patient-btn" data-id="${patient.id}" data-name="${patient.name}">Chatear</button>
+                    `;
+                    doctorsList.appendChild(patientElement);
+                });
+                
+                // Añadir eventos a los botones
+                document.querySelectorAll('.select-patient-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const patientId = this.dataset.id;
+                        const patientName = this.dataset.name;
+                        selectPatient(patientId, patientName);
+                    });
+                });
+            } catch (error) {
+                console.error('Error al cargar pacientes:', error);
+                showError('Error al cargar pacientes: ' + error.message);
+            }
+        }
+        
+        // Función para seleccionar un médico
+        function selectDoctor(doctorId, doctorName) {
+            currentChatType = 'doctor';
+            currentDoctorId = doctorId;
+            currentDoctorName = doctorName;
+            
+            chatTitle.textContent = `Chat con ${doctorName}`;
+            chatSubtitle.textContent = 'Consulta directamente con el médico para recibir atención personalizada.';
+            
+            // Limpiar mensajes anteriores
+            chatMessages.innerHTML = '';
+            
+            // Añadir mensaje de bienvenida
+            addMessage('Puedes comenzar a chatear con el médico. Te responderá lo antes posible.', 'system');
+            
+            // Cargar mensajes anteriores con este médico
+            loadMessages(doctorId);
+        }
+        
+        // Función para seleccionar un paciente (si el usuario es médico)
+        function selectPatient(patientId, patientName) {
+            currentChatType = 'patient';
+            currentDoctorId = patientId; // En este caso es el ID del paciente
+            currentDoctorName = patientName;
+            
+            chatTitle.textContent = `Chat con ${patientName}`;
+            chatSubtitle.textContent = 'Consulta con tu paciente para brindarle atención médica.';
+            
+            // Limpiar mensajes anteriores
+            chatMessages.innerHTML = '';
+            
+            // Añadir mensaje de bienvenida
+            addMessage('Puedes comenzar a chatear con tu paciente.', 'system');
+            
+            // Cargar mensajes anteriores con este paciente
+            loadMessages(patientId);
+        }
+        
+        // Función para cargar mensajes
+        async function loadMessages(otherId = null) {
+            if (!currentUserId) {
+                showError('Debes cargar un usuario primero');
+                return;
+            }
+            
+            try {
+                let url = `/backend/api/chat/get_messages.php?user_id=${currentUserId}`;
+                
+                if (otherId && (currentChatType === 'doctor' || currentChatType === 'patient')) {
+                    url += `&other_user_id=${otherId}`;
+                } else if (currentChatType === 'ai') {
+                    url += `&ai_only=true`;
+                }
+                
+                const response = await fetch(url);
+                const responseText = await response.text();
+                
+                try {
+                    const data = JSON.parse(responseText);
+                    
+                    if (data.success) {
+                        // Limpiar mensajes anteriores si estamos cargando una conversación específica
+                        if (otherId || currentChatType === 'ai') {
+                            chatMessages.innerHTML = '';
+                        }
+                        
+                        // Añadir mensaje de bienvenida para chat con IA
+                        if (currentChatType === 'ai' && data.data.length === 0) {
+                            addMessage('Hola, soy el asistente virtual de Salutia. ¿En qué puedo ayudarte hoy?', 'ai');
+                        }
+                        
+                        // Añadir mensajes
+                        data.data.forEach(message => {
+                            let messageType;
+                            
+                            if (message.is_ai_message === '1') {
+                                messageType = 'ai';
+                            } else if (message.sender_id === currentUserId) {
+                                messageType = 'user';
+                            } else {
+                                messageType = 'doctor'; // O podría ser 'patient' si el usuario es médico
+                            }
+                            
+                            addMessage(message.message, messageType, message.created_at);
+                        });
+                        
+                        // Scroll al final
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                    } else {
+                        showError(data.error || 'Error al cargar mensajes');
+                    }
+                } catch (jsonError) {
+                    console.error('Error al parsear JSON:', jsonError);
+                    showError('Error al parsear la respuesta JSON: ' + jsonError.message);
+                    
+                    if (responseText.includes('<')) {
+                        showError('La respuesta contiene HTML en lugar de JSON. Esto suele indicar un error en el servidor PHP.');
+                    }
+                }
+            } catch (error) {
+                console.error('Error al cargar mensajes:', error);
+                showError('Error al cargar mensajes: ' + error.message);
+            }
+        }
+        
+        // Función para añadir un mensaje al chat
+        function addMessage(message, type, timestamp = null) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            
+            if (type === 'user') {
+                messageElement.classList.add('message-user');
+            } else if (type === 'ai') {
+                messageElement.classList.add('message-ai');
+            } else if (type === 'doctor' || type === 'patient') {
+                messageElement.classList.add('message-doctor');
+            } else if (type === 'system') {
+                messageElement.classList.add('message-ai');
+                messageElement.style.fontStyle = 'italic';
+                messageElement.style.opacity = '0.7';
+            }
+            
+            const time = timestamp ? formatDate(timestamp) : 'Ahora';
+            
+            messageElement.innerHTML = `
+                <div class="message-content">${message}</div>
+                <div class="message-time">${time}</div>
+            `;
+            
+            // Insertar antes del indicador de escritura
+            chatMessages.insertBefore(messageElement, typingIndicator);
+            
+            // Scroll al final
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        // Función para enviar un mensaje
+        async function sendMessage() {
+            if (!currentUserId) {
+                showError('Debes cargar un usuario primero');
+                return;
+            }
+            
+            const message = messageInput.value.trim();
+            
+            if (!message) {
+                return;
+            }
+            
+            // Añadir mensaje al chat
+            addMessage(message, 'user');
+            
+            // Limpiar input
+            messageInput.value = '';
+            
+            // Mostrar indicador de escritura
+            typingIndicator.style.display = 'block';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            try {
+                const data = {
+                    sender_id: currentUserId,
+                    message: message
+                };
+                
+                // Si estamos chateando con un médico o paciente, añadir el ID del destinatario
+                if (currentChatType === 'doctor' || currentChatType === 'patient') {
+                    data.receiver_id = currentDoctorId;
+                }
+                
+                const response = await fetch('/backend/api/chat/send_message.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const responseText = await response.text();
+                
+                // Ocultar indicador de escritura
+                typingIndicator.style.display = 'none';
+                
+                try {
+                    const responseData = JSON.parse(responseText);
+                    
+                    if (responseData.success) {
+                        // Si es un chat con IA, mostrar la respuesta de la IA
+                        if (currentChatType === 'ai' && responseData.data.ai_response) {
+                            addMessage(responseData.data.ai_response.message, 'ai');
+                        }
+                    } else {
+                        showError(responseData.error || 'Error al enviar mensaje');
+                    }
+                } catch (jsonError) {
+                    console.error('Error al parsear JSON:', jsonError);
+                    showError('Error al parsear la respuesta JSON: ' + jsonError.message);
+                    
+                    if (responseText.includes('<')) {
+                        showError('La respuesta contiene HTML en lugar de JSON. Esto suele indicar un error en el servidor PHP.');
+                    }
+                }
+            } catch (error) {
+                console.error('Error al enviar mensaje:', error);
+                showError('Error al enviar mensaje: ' + error.message);
+                
+                // Ocultar indicador de escritura
+                typingIndicator.style.display = 'none';
+            }
+        }
+        
+        // Evento para enviar mensaje con el botón
+        sendButton.addEventListener('click', sendMessage);
+        
+        // Evento para enviar mensaje con Enter
+        messageInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+        
+        // Eventos para las opciones de chat
+        chatOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                const type = this.dataset.type;
+                
+                // Quitar clase active de todas las opciones
+                chatOptions.forEach(opt => opt.classList.remove('active'));
+                
+                // Añadir clase active a la opción seleccionada
+                this.classList.add('active');
+                
+                if (type === 'ai') {
+                    currentChatType = 'ai';
+                    currentDoctorId = null;
+                    currentDoctorName = '';
+                    
+                    chatTitle.textContent = 'Chat con Asistente Virtual';
+                    chatSubtitle.textContent = 'Pregunta cualquier duda sobre salud y recibirás orientación médica general.';
+                    
+                    // Ocultar lista de médicos
+                    doctorsList.style.display = 'none';
+                    
+                    // Cargar mensajes de IA
+                    loadMessages();
+                } else if (type === 'doctors') {
+                    // Mostrar lista de médicos
+                    doctorsList.style.display = 'block';
+                    
+                    // Si no se han cargado médicos, cargarlos
+                    if (doctorsList.children.length === 0) {
+                        if (userRole.textContent === 'doctor') {
+                            loadPatients();
+                        } else {
+                            loadDoctors();
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

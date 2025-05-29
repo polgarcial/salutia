@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensajes - Salutia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            background-color: white;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .sidebar .nav-link {
+            color: #495057;
+            padding: 10px 20px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+        .sidebar .nav-link:hover {
+            background-color: #e9ecef;
+        }
+        .sidebar .nav-link.active {
+            background-color: #0d6efd;
+            color: white;
+        }
+        .sidebar .nav-link i {
+            margin-right: 10px;
+        }
+        .main-content {
+            padding: 20px;
+        }
+        .message-list {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        .message-item {
+            padding: 15px;
+            border-bottom: 1px solid #e9ecef;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .message-item:hover {
+            background-color: #f8f9fa;
+        }
+        .message-item.active {
+            background-color: #e9ecef;
+        }
+        .message-item.unread {
+            background-color: #f0f7ff;
+        }
+        .message-item .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 15px;
+        }
+        .message-content {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            height: 100%;
+        }
+        .message-header {
+            padding: 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .message-body {
+            padding: 15px;
+            height: calc(100% - 130px);
+            overflow-y: auto;
+        }
+        .message-footer {
+            padding: 15px;
+            border-top: 1px solid #e9ecef;
+        }
+        .message-bubble {
+            max-width: 75%;
+            padding: 10px 15px;
+            border-radius: 15px;
+            margin-bottom: 10px;
+        }
+        .message-bubble.sent {
+            background-color: #0d6efd;
+            color: white;
+            margin-left: auto;
+            border-bottom-right-radius: 5px;
+        }
+        .message-bubble.received {
+            background-color: #e9ecef;
+            border-bottom-left-radius: 5px;
+        }
+        .message-time {
+            font-size: 0.75rem;
+            color: #6c757d;
+            margin-top: 5px;
+        }
+        .search-box {
+            position: relative;
+            margin-bottom: 15px;
+        }
+        .search-box .form-control {
+            padding-left: 40px;
+            border-radius: 20px;
+        }
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 12px;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 d-md-block sidebar p-0">
+                <div class="d-flex flex-column p-3">
+                    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
+                        <span class="fs-4 text-primary fw-bold">
+                            <i class="fas fa-heartbeat"></i> Salutia
+                        </span>
+                    </a>
+                    <hr>
+                    <ul class="nav nav-pills flex-column mb-auto">
+                        <li class="nav-item">
+                            <a href="doctor_dashboard.html" class="nav-link">
+                                <i class="fas fa-tachometer-alt"></i> Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a href="manage_schedule.html" class="nav-link">
+                                <i class="fas fa-calendar-alt"></i> Gestionar horarios
+                            </a>
+                        </li>
+                        <li>
+                            <a href="patients.html" class="nav-link">
+                                <i class="fas fa-user-injured"></i> Pacientes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="messages.html" class="nav-link active">
+                                <i class="fas fa-envelope"></i> Mensajes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="profile.html" class="nav-link">
+                                <i class="fas fa-user-md"></i> Mi perfil
+                            </a>
+                        </li>
+                    </ul>
+                    <hr>
+                    <button id="logoutBtn" class="btn btn-danger w-100">
+                        <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-9 col-lg-10 main-content">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h1>Mensajes</h1>
+                    <div class="user-info d-flex align-items-center">
+                        <span class="me-2" id="doctorName">Dr. Juan Pérez</span>
+                        <div class="avatar bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Lista de Mensajes -->
+                    <div class="col-md-4">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" class="form-control" id="searchMessages" placeholder="Buscar mensajes...">
+                        </div>
+                        
+                        <div class="message-list">
+                            <!-- Mensaje 1 -->
+                            <div class="message-item unread active" data-conversation="1">
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar bg-primary">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h6 class="mb-0">Pol Garcia</h6>
+                                            <small class="text-muted">10:30</small>
+                                        </div>
+                                        <p class="mb-0 text-truncate">Tengo una consulta sobre mi dolor lumbar...</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Mensaje 2 -->
+                            <div class="message-item" data-conversation="2">
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar bg-info">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h6 class="mb-0">Laura Martínez</h6>
+                                            <small class="text-muted">Ayer</small>
+                                        </div>
+                                        <p class="mb-0 text-truncate">Gracias por la consulta, me encuentro mucho mejor...</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Mensaje 3 -->
+                            <div class="message-item" data-conversation="3">
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar bg-warning">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h6 class="mb-0">Carlos Rodríguez</h6>
+                                            <small class="text-muted">Lun</small>
+                                        </div>
+                                        <p class="mb-0 text-truncate">¿Podría adelantar mi cita del próximo mes?</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Mensaje 4 -->
+                            <div class="message-item" data-conversation="4">
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar bg-danger">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h6 class="mb-0">Ana López</h6>
+                                            <small class="text-muted">23/05</small>
+                                        </div>
+                                        <p class="mb-0 text-truncate">Necesito renovar mi receta de medicación...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contenido del Mensaje -->
+                    <div class="col-md-8">
+                        <div class="message-content h-100">
+                            <div class="message-header">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <div class="avatar bg-primary me-2" style="width: 40px; height: 40px;">
+                                            <i class="fas fa-user"></i>
+                                        </div>
+                                        <div>
+                                            <h5 class="mb-0">Pol Garcia</h5>
+                                            <small class="text-muted">Última actividad: Hoy 10:30</small>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-outline-primary btn-sm me-2">
+                                            <i class="fas fa-phone"></i>
+                                        </button>
+                                        <button class="btn btn-outline-primary btn-sm">
+                                            <i class="fas fa-video"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="message-body" id="messageContent">
+                                <!-- Día -->
+                                <div class="text-center mb-3">
+                                    <span class="badge bg-light text-dark">Hoy, 28 de Mayo de 2025</span>
+                                </div>
+                                
+                                <!-- Mensaje recibido -->
+                                <div class="d-flex mb-3">
+                                    <div class="message-bubble received">
+                                        <p class="mb-0">Buenos días doctor, tengo una consulta sobre mi dolor lumbar. Desde hace unos días me duele más de lo normal, ¿debería tomar algún medicamento adicional?</p>
+                                        <div class="message-time text-end">10:15</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Mensaje enviado -->
+                                <div class="d-flex mb-3">
+                                    <div class="message-bubble sent">
+                                        <p class="mb-0">Buenos días Pol. ¿Has estado haciendo los ejercicios que te recomendé? Si el dolor ha aumentado, podrías tomar ibuprofeno 600mg cada 8 horas durante 3 días.</p>
+                                        <div class="message-time text-end">10:20</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Mensaje recibido -->
+                                <div class="d-flex mb-3">
+                                    <div class="message-bubble received">
+                                        <p class="mb-0">Sí, he estado haciendo los ejercicios, pero creo que levanté algo pesado ayer. Tomaré el ibuprofeno como me indica. ¿Debo seguir con los ejercicios o es mejor que descanse unos días?</p>
+                                        <div class="message-time text-end">10:30</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="message-footer">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Escribe un mensaje..." id="messageInput">
+                                    <button class="btn btn-primary" type="button" id="sendMessageBtn">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mostrar nombre del doctor
+            document.getElementById('doctorName').textContent = localStorage.getItem('user_name') || 'Doctor';
+            
+            // Configurar evento de logout
+            document.getElementById('logoutBtn').addEventListener('click', function() {
+                localStorage.removeItem('user_id');
+                localStorage.removeItem('user_role');
+                localStorage.removeItem('user_name');
+                localStorage.removeItem('token');
+                window.location.href = '../../index.html';
+            });
+            
+            // Configurar búsqueda de mensajes
+            document.getElementById('searchMessages').addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                const messageItems = document.querySelectorAll('.message-item');
+                
+                messageItems.forEach(item => {
+                    const senderName = item.querySelector('h6').textContent.toLowerCase();
+                    const messagePreview = item.querySelector('p').textContent.toLowerCase();
+                    
+                    if (senderName.includes(searchTerm) || messagePreview.includes(searchTerm)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Configurar selección de conversación
+            const messageItems = document.querySelectorAll('.message-item');
+            messageItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Eliminar clase active de todos los items
+                    messageItems.forEach(i => i.classList.remove('active'));
+                    
+                    // Añadir clase active al item seleccionado
+                    this.classList.add('active');
+                    
+                    // Marcar como leído
+                    this.classList.remove('unread');
+                    
+                    // Cargar la conversación
+                    loadConversation(this.dataset.conversation);
+                });
+            });
+            
+            // Configurar envío de mensajes
+            document.getElementById('sendMessageBtn').addEventListener('click', sendMessage);
+            document.getElementById('messageInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+            
+            // Función para cargar una conversación
+            function loadConversation(conversationId) {
+                // Aquí cargaríamos la conversación desde el servidor
+                // Para este ejemplo, solo cambiaremos el nombre del remitente
+                const conversationData = {
+                    '1': { name: 'Pol Garcia', avatar: 'bg-primary' },
+                    '2': { name: 'Laura Martínez', avatar: 'bg-info' },
+                    '3': { name: 'Carlos Rodríguez', avatar: 'bg-warning' },
+                    '4': { name: 'Ana López', avatar: 'bg-danger' }
+                };
+                
+                const conversation = conversationData[conversationId];
+                if (conversation) {
+                    document.querySelector('.message-header h5').textContent = conversation.name;
+                    document.querySelector('.message-header .avatar').className = `avatar ${conversation.avatar} me-2`;
+                }
+            }
+            
+            // Función para enviar un mensaje
+            function sendMessage() {
+                const messageInput = document.getElementById('messageInput');
+                const messageText = messageInput.value.trim();
+                
+                if (messageText) {
+                    const messageContent = document.getElementById('messageContent');
+                    const now = new Date();
+                    const timeString = now.getHours().toString().padStart(2, '0') + ':' + 
+                                      now.getMinutes().toString().padStart(2, '0');
+                    
+                    const messageHtml = `
+                        <div class="d-flex mb-3">
+                            <div class="message-bubble sent">
+                                <p class="mb-0">${messageText}</p>
+                                <div class="message-time text-end">${timeString}</div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    messageContent.insertAdjacentHTML('beforeend', messageHtml);
+                    messageInput.value = '';
+                    
+                    // Scroll al final de la conversación
+                    messageContent.scrollTop = messageContent.scrollHeight;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

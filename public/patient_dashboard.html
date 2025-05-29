@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Paciente - Salutia</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Estilos personalizados -->
+    <style>
+        :root {
+            --primary-color: #4e73df;
+            --secondary-color: #1cc88a;
+            --dark-color: #5a5c69;
+            --light-color: #f8f9fc;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            font-family: 'Nunito', sans-serif;
+        }
+        
+        .sidebar {
+            background: linear-gradient(180deg, var(--primary-color) 10%, #224abe 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            padding: 1rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            border-radius: 0.35rem;
+        }
+        
+        .sidebar .nav-link:hover {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .sidebar .nav-link.active {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .sidebar .nav-link i {
+            margin-right: 0.5rem;
+        }
+        
+        .content-wrapper {
+            min-height: 100vh;
+        }
+        
+        .topbar {
+            height: 4.375rem;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+        }
+        
+        .card {
+            border: none;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+        }
+        
+        .card-header {
+            background-color: white;
+            border-bottom: 1px solid #e3e6f0;
+            font-weight: 700;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-success {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .patient-name {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .tab-pane {
+            padding: 1.5rem 0;
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+            box-shadow: 0 0.5rem 1.5rem 0 rgba(58, 59, 69, 0.15);
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 sidebar d-none d-md-block p-0">
+                <div class="d-flex flex-column p-3">
+                    <h4 class="text-center mb-4">Salutia</h4>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#dashboard" data-bs-toggle="tab">
+                                <i class="fas fa-home"></i> Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#appointments" data-bs-toggle="tab">
+                                <i class="fas fa-calendar-alt"></i> Mis Citas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#search-doctors" data-bs-toggle="tab">
+                                <i class="fas fa-search"></i> Buscar Médicos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#profile" data-bs-toggle="tab">
+                                <i class="fas fa-user"></i> Mi Perfil
+                            </a>
+                        </li>
+                        <li class="nav-item mt-auto">
+                            <a class="nav-link btn-salir" href="#">
+                                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Contenido principal -->
+            <div class="col-md-9 col-lg-10 ms-auto content-wrapper p-0">
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand topbar mb-4 static-top bg-white">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="d-none d-md-flex">
+                            <h5 class="mb-0">Bienvenido, <span class="patient-name">Paciente</span></h5>
+                        </div>
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                                    <i class="fas fa-user-circle fa-fw"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="#profile" data-bs-toggle="tab">
+                                        <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>
+                                        Perfil
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item btn-salir" href="#">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>
+                                        Cerrar Sesión
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                
+                <!-- Contenido -->
+                <div class="container-fluid px-4">
+                    <!-- Contenido de las pestañas -->
+                    <div class="tab-content">
+                        <!-- Dashboard -->
+                        <div class="tab-pane fade show active" id="dashboard">
+                            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                                <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                                <a href="#search-doctors" data-bs-toggle="tab" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                                    <i class="fas fa-plus fa-sm text-white-50"></i> Nueva Cita
+                                </a>
+                            </div>
+                            
+                            <!-- Tarjetas de información -->
+                            <div class="row">
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                        Próximas Citas
+                                                    </div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="upcoming-count">0</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-success shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                        Citas Completadas
+                                                    </div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="completed-count">0</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-check-circle fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-info shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                        Médicos Visitados
+                                                    </div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="doctors-count">0</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-user-md fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-warning shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                        Notificaciones
+                                                    </div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-bell fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Próximas citas -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card shadow mb-4">
+                                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                            <h6 class="m-0 font-weight-bold text-primary">Próximas Citas</h6>
+                                            <a href="#appointments" data-bs-toggle="tab" class="btn btn-sm btn-primary">
+                                                Ver Todas
+                                            </a>
+                                        </div>
+                                        <div class="card-body">
+                                            <div id="upcoming-appointments">
+                                                <div class="text-center">
+                                                    <div class="spinner-border text-primary" role="status">
+                                                        <span class="visually-hidden">Cargando...</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Mis Citas -->
+                        <div class="tab-pane fade" id="appointments">
+                            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                                <h1 class="h3 mb-0 text-gray-800">Mis Citas</h1>
+                                <a href="#search-doctors" data-bs-toggle="tab" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                                    <i class="fas fa-plus fa-sm text-white-50"></i> Nueva Cita
+                                </a>
+                            </div>
+                            
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Historial de Citas</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="appointments-table" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Fecha</th>
+                                                    <th>Hora</th>
+                                                    <th>Médico</th>
+                                                    <th>Especialidad</th>
+                                                    <th>Estado</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="6" class="text-center">
+                                                        <div class="spinner-border text-primary" role="status">
+                                                            <span class="visually-hidden">Cargando...</span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Buscar Médicos -->
+                        <div class="tab-pane fade" id="search-doctors">
+                            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                                <h1 class="h3 mb-0 text-gray-800">Buscar Médicos</h1>
+                            </div>
+                            
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Filtros de Búsqueda</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row g-3">
+                                        <div class="col-md-4">
+                                            <label for="specialty-select" class="form-label">Especialidad</label>
+                                            <select class="form-select" id="specialty-select">
+                                                <option value="">Todas las especialidades</option>
+                                                <option value="Cardiología">Cardiología</option>
+                                                <option value="Dermatología">Dermatología</option>
+                                                <option value="Endocrinología">Endocrinología</option>
+                                                <option value="Gastroenterología">Gastroenterología</option>
+                                                <option value="Geriatría">Geriatría</option>
+                                                <option value="Ginecología">Ginecología</option>
+                                                <option value="Hematología">Hematología</option>
+                                                <option value="Infectología">Infectología</option>
+                                                <option value="Medicina Familiar">Medicina Familiar</option>
+                                                <option value="Medicina Interna">Medicina Interna</option>
+                                                <option value="Nefrología">Nefrología</option>
+                                                <option value="Neumología">Neumología</option>
+                                                <option value="Neurología">Neurología</option>
+                                                <option value="Oftalmología">Oftalmología</option>
+                                                <option value="Oncología">Oncología</option>
+                                                <option value="Otorrinolaringología">Otorrinolaringología</option>
+                                                <option value="Pediatría">Pediatría</option>
+                                                <option value="Psiquiatría">Psiquiatría</option>
+                                                <option value="Reumatología">Reumatología</option>
+                                                <option value="Traumatología">Traumatología</option>
+                                                <option value="Urología">Urología</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="doctor-name-input" class="form-label">Nombre del Médico</label>
+                                            <input type="text" class="form-control" id="doctor-name-input" placeholder="Buscar por nombre...">
+                                        </div>
+                                        <div class="col-md-2 d-flex align-items-end">
+                                            <button class="btn btn-primary w-100" id="search-doctor-button">
+                                                <i class="fas fa-search"></i> Buscar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="doctor-search-results">
+                                <!-- Los resultados de la búsqueda se mostrarán aquí -->
+                                <div class="alert alert-info">
+                                    Utiliza los filtros para buscar médicos disponibles.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Mi Perfil -->
+                        <div class="tab-pane fade" id="profile">
+                            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                                <h1 class="h3 mb-0 text-gray-800">Mi Perfil</h1>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="card shadow mb-4">
+                                        <div class="card-header py-3">
+                                            <h6 class="m-0 font-weight-bold text-primary">Información Personal</h6>
+                                        </div>
+                                        <div class="card-body text-center">
+                                            <img src="https://via.placeholder.com/150" class="img-fluid rounded-circle mb-3" alt="Foto de perfil">
+                                            <h5 class="patient-name">Nombre del Paciente</h5>
+                                            <p class="text-muted">Paciente</p>
+                                            <hr>
+                                            <div class="text-start">
+                                                <p><strong>Email:</strong> <span id="profile-email">email@ejemplo.com</span></p>
+                                                <p><strong>Teléfono:</strong> <span id="profile-phone">+34 600 000 000</span></p>
+                                                <p><strong>Fecha de Nacimiento:</strong> <span id="profile-dob">01/01/1990</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-8">
+                                    <div class="card shadow mb-4">
+                                        <div class="card-header py-3">
+                                            <h6 class="m-0 font-weight-bold text-primary">Editar Perfil</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <form id="profile-form">
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <label for="profile-name" class="form-label">Nombre Completo</label>
+                                                        <input type="text" class="form-control" id="profile-name" placeholder="Nombre completo">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="profile-email-input" class="form-label">Email</label>
+                                                        <input type="email" class="form-control" id="profile-email-input" placeholder="Email">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <label for="profile-phone-input" class="form-label">Teléfono</label>
+                                                        <input type="tel" class="form-control" id="profile-phone-input" placeholder="Teléfono">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="profile-dob-input" class="form-label">Fecha de Nacimiento</label>
+                                                        <input type="date" class="form-control" id="profile-dob-input">
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="profile-address" class="form-label">Dirección</label>
+                                                    <input type="text" class="form-control" id="profile-address" placeholder="Dirección completa">
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <label for="profile-city" class="form-label">Ciudad</label>
+                                                        <input type="text" class="form-control" id="profile-city" placeholder="Ciudad">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="profile-postal" class="form-label">Código Postal</label>
+                                                        <input type="text" class="form-control" id="profile-postal" placeholder="Código Postal">
+                                                    </div>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="card shadow">
+                                        <div class="card-header py-3">
+                                            <h6 class="m-0 font-weight-bold text-primary">Cambiar Contraseña</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <form id="password-form">
+                                                <div class="mb-3">
+                                                    <label for="current-password" class="form-label">Contraseña Actual</label>
+                                                    <input type="password" class="form-control" id="current-password">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="new-password" class="form-label">Nueva Contraseña</label>
+                                                    <input type="password" class="form-control" id="new-password">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="confirm-password" class="form-label">Confirmar Contraseña</label>
+                                                    <input type="password" class="form-control" id="confirm-password">
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Cambiar Contraseña</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script personalizado -->
+    <script src="js/patient_dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservar Cita - Salutia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --primary-dark: #0d47a1;
+            --secondary: #34a853;
+            --accent: #ea4335;
+            --light: #f8f9fa;
+            --dark: #202124;
+            --gray: #5f6368;
+            --gradient-primary: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .navbar-brand img {
+            height: 30px;
+            margin-right: 10px;
+        }
+        
+        .main-container {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+        
+        .card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-header {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 500;
+        }
+        
+        .doctor-card {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .doctor-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+        }
+        
+        .time-slot {
+            display: inline-block;
+            padding: 8px 12px;
+            margin: 5px;
+            border-radius: 20px;
+            background-color: var(--light);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .time-slot:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .time-slot.selected {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 500;
+        }
+        
+        .time-slot.unavailable {
+            background-color: #f1f1f1;
+            color: #999;
+            border-color: #ddd;
+            cursor: not-allowed;
+        }
+        
+        .date-picker .btn {
+            border-radius: 20px;
+        }
+        
+        .confirmation-details {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-heartbeat"></i> Salutia
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="patient_dashboard.html">Mi Panel</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="patient_appointments.html">Mis Citas</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <span class="text-white me-3" id="userName">Paciente</span>
+                    <button class="btn btn-outline-light" onclick="logout()">
+                        <i class="fas fa-sign-out-alt me-1"></i> Cerrar Sesión
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container main-container">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h1 class="mb-4"><i class="fas fa-calendar-plus text-primary me-2"></i>Reservar Cita</h1>
+                
+                <!-- Stepper -->
+                <div class="card mb-4">
+                    <div class="card-body p-0">
+                        <div class="row g-0 text-center">
+                            <div class="col-4 p-3 border-end" id="step1" style="background-color: var(--primary); color: white;">
+                                <h5 class="mb-0"><i class="fas fa-user-md me-2"></i>1. Seleccionar Médico</h5>
+                            </div>
+                            <div class="col-4 p-3 border-end" id="step2">
+                                <h5 class="mb-0"><i class="fas fa-calendar-day me-2"></i>2. Elegir Fecha y Hora</h5>
+                            </div>
+                            <div class="col-4 p-3" id="step3">
+                                <h5 class="mb-0"><i class="fas fa-check-circle me-2"></i>3. Confirmar Cita</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 1: Select Doctor -->
+                <div id="doctorSelection" class="mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="mb-0">Selecciona un médico</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row" id="doctorsList">
+                                <!-- Doctors will be loaded here -->
+                                <div class="text-center py-5">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Cargando...</span>
+                                    </div>
+                                    <p class="mt-2">Cargando médicos disponibles...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 2: Select Date and Time -->
+                <div id="dateTimeSelection" class="mb-4" style="display: none;">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h3 class="mb-0">Selecciona fecha y hora</h3>
+                            <button class="btn btn-sm btn-outline-light" onclick="goToStep(1)">
+                                <i class="fas fa-arrow-left me-1"></i> Volver
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <div class="doctor-info d-flex align-items-center">
+                                        <img src="https://via.placeholder.com/80" alt="Doctor" class="doctor-avatar me-3" id="selectedDoctorImage">
+                                        <div>
+                                            <h4 id="selectedDoctorName">Dr. Nombre Apellido</h4>
+                                            <p class="text-muted mb-0" id="selectedDoctorSpecialty">Especialidad</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="date-picker d-flex justify-content-end">
+                                        <button class="btn btn-outline-primary me-2" id="prevWeekBtn">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </button>
+                                        <div class="btn btn-primary" id="currentWeekDisplay">
+                                            Semana actual
+                                        </div>
+                                        <button class="btn btn-outline-primary ms-2" id="nextWeekBtn">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="calendar-container">
+                                <div class="row mb-3 text-center" id="daysContainer">
+                                    <!-- Days will be loaded here -->
+                                </div>
+                                
+                                <div id="timeSlots" class="text-center">
+                                    <p class="text-muted">Selecciona una fecha para ver los horarios disponibles</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 3: Confirmation -->
+                <div id="confirmationStep" class="mb-4" style="display: none;">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h3 class="mb-0">Confirmar cita</h3>
+                            <button class="btn btn-sm btn-outline-light" onclick="goToStep(2)">
+                                <i class="fas fa-arrow-left me-1"></i> Volver
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="mb-3">Detalles de la cita</h4>
+                                    <div class="confirmation-details">
+                                        <div class="mb-3">
+                                            <strong><i class="fas fa-user-md me-2"></i>Médico:</strong>
+                                            <div id="confirmDoctorName" class="ms-4 mt-1">Dr. Nombre Apellido</div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <strong><i class="fas fa-stethoscope me-2"></i>Especialidad:</strong>
+                                            <div id="confirmSpecialty" class="ms-4 mt-1">Especialidad</div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <strong><i class="fas fa-calendar-day me-2"></i>Fecha:</strong>
+                                            <div id="confirmDate" class="ms-4 mt-1">01/01/2023</div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <strong><i class="fas fa-clock me-2"></i>Hora:</strong>
+                                            <div id="confirmTime" class="ms-4 mt-1">10:00</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="mb-3">Motivo de la consulta</h4>
+                                    <div class="form-floating mb-3">
+                                        <textarea class="form-control" id="appointmentReason" style="height: 150px"></textarea>
+                                        <label for="appointmentReason">Describe brevemente el motivo de tu consulta (opcional)</label>
+                                    </div>
+                                    <div class="d-grid">
+                                        <button class="btn btn-primary btn-lg" onclick="confirmAppointment()">
+                                            <i class="fas fa-check-circle me-2"></i> Confirmar Cita
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Success Message -->
+                <div id="successMessage" class="text-center py-5" style="display: none;">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="text-center mb-4">
+                                <i class="fas fa-check-circle text-success" style="font-size: 5rem;"></i>
+                            </div>
+                            <h2 class="mb-3">¡Cita Reservada Exitosamente!</h2>
+                            <p class="mb-4">Tu cita ha sido programada correctamente. Recibirás un recordatorio antes de la fecha.</p>
+                            <div class="confirmation-details mx-auto" style="max-width: 400px;">
+                                <div class="mb-3">
+                                    <strong><i class="fas fa-user-md me-2"></i>Médico:</strong>
+                                    <div id="successDoctorName" class="ms-4 mt-1">Dr. Nombre Apellido</div>
+                                </div>
+                                <div class="mb-3">
+                                    <strong><i class="fas fa-calendar-day me-2"></i>Fecha:</strong>
+                                    <div id="successDate" class="ms-4 mt-1">01/01/2023</div>
+                                </div>
+                                <div class="mb-3">
+                                    <strong><i class="fas fa-clock me-2"></i>Hora:</strong>
+                                    <div id="successTime" class="ms-4 mt-1">10:00</div>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <a href="patient_appointments.html" class="btn btn-primary me-2">
+                                    <i class="fas fa-calendar-check me-1"></i> Ver Mis Citas
+                                </a>
+                                <a href="patient_dashboard.html" class="btn btn-outline-primary">
+                                    <i class="fas fa-home me-1"></i> Ir al Dashboard
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-heartbeat me-2"></i>Salutia</h5>
+                    <p class="small">Plataforma de gestión de citas médicas</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="small">&copy; 2023 Salutia. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap & Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Global variables
+        let selectedDoctor = null;
+        let selectedDate = null;
+        let selectedTime = null;
+        let currentWeekStart = new Date();
+        currentWeekStart.setDate(currentWeekStart.getDate() - currentWeekStart.getDay() + 1); // Start from Monday
+        
+        // Format date as YYYY-MM-DD
+        function formatDate(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+        
+        // Format date for display (DD/MM/YYYY)
+        function formatDateDisplay(date) {
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const year = date.getFullYear();
+            return `${day}/${month}/${year}`;
+        }
+        
+        // Check authentication
+        function checkAuthentication() {
+            const userData = JSON.parse(localStorage.getItem('userData'));
+            if (!userData || userData.role !== 'patient') {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            document.getElementById('userName').textContent = userData.name || 'Paciente';
+            
+            // Load doctors
+            loadDoctors();
+        }
+        
+        // Logout function
+        function logout() {
+            localStorage.removeItem('userData');
+            window.location.href = 'login.html';
+        }
+        
+        // Load doctors
+        async function loadDoctors() {
+            try {
+                const response = await fetch('backend/api/doctors.php');
+                const data = await response.json();
+                
+                if (data.success && data.doctors.length > 0) {
+                    const doctorsContainer = document.getElementById('doctorsList');
+                    doctorsContainer.innerHTML = '';
+                    
+                    data.doctors.forEach(doctor => {
+                        const doctorCard = document.createElement('div');
+                        doctorCard.className = 'col-md-4 mb-4';
+                        doctorCard.innerHTML = `
+                            <div class="card doctor-card h-100" onclick="selectDoctor(${doctor.id}, '${doctor.name}', '${doctor.specialty}')">
+                                <div class="card-body text-center">
+                                    <img src="${doctor.image || 'https://via.placeholder.com/150'}" alt="${doctor.name}" class="doctor-avatar mb-3">
+                                    <h5 class="card-title">${doctor.name}</h5>
+                                    <p class="card-text text-muted">${doctor.specialty}</p>
+                                    <button class="btn btn-outline-primary mt-2">
+                                        <i class="fas fa-calendar-plus me-1"></i> Seleccionar
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                        doctorsContainer.appendChild(doctorCard);
+                    });
+                } else {
+                    document.getElementById('doctorsList').innerHTML = `
+                        <div class="col-12 text-center py-5">
+                            <i class="fas fa-user-md text-muted" style="font-size: 3rem;"></i>
+                            <p class="mt-3">No hay médicos disponibles en este momento.</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('doctorsList').innerHTML = `
+                    <div class="col-12 text-center py-5">
+                        <i class="fas fa-exclamation-triangle text-warning" style="font-size: 3rem;"></i>
+                        <p class="mt-3">Error al cargar los médicos. Inténtalo de nuevo más tarde.</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Select doctor and go to step 2
+        function selectDoctor(id, name, specialty) {
+            selectedDoctor = {
+                id: id,
+                name: name,
+                specialty: specialty
+            };
+            
+            // Update doctor info in step 2
+            document.getElementById('selectedDoctorName').textContent = name;
+            document.getElementById('selectedDoctorSpecialty').textContent = specialty;
+            
+            // Go to step 2
+            goToStep(2);
+            
+            // Load availability for the current week
+            loadWeekDays();
+        }
+        
+        // Load week days
+        function loadWeekDays() {
+            const daysContainer = document.getElementById('daysContainer');
+            daysContainer.innerHTML = '';
+            
+            const dayNames = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
+            const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+            
+            // Update current week display
+            const weekEndDate = new Date(currentWeekStart);
+            weekEndDate.setDate(weekEndDate.getDate() + 6);
+            document.getElementById('currentWeekDisplay').textContent = `
+                ${currentWeekStart.getDate()} ${monthNames[currentWeekStart.getMonth()]} - 
+                ${weekEndDate.getDate()} ${monthNames[weekEndDate.getMonth()]} ${weekEndDate.getFullYear()}
+            `;
+            
+            // Create columns for each day
+            for (let i = 0; i < 7; i++) {
+                const date = new Date(currentWeekStart);
+                date.setDate(date.getDate() + i);
+                
+                const dayCol = document.createElement('div');
+                dayCol.className = 'col';
+                
+                const isWeekend = i >= 5; // Saturday or Sunday
+                const isPast = date < new Date().setHours(0, 0, 0, 0);
+                const isDisabled = isWeekend || isPast;
+                
+                dayCol.innerHTML = `
+                    <div class="card ${isDisabled ? 'bg-light' : ''}" ${!isDisabled ? `onclick="selectDate('${formatDate(date)}')"` : ''} 
+                         style="${isDisabled ? 'cursor: not-allowed; opacity: 0.7;' : 'cursor: pointer;'}">
+                        <div class="card-body text-center py-3">
+                            <h5 class="mb-1">${dayNames[i]}</h5>
+                            <p class="mb-0 fw-bold">${date.getDate()}</p>
+                            <small>${monthNames[date.getMonth()]}</small>
+                        </div>
+                    </div>
+                `;
+                
+                daysContainer.appendChild(dayCol);
+            }
+        }
+        
+        // Navigate to previous week
+        document.getElementById('prevWeekBtn').addEventListener('click', function() {
+            const prevWeek = new Date(currentWeekStart);
+            prevWeek.setDate(prevWeek.getDate() - 7);
+            
+            // Don't allow going to past weeks
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            const mondayOfThisWeek = new Date(today);
+            mondayOfThisWeek.setDate(today.getDate() - today.getDay() + 1);
+            
+            if (prevWeek >= mondayOfThisWeek) {
+                currentWeekStart = prevWeek;
+                loadWeekDays();
+                
+                // Clear selected date and time slots
+                selectedDate = null;
+                document.getElementById('timeSlots').innerHTML = `
+                    <p class="text-muted">Selecciona una fecha para ver los horarios disponibles</p>
+                `;
+            }
+        });
+        
+        // Navigate to next week
+        document.getElementById('nextWeekBtn').addEventListener('click', function() {
+            const nextWeek = new Date(currentWeekStart);
+            nextWeek.setDate(nextWeek.getDate() + 7);
+            
+            // Limit to 4 weeks in the future
+            const fourWeeksLater = new Date();
+            fourWeeksLater.setDate(fourWeeksLater.getDate() + 28);
+            
+            if (nextWeek <= fourWeeksLater) {
+                currentWeekStart = nextWeek;
+                loadWeekDays();
+                
+                // Clear selected date and time slots
+                selectedDate = null;
+                document.getElementById('timeSlots').innerHTML = `
+                    <p class="text-muted">Selecciona una fecha para ver los horarios disponibles</p>
+                `;
+            }
+        });
+        
+        // Select date and load available time slots
+        async function selectDate(dateStr) {
+            selectedDate = dateStr;
+            
+            // Show loading
+            document.getElementById('timeSlots').innerHTML = `
+                <div class="text-center py-3">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Cargando...</span>
+                    </div>
+                    <p class="mt-2">Cargando horarios disponibles...</p>
+                </div>
+            `;
+            
+            try {
+                // Get doctor availability for the selected date
+                const response = await fetch(`backend/api/doctor_availability_simple.php?doctor_id=${selectedDoctor.id}&start_date=${dateStr}&end_date=${dateStr}`);
+                const data = await response.json();
+                
+                const timeSlotsContainer = document.getElementById('timeSlots');
+                
+                if (data.success && data.availability && data.availability[dateStr] && data.availability[dateStr].length > 0) {
+                    timeSlotsContainer.innerHTML = `
+                        <h5 class="mb-3">Horarios disponibles para el ${formatDateDisplay(new Date(dateStr))}</h5>
+                        <div class="time-slots-container"></div>
+                    `;
+                    
+                    const slotsContainer = timeSlotsContainer.querySelector('.time-slots-container');
+                    
+                    // Sort time slots
+                    const timeSlots = data.availability[dateStr].sort();
+                    
+                    timeSlots.forEach(slot => {
+                        // Format time for display (remove seconds)
+                        const displayTime = slot.substring(0, 5);
+                        
+                        const timeSlotBtn = document.createElement('div');
+                        timeSlotBtn.className = 'time-slot';
+                        timeSlotBtn.textContent = displayTime;
+                        timeSlotBtn.onclick = () => selectTimeSlot(slot, displayTime);
+                        
+                        slotsContainer.appendChild(timeSlotBtn);
+                    });
+                } else {
+                    timeSlotsContainer.innerHTML = `
+                        <div class="text-center py-3">
+                            <i class="fas fa-calendar-times text-muted" style="font-size: 2rem;"></i>
+                            <p class="mt-2">No hay horarios disponibles para esta fecha.</p>
+                            <p class="text-muted small">Por favor, selecciona otra fecha.</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('timeSlots').innerHTML = `
+                    <div class="text-center py-3">
+                        <i class="fas fa-exclamation-triangle text-warning" style="font-size: 2rem;"></i>
+                        <p class="mt-2">Error al cargar los horarios. Inténtalo de nuevo.</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Select time slot
+        function selectTimeSlot(timeSlot, displayTime) {
+            selectedTime = timeSlot;
+            
+            // Update selected time slot UI
+            const timeSlots = document.querySelectorAll('.time-slot');
+            timeSlots.forEach(slot => {
+                slot.classList.remove('selected');
+                if (slot.textContent === displayTime) {
+                    slot.classList.add('selected');
+                }
+            });
+            
+            // Show continue button
+            const timeSlotsContainer = document.getElementById('timeSlots');
+            
+            // Check if continue button already exists
+            if (!document.getElementById('continueBtn')) {
+                const continueBtn = document.createElement('button');
+                continueBtn.id = 'continueBtn';
+                continueBtn.className = 'btn btn-primary mt-4';
+                continueBtn.innerHTML = '<i class="fas fa-arrow-right me-2"></i> Continuar';
+                continueBtn.onclick = () => goToStep(3);
+                
+                timeSlotsContainer.appendChild(continueBtn);
+            }
+            
+            // Update confirmation details
+            document.getElementById('confirmDoctorName').textContent = selectedDoctor.name;
+            document.getElementById('confirmSpecialty').textContent = selectedDoctor.specialty;
+            document.getElementById('confirmDate').textContent = formatDateDisplay(new Date(selectedDate));
+            document.getElementById('confirmTime').textContent = displayTime;
+        }
+        
+        // Navigate between steps
+        function goToStep(step) {
+            // Hide all steps
+            document.getElementById('doctorSelection').style.display = 'none';
+            document.getElementById('dateTimeSelection').style.display = 'none';
+            document.getElementById('confirmationStep').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'none';
+            
+            // Reset step indicators
+            document.getElementById('step1').style.backgroundColor = '';
+            document.getElementById('step1').style.color = '';
+            document.getElementById('step2').style.backgroundColor = '';
+            document.getElementById('step2').style.color = '';
+            document.getElementById('step3').style.backgroundColor = '';
+            document.getElementById('step3').style.color = '';
+            
+            // Show selected step
+            if (step === 1) {
+                document.getElementById('doctorSelection').style.display = 'block';
+                document.getElementById('step1').style.backgroundColor = 'var(--primary)';
+                document.getElementById('step1').style.color = 'white';
+            } else if (step === 2) {
+                document.getElementById('dateTimeSelection').style.display = 'block';
+                document.getElementById('step2').style.backgroundColor = 'var(--primary)';
+                document.getElementById('step2').style.color = 'white';
+            } else if (step === 3) {
+                document.getElementById('confirmationStep').style.display = 'block';
+                document.getElementById('step3').style.backgroundColor = 'var(--primary)';
+                document.getElementById('step3').style.color = 'white';
+            } else if (step === 4) {
+                document.getElementById('successMessage').style.display = 'block';
+            }
+        }
+        
+        // Confirm appointment
+        async function confirmAppointment() {
+            if (!selectedDoctor || !selectedDate || !selectedTime) {
+                alert('Por favor, completa todos los campos requeridos.');
+                return;
+            }
+            
+            // Get user data
+            const userData = JSON.parse(localStorage.getItem('userData'));
+            if (!userData || !userData.id) {
+                alert('Debes iniciar sesión para reservar una cita.');
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            const reason = document.getElementById('appointmentReason').value;
+            
+            // Show loading
+            const confirmBtn = document.querySelector('#confirmationStep .btn-primary');
+            const originalBtnText = confirmBtn.innerHTML;
+            confirmBtn.disabled = true;
+            confirmBtn.innerHTML = `
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Procesando...
+            `;
+            
+            try {
+                const response = await fetch('backend/api/appointments.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${userData.token}`
+                    },
+                    body: JSON.stringify({
+                        doctor_id: selectedDoctor.id,
+                        date: selectedDate,
+                        time: selectedTime,
+                        reason: reason
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Update success message
+                    document.getElementById('successDoctorName').textContent = selectedDoctor.name;
+                    document.getElementById('successDate').textContent = formatDateDisplay(new Date(selectedDate));
+                    document.getElementById('successTime').textContent = selectedTime.substring(0, 5);
+                    
+                    // Show success message
+                    goToStep(4);
+                } else {
+                    alert(`Error: ${data.error || 'No se pudo crear la cita. Inténtalo de nuevo.'}`);
+                    confirmBtn.disabled = false;
+                    confirmBtn.innerHTML = originalBtnText;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.');
+                confirmBtn.disabled = false;
+                confirmBtn.innerHTML = originalBtnText;
+            }
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', checkAuthentication);
+    </script>
+</body>
+</html>

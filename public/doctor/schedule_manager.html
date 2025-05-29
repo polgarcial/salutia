@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Horarios - Salutia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    ../css/styles.cssfrontend/css/<link href="" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --primary-dark: #0d47a1;
+            --secondary: #34a853;
+            --accent: #ea4335;
+            --light: #f8f9fa;
+            --dark: #202124;
+            --gray: #5f6368;
+            --gradient-primary: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+            --gradient-secondary: linear-gradient(135deg, #34a853 0%, #1e8e3e 100%);
+        }
+        
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .main-container {
+            flex: 1;
+            padding: 2rem 0;
+        }
+        
+        .card {
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s;
+            border: none;
+            margin-bottom: 2rem;
+        }
+        
+        .card-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: 80px repeat(5, 1fr);
+            gap: 2px;
+            background-color: rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .grid-header, .time-cell, .schedule-cell {
+            padding: 12px 8px;
+            background-color: white;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .grid-header {
+            font-weight: 600;
+            background-color: rgba(26, 115, 232, 0.1);
+            color: var(--primary-dark);
+            padding: 15px 8px;
+            position: relative;
+        }
+        
+        .grid-header .day-name {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+        
+        .grid-header .date-info {
+            font-size: 0.75rem;
+            font-weight: normal;
+            opacity: 0.7;
+        }
+        
+        .time-cell {
+            font-weight: 500;
+            background-color: rgba(26, 115, 232, 0.05);
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+        
+        .schedule-cell {
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-radius: 4px;
+            height: 100%;
+            min-height: 45px;
+        }
+        
+        .schedule-cell {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .schedule-cell.available {
+            background-color: rgba(52, 168, 83, 0.15);
+            border: 1px solid rgba(52, 168, 83, 0.3);
+            color: #1e8e3e;
+            font-weight: 500;
+        }
+        
+        .schedule-cell:hover {
+            transform: scale(0.98);
+            box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.3);
+        }
+        
+        .schedule-cell.available:hover {
+            background-color: rgba(52, 168, 83, 0.25);
+        }
+        
+        .day-cell {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: all 0.2s;
+            height: 40px;
+            border-radius: 4px;
+        }
+        
+        .day-cell:hover {
+            background-color: #e9ecef;
+        }
+        
+        .day-cell.available {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+        
+        .day-cell.available:hover {
+            background-color: #c3e6cb;
+        }
+        
+        .schedule-templates {
+            margin: 20px 0;
+        }
+        
+        .schedule-templates button {
+            margin-right: 10px;
+        }
+        
+        .action-buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 115, 232, 0.4);
+        }
+        
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            display: none;
+        }
+        
+        .spinner-border {
+            width: 3rem;
+            height: 3rem;
+        }
+        
+        .footer {
+            margin-top: auto;
+            background-color: #f1f3f4;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        .copy-day-modal .day-button {
+            margin: 5px;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .copy-day-modal .day-button:hover {
+            background-color: #e9ecef;
+        }
+        
+        .copy-day-modal .day-button.selected {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-heartbeat"></i> Salutia
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="doctor_dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="doctor_schedule_manager.html">Gestión de Horarios</a>
+                    </li>
+            </div>
+        </nav>
+
+        <!-- Main Container -->
+        <div class="container main-container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="mb-0"><i class="fas fa-calendar-alt text-primary me-2"></i>Gestión de Horarios</h1>
+                <a href="dashboard.html" class="btn btn-outline-primary rounded-pill"><i class="fas fa-arrow-left me-2"></i>Volver al Dashboard</a>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-3 mb-4">
+                    <div class="card shadow-sm border-0 h-100">
+                        <div class="card-header" style="background: var(--gradient-primary); color: white;">
+                            <h4 class="mb-0"><i class="fas fa-cog me-2"></i>Configuración</h4>
+                        </div>
+                        <div class="card-body">
+                            <!-- Selector de semana -->
+                            <div class="mb-4">
+                                <label for="weekSelector" class="form-label fw-bold">Seleccionar semana:</label>
+                                <input type="week" id="weekSelector" class="form-control mb-3" required>
+                                <button class="btn btn-primary w-100" id="loadWeek">
+                                    <i class="fas fa-sync-alt me-2"></i>
+                                    Cargar Semana
+                                </button>
+                            </div>
+                            <!-- Plantillas -->
+                            <div class="mb-4">
+                                <h5 class="mb-3"><i class="fas fa-sliders-h text-primary me-2"></i>Aplicar plantilla</h5>
+                                <p class="text-muted small mb-3">Selecciona una plantilla predefinida para aplicar a toda la semana:</p>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-outline-primary w-100 mb-2 template-button" data-start-time="09:00" data-end-time="14:00">
+                                    <i class="fas fa-sun me-2"></i>
+                                    Horario de Mañana
+                                    <small class="d-block text-muted">9:00 - 14:00</small>
+                                </button>
+                                <button class="btn btn-outline-primary w-100 mb-2 template-button" data-start-time="15:00" data-end-time="20:00">
+                                    <i class="fas fa-moon me-2"></i>
+                                    Horario de Tarde
+                                    <small class="d-block text-muted">15:00 - 20:00</small>
+                                </button>
+                                <button class="btn btn-outline-primary w-100 template-button" data-start-time="09:00" data-end-time="20:00">
+                                    <i class="fas fa-clock me-2"></i>
+                                    Horario Completo
+                                    <small class="d-block text-muted">9:00 - 20:00</small>
+                                </button>
+                        <!-- Acciones -->
+                        <div class="mb-3">
+                            <h5 class="mb-3"><i class="fas fa-tasks text-primary me-2"></i>Acciones</h5>
+                            <div class="d-grid gap-2">
+                                <button id="copyDayBtn" class="btn btn-outline-secondary text-start">
+                                    <i class="fas fa-copy me-2"></i> Copiar Día
+                                    <small class="d-block text-muted mt-1">Replica la configuración</small>
+                                </button>
+                                <button id="saveScheduleBtn" class="btn btn-success text-start" onclick="saveSchedule()">
+                                    <i class="fas fa-save me-2"></i> Guardar Cambios
+                                    <small class="d-block text-white-50 mt-1">Aplicar configuración</small>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-9 mb-4">
+                <div class="card shadow-sm border-0">
+                    <div class="card-header d-flex justify-content-between align-items-center" style="background: var(--gradient-primary); color: white;">
+                        <h4 class="mb-0"><i class="fas fa-calendar-week me-2"></i>Horario Semanal</h4>
+                        <div class="badge bg-white text-primary rounded-pill px-3 py-2" id="currentWeekDisplay">Semana actual</div>
+                    </div>
+                    <div class="card-body p-4">
+                        <!-- Leyenda -->
+                        <div class="mb-4 d-flex justify-content-end">
+                            <div class="legend-container p-2 bg-light rounded-pill">
+                                <div class="d-flex align-items-center px-3">
+                                    <div class="legend-item d-flex align-items-center me-4">
+                                        <div class="legend-color bg-success me-2" style="width: 12px; height: 12px; border-radius: 50%;"></div>
+                                        <span class="small">Disponible</span>
+                                    </div>
+                                    <div class="legend-item d-flex align-items-center">
+                                        <div class="legend-color bg-light border me-2" style="width: 12px; height: 12px; border-radius: 50%;"></div>
+                                        <span class="small">No disponible</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Calendario semanal -->
+                        <div class="schedule-container">
+                            <div class="schedule-grid shadow-sm rounded" id="scheduleGrid">
+                                <!-- Se generará dinámicamente con JavaScript -->
+                            </div>
+                            
+                            <div class="text-center py-5" id="loadingSchedule">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Cargando...</span>
+                                </div>
+                                <p class="mt-2">Cargando horarios...</p>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <p class="text-muted"><small><i class="fas fa-info-circle me-1"></i> Haz clic en las celdas para cambiar la disponibilidad</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal para copiar día -->
+    <div class="modal fade" id="copyDayModal" tabindex="-1" aria-labelledby="copyDayModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="copyDayModalLabel">Copiar Horario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body copy-day-modal">
+                    <p>Selecciona el día de origen:</p>
+                    <div class="d-flex flex-wrap mb-3" id="sourceDays">
+                        <!-- Se generará dinámicamente -->
+                    </div>
+                    
+                    <p>Selecciona los días de destino:</p>
+                    <div class="schedule-grid" id="scheduleGrid">
+                    <!-- Cabecera con días -->
+                    <div class="grid-header time-header"></div>
+                    <div class="grid-header" data-day="1">Lunes</div>
+                    <div class="grid-header" data-day="2">Martes</div>
+                    <div class="grid-header" data-day="3">Miércoles</div>
+                    <div class="grid-header" data-day="4">Jueves</div>
+                    <div class="grid-header" data-day="5">Viernes</div>
+
+                    <!-- Horarios -->
+                    <div class="time-cell">9:00</div>
+                    <div class="time-slot" data-day="1" data-start-time="9:00"></div>
+                    <div class="time-slot" data-day="2" data-start-time="9:00"></div>
+                    <div class="time-slot" data-day="3" data-start-time="9:00"></div>
+                    <div class="time-slot" data-day="4" data-start-time="9:00"></div>
+                    <div class="time-slot" data-day="5" data-start-time="9:00"></div>
+
+                    <div class="time-cell">10:00</div>
+                    <div class="time-slot" data-day="1" data-start-time="10:00"></div>
+                    <div class="time-slot" data-day="2" data-start-time="10:00"></div>
+                    <div class="time-slot" data-day="3" data-start-time="10:00"></div>
+                    <div class="time-slot" data-day="4" data-start-time="10:00"></div>
+                    <div class="time-slot" data-day="5" data-start-time="10:00"></div>
+
+                    <div class="time-cell">11:00</div>
+                    <div class="time-slot" data-day="1" data-start-time="11:00"></div>
+                    <div class="time-slot" data-day="2" data-start-time="11:00"></div>
+                    <div class="time-slot" data-day="3" data-start-time="11:00"></div>
+                    <div class="time-slot" data-day="4" data-start-time="11:00"></div>
+                    <div class="time-slot" data-day="5" data-start-time="11:00"></div>
+
+                    <div class="time-cell">12:00</div>
+                    <div class="time-slot" data-day="1" data-start-time="12:00"></div>
+                    <div class="time-slot" data-day="2" data-start-time="12:00"></div>
+                    <div class="time-slot" data-day="3" data-start-time="12:00"></div>
+                    <div class="time-slot" data-day="4" data-start-time="12:00"></div>
+                    <div class="time-slot" data-day="5" data-start-time="12:00"></div>
+
+                    <div class="time-cell">13:00</div>
+                    <div class="time-slot" data-day="1" data-start-time="13:00"></div>
+                    <div class="time-slot" data-day="2" data-start-time="13:00"></div>
+                    <div class="time-slot" data-day="3" data-start-time="13:00"></div>
+                    <div class="time-slot" data-day="4" data-start-time="13:00"></div>
+                    <div class="time-slot" data-day="5" data-start-time="13:00"></div>
+
+                    <div class="time-cell">14:00</div>
+                    <div class="time-slot" data-day="1" data-start-time="14:00"></div>
+                    <div class="time-slot" data-day="2" data-start-time="14:00"></div>
+                    <div class="time-slot" data-day="3" data-start-time="14:00"></div>
+                    <div class="time-slot" data-day="4" data-start-time="14:00"></div>
+                    <div class="time-slot" data-day="5" data-start-time="14:00"></div>
+
+                    <div class="time-cell">15:00</div>
+                    <div class="time-slot" data-day="1" data-start-time="15:00"></div>
+                    <div class="time-slot" data-day="2" data-start-time="15:00"></div>
+                    <div class="time-slot" data-day="3" data-start-time="15:00"></div>
+                    <div class="time-slot" data-day="4" data-start-time="15:00"></div>
+                    <div class="time-slot" data-day="5" data-start-time="15:00"></div>
+
+                    <div class="time-cell">16:00</div>
+                    <div class="time-slot" data-day="1" data-start-time="16:00"></div>
+                    <div class="time-slot" data-day="2" data-start-time="16:00"></div>
+                    <div class="time-slot" data-day="3" data-start-time="16:00"></div>
+                    <div class="time-slot" data-day="4" data-start-time="16:00"></div>
+                    <div class="time-slot" data-day="5" data-start-time="16:00"></div>
+
+                    <div class="time-cell">17:00</div>
+                    <div class="time-slot" data-day="1" data-start-time="17:00"></div>
+                    <div class="time-slot" data-day="2" data-start-time="17:00"></div>
+                    <div class="time-slot" data-day="3" data-start-time="17:00"></div>
+                    <div class="time-slot" data-day="4" data-start-time="17:00"></div>
+                    <div class="time-slot" data-day="5" data-start-time="17:00"></div>
+
+                    <div class="time-cell">18:00</div>
+                    <div class="time-slot" data-day="1" data-start-time="18:00"></div>
+                    <div class="time-slot" data-day="2" data-start-time="18:00"></div>
+                    <div class="time-slot" data-day="3" data-start-time="18:00"></div>
+                    <div class="time-slot" data-day="4" data-start-time="18:00"></div>
+                    <div class="time-slot" data-day="5" data-start-time="18:00"></div>
+
+                    <div class="time-cell">19:00</div>
+                    <div class="time-slot" data-day="1" data-start-time="19:00"></div>
+                    <div class="time-slot" data-day="2" data-start-time="19:00"></div>
+                    <div class="time-slot" data-day="3" data-start-time="19:00"></div>
+                    <div class="time-slot" data-day="4" data-start-time="19:00"></div>
+                    <div class="time-slot" data-day="5" data-start-time="19:00"></div>
+
+                    <div class="time-cell">20:00</div>
+                    <div class="time-slot" data-day="1" data-start-time="20:00"></div>
+                    <div class="time-slot" data-day="2" data-start-time="20:00"></div>
+                    <div class="time-slot" data-day="3" data-start-time="20:00"></div>
+                    <div class="time-slot" data-day="4" data-start-time="20:00"></div>
+                    <div class="time-slot" data-day="5" data-start-time="20:00"></div>
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="confirmCopyBtn">Copiar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Cargando...</span>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 Salutia - Plataforma de Gestión de Citas Médicas</p>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Script de diagnóstico y corrección -->
+    frontend/js/schedule_fix.jsfrontend/js/<script src=""></script>
+    
+    <!-- Script de plantillas de horario -->
+    frontend/js/plantillas_horario.jsfrontend/js/<script src=""></script>
+    
+    <!-- JavaScript para la funcionalidad -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar autenticación
+            checkAuthentication();
+            
+            // Configurar selectores y botones
+            const weekSelector = document.getElementById('weekSelector');
+            const loadWeekBtn = document.getElementById('loadWeekBtn');
+            const saveScheduleBtn = document.getElementById('saveScheduleBtn');
+            const copyDayBtn = document.getElementById('copyDayBtn');
+            const logoutBtn = document.getElementById('logoutBtn');
+            
+            // Establecer semana actual
+            const now = new Date();
+            const year = now.getFullYear();
+            const weekNum = getWeekNumber(now);
+            weekSelector.value = `${year}-W${weekNum.toString().padStart(2, '0')}`;
+            
+            // Cargar horarios iniciales
+            loadScheduleForWeek(weekSelector.value);
+            
+            // Configurar eventos
+            loadWeekBtn.addEventListener('click', () => loadScheduleForWeek(weekSelector.value));
+            saveScheduleBtn.addEventListener('click', saveSchedule);
+            copyDayBtn.addEventListener('click', showCopyDayModal);
+            logoutBtn.addEventListener('click', logout);
+            
+            // Configurar plantillas
+            document.querySelectorAll('.schedule-templates button').forEach(btn => {
+                btn.addEventListener('click', () => applyTemplate(btn.dataset.template));
+            });
+            
+            // Configurar botón de confirmación de copia
+            document.getElementById('confirmCopyBtn').addEventListener('click', copyDaySchedule);
+        });
+        
+        // Verificar autenticación
+        function checkAuthentication() {
+            let doctorData = null;
+            
+            // Intentar obtener datos del médico de localStorage o sessionStorage
+            if (localStorage.getItem('doctor')) {
+                doctorData = JSON.parse(localStorage.getItem('doctor'));
+            } else if (sessionStorage.getItem('doctor')) {
+                doctorData = JSON.parse(sessionStorage.getItem('doctor'));
+            }
+            
+            // Si no hay datos de médico, redirigir al login
+            if (!doctorData) {
+                alert('Debes iniciar sesión para acceder a esta página');
+                window.location.href = 'doctor_login.html';
+                return;
+            }
+            
+            // Mostrar nombre del médico
+            const doctorNameDisplay = document.getElementById('doctorNameDisplay');
+            doctorNameDisplay.textContent = doctorData.name || `Dr. ${doctorData.id}`;
+        }
+        
+        // Función para cerrar sesión
+        function logout() {
+            localStorage.removeItem('doctor');
+            sessionStorage.removeItem('doctor');
+            window.location.href = 'doctor_login.html';
+        }
+        
+        // Función para aplicar plantillas de horario
+        function applyTemplate(template) {
+            console.log('Aplicando plantilla:', template);
+            
+            const scheduleGrid = document.getElementById('scheduleGrid');
+            if (!scheduleGrid) {
+                console.error('Error: No se encontró el elemento scheduleGrid');
+                alert('Error: No se pudo encontrar la cuadrícula de horarios');
+                return;
+            }
+            
+            const cells = scheduleGrid.querySelectorAll('.schedule-cell');
+            console.log('Número de celdas encontradas:', cells.length);
+            
+            if (cells.length === 0) {
+                console.error('Error: No se encontraron celdas en la cuadrícula');
+                alert('Error: La cuadrícula de horarios está vacía');
+                return;
+            }
+            
+            // Limpiar todas las celdas primero
+            cells.forEach(cell => {
+                cell.classList.remove('available');
+                cell.innerHTML = '';
+            });
+            
+            let cellsMarked = 0;
+            
+            // Aplicar la plantilla seleccionada
+            cells.forEach(cell => {
+                const timeSlot = cell.dataset.timeSlot;
+                if (!timeSlot) {
+                    console.warn('Celda sin atributo timeSlot:', cell);
+                    return;
+                }
+                
+                const hour = parseInt(timeSlot.split(':')[0]);
+                console.log('Procesando celda:', timeSlot, 'hora:', hour);
+                
+                let shouldMark = false;
+                
+                if (template === 'morning' && hour >= 9 && hour < 14) {
+                    shouldMark = true;
+                } else if (template === 'afternoon' && hour >= 15 && hour < 20) {
+                    shouldMark = true;
+                } else if (template === 'fullday' && hour >= 9 && hour < 20) {
+                    shouldMark = true;
+                }
+                
+                if (shouldMark) {
+                    cell.classList.add('available');
+                    cell.innerHTML = '<i class="fas fa-check"></i>';
+                    cellsMarked++;
+                }
+            });
+            
+            console.log('Celdas marcadas como disponibles:', cellsMarked);
+            
+            // Mostrar notificación
+            const templateNames = {
+                'morning': 'Horario de Mañana (9:00 - 14:00)',
+                'afternoon': 'Horario de Tarde (15:00 - 20:00)',
+                'fullday': 'Horario Completo (9:00 - 20:00)'
+            };
+            
+            const notification = document.createElement('div');
+            notification.className = 'position-fixed bottom-0 end-0 p-3';
+            notification.style.zIndex = '5';
+            notification.innerHTML = `
+                <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header bg-primary text-white">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong class="me-auto">Plantilla Aplicada</strong>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        <p class="mb-0">Se ha aplicado la plantilla: ${templateNames[template]}</p>
+                        <p class="small text-muted mb-0">Se marcaron ${cellsMarked} franjas horarias</p>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(notification);
+            
+            // Eliminar la notificación después de 3 segundos
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+        
+        // Obtener el número de semana de una fecha
+        function getWeekNumber(date) {
+            const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+            const dayNum = d.getUTCDay() || 7;
+            d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+            const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+            return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+        }
+        
+        // Obtener las fechas de una semana
+        function getWeekDates(weekNumber, year) {
+            const firstDayOfYear = new Date(year, 0, 1);
+            const daysOffset = (8 - firstDayOfYear.getDay()) % 7;
+            const firstWeekDay = new Date(year, 0, 1 + daysOffset);
+            
+            const firstDayOfWeek = new Date(firstWeekDay);
+            firstDayOfWeek.setDate(firstDayOfWeek.getDate() + (weekNumber - 1) * 7);
+            
+            const dates = [];
+            for (let i = 0; i < 7; i++) {
+                const date = new Date(firstDayOfWeek);
+                date.setDate(date.getDate() + i);
+                dates.push(date);
+            }
+            
+            return dates;
+        }
+        
+        // Formatear fecha como YYYY-MM-DD
+        function formatDate(date) {
+            const year = date.getFullYear();
+            const month = (date.getMonth() + 1).toString().padStart(2, '0');
+            const day = date.getDate().toString().padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+        
+        // Mostrar/ocultar indicador de carga
+        function showLoading(show) {
+            const overlay = document.getElementById('loadingOverlay');
+            overlay.style.display = show ? 'flex' : 'none';
+        }
+        
+        // Cargar horarios para una semana
+        async function loadScheduleForWeek(weekValue) {
+            try {
+                // Mostrar indicador de carga
+                document.getElementById('loadingSchedule').style.display = 'block';
+                document.getElementById('scheduleGrid').innerHTML = '';
+                
+                // Obtener fechas de la semana
+                const [year, week] = weekValue.split('-W');
+                const dates = getWeekDates(parseInt(week), parseInt(year));
+                
+                // Obtener doctor_id (del almacenamiento local)
+                let doctorData;
+                if (localStorage.getItem('userData')) {
+                    doctorData = JSON.parse(localStorage.getItem('userData'));
+                } else if (localStorage.getItem('doctor')) {
+                    doctorData = JSON.parse(localStorage.getItem('doctor'));
+                } else if (sessionStorage.getItem('doctor')) {
+                    doctorData = JSON.parse(sessionStorage.getItem('doctor'));
+                } else if (sessionStorage.getItem('userData')) {
+                    doctorData = JSON.parse(sessionStorage.getItem('userData'));
+                } else {
+                    // Para pruebas, usar un ID predeterminado
+                    doctorData = { id: 1 };
+                    console.warn('Usando ID de médico predeterminado para pruebas');
+                }
+                
+                const doctorId = doctorData.id;
+                
+                // Formatear fechas para la API
+                const startDate = formatDate(dates[0]);
+                const endDate = formatDate(dates[6]);
+                
+                // Llamar a la API (versión simplificada)
+                const response = await fetch(`backend/api/doctor_availability_simple.php?doctor_id=${doctorId}&start_date=${startDate}&end_date=${endDate}`);
+                const data = await response.json();
+                
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+                
+                // Generar la cuadrícula de horarios
+                generateScheduleGrid(dates, data.availability || {});
+                
+                // Mostrar mensaje de estado
+                console.log('Horarios cargados correctamente:', data);
+                
+                // Ocultar indicador de carga
+                document.getElementById('loadingSchedule').style.display = 'none';
+                
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al cargar los horarios: ' + error.message);
+                document.getElementById('loadingSchedule').style.display = 'none';
+            }
+        }
+        
+        // Generar cuadrícula de horarios
+        function generateScheduleGrid(dates, availability) {
+            const scheduleGrid = document.getElementById('scheduleGrid');
+            scheduleGrid.innerHTML = '';
+            
+            // Crear encabezados
+            const emptyCell = document.createElement('div');
+            scheduleGrid.appendChild(emptyCell); // Celda vacía en la esquina superior izquierda
+            
+            // Días de la semana
+            const dayNames = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
+            const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+            
+            // Formatear fecha para mostrar
+            function formatDateDisplay(date) {
+                return date.getDate() + '/' + (date.getMonth() + 1);
+            }
+            
+            // Actualizar el indicador de semana actual
+            const firstDate = dates[0];
+            const lastDate = dates[4];
+            document.getElementById('currentWeekDisplay').textContent = 
+                `${firstDate.getDate()} ${monthNames[firstDate.getMonth()]} - ${lastDate.getDate()} ${monthNames[lastDate.getMonth()]}`;
+            
+            // Crear encabezados de los días
+            for (let i = 0; i < 5; i++) {
+                const header = document.createElement('div');
+                header.className = 'grid-header';
+                
+                const dayNameElem = document.createElement('div');
+                dayNameElem.className = 'day-name';
+                dayNameElem.textContent = dayNames[i];
+                
+                const dateInfoElem = document.createElement('div');
+                dateInfoElem.className = 'date-info';
+                dateInfoElem.textContent = formatDateDisplay(dates[i]);
+                
+                header.appendChild(dayNameElem);
+                header.appendChild(dateInfoElem);
+                scheduleGrid.appendChild(header);
+            }
+            
+            // Crear filas de horarios
+            const timeSlots = [
+                '9:00', '9:30', '10:00', '10:30', '11:00', '11:30', 
+                '12:00', '12:30', '13:00', '13:30', '14:00', '14:30',
+                '15:00', '15:30', '16:00', '16:30', '17:00', '17:30',
+                '18:00', '18:30', '19:00', '19:30'
+            ];
+            
+            timeSlots.forEach(timeSlot => {
+                // Celda de hora
+                const timeCell = document.createElement('div');
+                timeCell.className = 'time-cell';
+                timeCell.textContent = timeSlot;
+                scheduleGrid.appendChild(timeCell);
+                
+                // Celdas para cada día
+                for (let i = 0; i < 5; i++) {
+                    const date = formatDate(dates[i]);
+                    const cell = document.createElement('div');
+                    cell.className = 'schedule-cell';
+                    cell.dataset.date = date;
+                    cell.dataset.timeSlot = timeSlot;
+                    
+                    // Verificar si hay datos de disponibilidad guardados previamente
+                    let isAvailable = false;
+                    
+                    // Comprobar si availability es un array o un objeto
+                    if (Array.isArray(availability)) {
+                        isAvailable = availability.some(slot => 
+                            slot.date === date && slot.time_slot === timeSlot
+                        );
+                    } else if (typeof availability === 'object' && Object.keys(availability).length > 0) {
+                        // Si es un objeto con fechas como claves y no está vacío
+                        isAvailable = availability[date] && availability[date].includes(timeSlot + ':00');
+                    }
+                    
+                    // Solo marcar como disponible si hay datos guardados previamente
+                    if (isAvailable) {
+                        cell.classList.add('available');
+                        cell.innerHTML = '<i class="fas fa-check"></i>';
+                    }
+                    
+                    // Evento de clic para cambiar disponibilidad
+                    cell.addEventListener('click', function() {
+                        this.classList.toggle('available');
+                        if (this.classList.contains('available')) {
+                            this.innerHTML = '<i class="fas fa-check"></i>';
+                        } else {
+                            this.innerHTML = '';
+                        }
+                    });
+                    
+                    scheduleGrid.appendChild(cell);
+                }
+            });
+        }
+        
+        // Guardar horarios
+        async function saveSchedule() {
+            try {
+                const saveBtn = document.getElementById('saveScheduleBtn');
+                if (!saveBtn) {
+                    console.error('No se encontró el botón de guardar');
+                    return;
+                }
+                
+                const originalBtnText = saveBtn.innerHTML;
+                
+                // Cambiar el texto del botón
+                saveBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Guardando...';
+                saveBtn.disabled = true;
+                
+                showLoading(true);
+                
+                // Obtener datos del médico
+                let doctorData = null;
+                
+                if (localStorage.getItem('userData')) {
+                    doctorData = JSON.parse(localStorage.getItem('userData'));
+                } else if (localStorage.getItem('doctor')) {
+                    doctorData = JSON.parse(localStorage.getItem('doctor'));
+                } else if (sessionStorage.getItem('doctor')) {
+                    doctorData = JSON.parse(sessionStorage.getItem('doctor'));
+                } else if (sessionStorage.getItem('userData')) {
+                    doctorData = JSON.parse(sessionStorage.getItem('userData'));
+                } else {
+                    // Para pruebas, usar un ID predeterminado
+                    doctorData = { id: 1 };
+                    console.warn('Usando ID de médico predeterminado para pruebas');
+                }
+                
+                const doctorId = doctorData.id;
+                console.log('ID del médico:', doctorId);
+                
+                // Recopilar slots disponibles
+                const availableSlots = [];
+                const cells = document.querySelectorAll('.schedule-cell.available');
+                
+                console.log('Celdas disponibles encontradas:', cells.length);
+                
+                cells.forEach(cell => {
+                    if (cell.dataset.date && cell.dataset.timeSlot) {
+                        availableSlots.push({
+                            date: cell.dataset.date,
+                            time_slot: cell.dataset.timeSlot
+                        });
+                    }
+                });
+                
+                console.log('Enviando datos a la API:', {
+                    doctor_id: doctorId,
+                    availability: availableSlots
+                });
+                
+                // Llamar a la API
+                const response = await fetch('backend/api/doctor_availability_simple.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        doctor_id: doctorId,
+                        availability: availableSlots
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`Error HTTP: ${response.status} ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                console.log('Respuesta de la API:', data);
+                
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+                
+                // Mostrar notificación de éxito
+                const notification = document.createElement('div');
+                notification.className = 'position-fixed bottom-0 end-0 p-3';
+                notification.style.zIndex = '5';
+                notification.innerHTML = `
+                    <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header bg-success text-white">
+                            <i class="fas fa-check-circle me-2"></i>
+                            <strong class="me-auto">Éxito</strong>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">
+                            <p class="mb-0">Horarios guardados correctamente</p>
+                            <p class="small text-muted mb-0">Se han guardado ${availableSlots.length} franjas horarias</p>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(notification);
+                
+                // Eliminar la notificación después de 3 segundos
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+                
+                console.log('Horarios guardados correctamente');
+            } catch (error) {
+                console.error('Error al guardar horarios:', error);
+                
+                // Mostrar notificación de error
+                const notification = document.createElement('div');
+                notification.className = 'position-fixed bottom-0 end-0 p-3';
+                notification.style.zIndex = '5';
+                notification.innerHTML = `
+                    <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header bg-danger text-white">
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                            <strong class="me-auto">Error</strong>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">
+                            <p class="mb-0">Error al guardar los horarios</p>
+                            <p class="small text-muted mb-0">${error.message}</p>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(notification);
+                
+                // Eliminar la notificación después de 5 segundos
+                setTimeout(() => {
+                    notification.remove();
+                }, 5000);
+            } finally {
+                // Restaurar el botón siempre, independientemente de si hubo éxito o error
+                const saveBtn = document.getElementById('saveScheduleBtn');
+                if (saveBtn) {
+                    saveBtn.innerHTML = '<i class="fas fa-save me-2"></i> Guardar Cambios <small class="d-block text-white-50 mt-1">Aplicar configuración</small>';
+                    saveBtn.disabled = false;
+                }
+                
+                // Ocultar el indicador de carga
+                showLoading(false);
+                
+                console.log('Proceso de guardado finalizado');
+            }
+        }
+        
+        // Aplicar plantilla de horario
+        function applyTemplate(template) {
+            // Definir rangos de horas según la plantilla
+            let startHour, endHour;
+            
+            switch (template) {
+                case 'morning':
+                    startHour = 9;
+                    endHour = 14;
+                    break;
+                case 'afternoon':
+                    startHour = 15;
+                    endHour = 20;
+                    break;
+                case 'full':
+                    startHour = 9;
+                    endHour = 20;
+                    break;
+                default:
+                    return;
+            }
+            
+            // Aplicar a todas las celdas
+            document.querySelectorAll('.day-cell').forEach(cell => {
+                const time = cell.dataset.time;
+                const hour = parseInt(time.split(':')[0]);
+                
+                if (hour >= startHour && hour < endHour) {
+                    cell.classList.add('available');
+                } else {
+                    cell.classList.remove('available');
+                }
+            });
+        }
+        
+        // Mostrar modal para copiar día
+        function showCopyDayModal() {
+            const modal = new bootstrap.Modal(document.getElementById('copyDayModal'));
+            
+            // Obtener nombres de los días
+            const dayNames = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+            
+            // Generar botones para días de origen
+            const sourceDaysContainer = document.getElementById('sourceDays');
+            sourceDaysContainer.innerHTML = '';
+            
+            dayNames.forEach((day, index) => {
+                const button = document.createElement('div');
+                button.className = 'day-button';
+                button.textContent = day;
+                button.dataset.dayIndex = index;
+                
+                button.addEventListener('click', function() {
+                    // Desmarcar otros botones
+                    document.querySelectorAll('#sourceDays .day-button').forEach(btn => {
+                        btn.classList.remove('selected');
+                    });
+                    
+                    // Marcar este botón
+                    this.classList.add('selected');
+                });
+                
+                sourceDaysContainer.appendChild(button);
+            });
+            
+            // Generar botones para días de destino
+            const targetDaysContainer = document.getElementById('targetDays');
+            targetDaysContainer.innerHTML = '';
+            
+            dayNames.forEach((day, index) => {
+                const button = document.createElement('div');
+                button.className = 'day-button';
+                button.textContent = day;
+                button.dataset.dayIndex = index;
+                
+                button.addEventListener('click', function() {
+                    // Alternar selección
+                    this.classList.toggle('selected');
+                });
+                
+                targetDaysContainer.appendChild(button);
+            });
+            
+            modal.show();
+        }
+        
+        // Copiar horario de un día a otros
+        function copyDaySchedule() {
+            // Obtener día de origen
+            const sourceButton = document.querySelector('#sourceDays .day-button.selected');
+            if (!sourceButton) {
+                alert('Por favor, selecciona un día de origen');
+                return;
+            }
+            
+            const sourceDayIndex = parseInt(sourceButton.dataset.dayIndex);
+            
+            // Obtener días de destino
+            const targetButtons = document.querySelectorAll('#targetDays .day-button.selected');
+            if (targetButtons.length === 0) {
+                alert('Por favor, selecciona al menos un día de destino');
+                return;
+            }
+            
+            const targetDayIndices = Array.from(targetButtons).map(btn => parseInt(btn.dataset.dayIndex));
+            
+            // Obtener horarios del día de origen
+            const sourceSlots = {};
+            document.querySelectorAll(`.day-cell[data-day-index="${sourceDayIndex}"]`).forEach(cell => {
+                const time = cell.dataset.time;
+                sourceSlots[time] = cell.classList.contains('available');
+            });
+            
+            // Aplicar horarios a los días de destino
+            targetDayIndices.forEach(dayIndex => {
+                document.querySelectorAll(`.day-cell[data-day-index="${dayIndex}"]`).forEach(cell => {
+                    const time = cell.dataset.time;
+                    if (sourceSlots[time]) {
+                        cell.classList.add('available');
+                    } else {
+                        cell.classList.remove('available');
+                    }
+                });
+            });
+            
+            // Cerrar modal
+            const modal = bootstrap.Modal.getInstance(document.getElementById('copyDayModal'));
+            modal.hide();
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    ../js/auth.jsfrontend/js/<script src=""></script>
+    ../js/session.jsfrontend/js/<script src=""></script>
+    ../js/doctor_schedule_manager.jsfrontend/js/<script src=""></script>
+</body>
+</html>

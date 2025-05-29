@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil - Salutia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            background-color: white;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .sidebar .nav-link {
+            color: #495057;
+            padding: 10px 20px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+        .sidebar .nav-link:hover {
+            background-color: #e9ecef;
+        }
+        .sidebar .nav-link.active {
+            background-color: #0d6efd;
+            color: white;
+        }
+        .sidebar .nav-link i {
+            margin-right: 10px;
+        }
+        .main-content {
+            padding: 20px;
+        }
+        .profile-header {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #0d6efd;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            margin-right: 20px;
+        }
+        .profile-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .profile-card h5 {
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .form-label {
+            font-weight: 500;
+        }
+        .specialty-badge {
+            background-color: #e9ecef;
+            color: #495057;
+            padding: 5px 10px;
+            border-radius: 20px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 d-md-block sidebar p-0">
+                <div class="d-flex flex-column p-3">
+                    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
+                        <span class="fs-4 text-primary fw-bold">
+                            <i class="fas fa-heartbeat"></i> Salutia
+                        </span>
+                    </a>
+                    <hr>
+                    <ul class="nav nav-pills flex-column mb-auto">
+                        <li class="nav-item">
+                            <a href="doctor_dashboard.html" class="nav-link">
+                                <i class="fas fa-tachometer-alt"></i> Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a href="manage_schedule.html" class="nav-link">
+                                <i class="fas fa-calendar-alt"></i> Gestionar horarios
+                            </a>
+                        </li>
+                        <li>
+                            <a href="patients.html" class="nav-link">
+                                <i class="fas fa-user-injured"></i> Pacientes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="messages.html" class="nav-link">
+                                <i class="fas fa-envelope"></i> Mensajes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="profile.html" class="nav-link active">
+                                <i class="fas fa-user-md"></i> Mi perfil
+                            </a>
+                        </li>
+                    </ul>
+                    <hr>
+                    <button id="logoutBtn" class="btn btn-danger w-100">
+                        <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-9 col-lg-10 main-content">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h1>Mi Perfil</h1>
+                    <div class="user-info d-flex align-items-center">
+                        <span class="me-2" id="doctorName">Dr. Juan Pérez</span>
+                        <div class="avatar bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Perfil Header -->
+                <div class="profile-header d-flex align-items-center">
+                    <div class="profile-avatar">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <div>
+                        <h2 id="profileName">Dr. Juan Pérez</h2>
+                        <p class="text-muted mb-2">Medicina General</p>
+                        <div>
+                            <span class="badge bg-primary me-2">
+                                <i class="fas fa-star me-1"></i> 4.8/5 (120 valoraciones)
+                            </span>
+                            <span class="badge bg-success">
+                                <i class="fas fa-check-circle me-1"></i> Verificado
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Información Personal -->
+                    <div class="col-md-6">
+                        <div class="profile-card">
+                            <h5>Información Personal</h5>
+                            <form id="personalInfoForm">
+                                <div class="mb-3">
+                                    <label for="fullName" class="form-label">Nombre completo</label>
+                                    <input type="text" class="form-control" id="fullName" value="Dr. Juan Pérez">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" value="juan.perez@salutia.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Teléfono</label>
+                                    <input type="tel" class="form-control" id="phone" value="+34 612 345 678">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">Dirección de consulta</label>
+                                    <textarea class="form-control" id="address" rows="2">Calle Principal 123, 08001 Barcelona</textarea>
+                                </div>
+                                <div class="d-grid">
+                                    <button type="button" class="btn btn-primary" id="savePersonalInfo">Guardar cambios</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Información Profesional -->
+                    <div class="col-md-6">
+                        <div class="profile-card">
+                            <h5>Información Profesional</h5>
+                            <form id="professionalInfoForm">
+                                <div class="mb-3">
+                                    <label for="specialty" class="form-label">Especialidad principal</label>
+                                    <select class="form-select" id="specialty">
+                                        <option value="general">Medicina General</option>
+                                        <option value="cardiology">Cardiología</option>
+                                        <option value="dermatology">Dermatología</option>
+                                        <option value="neurology">Neurología</option>
+                                        <option value="pediatrics">Pediatría</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Especialidades adicionales</label>
+                                    <div>
+                                        <span class="specialty-badge">Medicina Familiar</span>
+                                        <span class="specialty-badge">Medicina Preventiva</span>
+                                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addSpecialtyModal">
+                                            <i class="fas fa-plus"></i> Añadir
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="experience" class="form-label">Años de experiencia</label>
+                                    <input type="number" class="form-control" id="experience" value="15">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="bio" class="form-label">Biografía profesional</label>
+                                    <textarea class="form-control" id="bio" rows="4">Médico general con más de 15 años de experiencia. Especializado en medicina preventiva y atención primaria. Formación continua en nuevas técnicas diagnósticas y tratamientos.</textarea>
+                                </div>
+                                <div class="d-grid">
+                                    <button type="button" class="btn btn-primary" id="saveProfessionalInfo">Guardar cambios</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Seguridad -->
+                    <div class="col-md-6">
+                        <div class="profile-card">
+                            <h5>Seguridad</h5>
+                            <form id="securityForm">
+                                <div class="mb-3">
+                                    <label for="currentPassword" class="form-label">Contraseña actual</label>
+                                    <input type="password" class="form-control" id="currentPassword">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="newPassword" class="form-label">Nueva contraseña</label>
+                                    <input type="password" class="form-control" id="newPassword">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">Confirmar nueva contraseña</label>
+                                    <input type="password" class="form-control" id="confirmPassword">
+                                </div>
+                                <div class="d-grid">
+                                    <button type="button" class="btn btn-primary" id="changePassword">Cambiar contraseña</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Preferencias -->
+                    <div class="col-md-6">
+                        <div class="profile-card">
+                            <h5>Preferencias</h5>
+                            <form id="preferencesForm">
+                                <div class="mb-3">
+                                    <label class="form-label">Notificaciones</label>
+                                    <div class="form-check form-switch mb-2">
+                                        <input class="form-check-input" type="checkbox" id="emailNotifications" checked>
+                                        <label class="form-check-label" for="emailNotifications">Recibir notificaciones por email</label>
+                                    </div>
+                                    <div class="form-check form-switch mb-2">
+                                        <input class="form-check-input" type="checkbox" id="smsNotifications" checked>
+                                        <label class="form-check-label" for="smsNotifications">Recibir notificaciones por SMS</label>
+                                    </div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="appointmentReminders" checked>
+                                        <label class="form-check-label" for="appointmentReminders">Recordatorios de citas</label>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="language" class="form-label">Idioma</label>
+                                    <select class="form-select" id="language">
+                                        <option value="es">Español</option>
+                                        <option value="en">English</option>
+                                        <option value="ca">Català</option>
+                                    </select>
+                                </div>
+                                <div class="d-grid">
+                                    <button type="button" class="btn btn-primary" id="savePreferences">Guardar preferencias</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para añadir especialidad -->
+    <div class="modal fade" id="addSpecialtyModal" tabindex="-1" aria-labelledby="addSpecialtyModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="addSpecialtyModalLabel">Añadir especialidad</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addSpecialtyForm">
+                        <div class="mb-3">
+                            <label for="newSpecialty" class="form-label">Especialidad</label>
+                            <select class="form-select" id="newSpecialty">
+                                <option value="">Seleccionar especialidad...</option>
+                                <option value="family">Medicina Familiar</option>
+                                <option value="internal">Medicina Interna</option>
+                                <option value="emergency">Medicina de Urgencias</option>
+                                <option value="sports">Medicina Deportiva</option>
+                                <option value="geriatric">Geriatría</option>
+                                <option value="preventive">Medicina Preventiva</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="confirmAddSpecialty">Añadir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mostrar nombre del doctor
+            const doctorName = localStorage.getItem('user_name') || 'Dr. Juan Pérez';
+            document.getElementById('doctorName').textContent = doctorName;
+            document.getElementById('profileName').textContent = doctorName;
+            
+            // Configurar evento de logout
+            document.getElementById('logoutBtn').addEventListener('click', function() {
+                localStorage.removeItem('user_id');
+                localStorage.removeItem('user_role');
+                localStorage.removeItem('user_name');
+                localStorage.removeItem('token');
+                window.location.href = '../../index.html';
+            });
+            
+            // Configurar eventos para guardar información personal
+            document.getElementById('savePersonalInfo').addEventListener('click', function() {
+                // Aquí iría la lógica para guardar la información personal
+                showAlert('Información personal guardada correctamente', 'success');
+            });
+            
+            // Configurar eventos para guardar información profesional
+            document.getElementById('saveProfessionalInfo').addEventListener('click', function() {
+                // Aquí iría la lógica para guardar la información profesional
+                showAlert('Información profesional guardada correctamente', 'success');
+            });
+            
+            // Configurar eventos para cambiar contraseña
+            document.getElementById('changePassword').addEventListener('click', function() {
+                const currentPassword = document.getElementById('currentPassword').value;
+                const newPassword = document.getElementById('newPassword').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                
+                if (!currentPassword || !newPassword || !confirmPassword) {
+                    showAlert('Por favor, complete todos los campos', 'danger');
+                    return;
+                }
+                
+                if (newPassword !== confirmPassword) {
+                    showAlert('Las contraseñas no coinciden', 'danger');
+                    return;
+                }
+                
+                // Aquí iría la lógica para cambiar la contraseña
+                showAlert('Contraseña cambiada correctamente', 'success');
+                
+                // Limpiar campos
+                document.getElementById('currentPassword').value = '';
+                document.getElementById('newPassword').value = '';
+                document.getElementById('confirmPassword').value = '';
+            });
+            
+            // Configurar eventos para guardar preferencias
+            document.getElementById('savePreferences').addEventListener('click', function() {
+                // Aquí iría la lógica para guardar las preferencias
+                showAlert('Preferencias guardadas correctamente', 'success');
+            });
+            
+            // Configurar eventos para añadir especialidad
+            document.getElementById('confirmAddSpecialty').addEventListener('click', function() {
+                const newSpecialty = document.getElementById('newSpecialty');
+                if (newSpecialty.value) {
+                    const specialtyText = newSpecialty.options[newSpecialty.selectedIndex].text;
+                    
+                    // Crear badge de especialidad
+                    const specialtyBadge = document.createElement('span');
+                    specialtyBadge.className = 'specialty-badge';
+                    specialtyBadge.textContent = specialtyText;
+                    
+                    // Añadir badge al contenedor
+                    const specialtiesContainer = document.querySelector('#professionalInfoForm .specialty-badge').parentNode;
+                    specialtiesContainer.insertBefore(specialtyBadge, document.querySelector('#professionalInfoForm button'));
+                    
+                    // Cerrar modal
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('addSpecialtyModal'));
+                    modal.hide();
+                    
+                    // Limpiar selección
+                    newSpecialty.value = '';
+                } else {
+                    alert('Por favor, seleccione una especialidad');
+                }
+            });
+        });
+        
+        // Función para mostrar alertas
+        function showAlert(message, type) {
+            // Crear alerta
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
+            alertDiv.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            `;
+            
+            // Añadir alerta al principio del contenido principal
+            const mainContent = document.querySelector('.main-content');
+            mainContent.insertBefore(alertDiv, mainContent.firstChild);
+            
+            // Eliminar alerta después de 3 segundos
+            setTimeout(() => {
+                alertDiv.classList.remove('show');
+                setTimeout(() => alertDiv.remove(), 150);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

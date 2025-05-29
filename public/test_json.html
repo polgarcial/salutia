@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test JSON - Salutia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .error {
+            color: red;
+            background-color: #ffeeee;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .success {
+            color: green;
+            background-color: #eeffee;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Prueba de Comunicación JSON</h1>
+    
+    <button id="testButton">Probar Comunicación JSON</button>
+    
+    <div id="result"></div>
+    
+    <script>
+        document.getElementById('testButton').addEventListener('click', async function() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<p>Enviando solicitud...</p>';
+            
+            try {
+                // Hacer la solicitud al servidor
+                const response = await fetch('/backend/api/test_json.php');
+                
+                // Obtener el texto de la respuesta
+                const responseText = await response.text();
+                
+                // Mostrar la respuesta en bruto
+                resultDiv.innerHTML = '<h3>Respuesta del servidor (texto):</h3>';
+                resultDiv.innerHTML += `<pre>${responseText}</pre>`;
+                
+                // Intentar parsear como JSON
+                try {
+                    const data = JSON.parse(responseText);
+                    
+                    // Mostrar la respuesta parseada
+                    resultDiv.innerHTML += '<h3>Respuesta parseada como JSON:</h3>';
+                    resultDiv.innerHTML += `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                    
+                    // Mostrar mensaje de éxito
+                    resultDiv.innerHTML += '<div class="success">¡Comunicación JSON exitosa!</div>';
+                } catch (jsonError) {
+                    // Mostrar error de parseo JSON
+                    resultDiv.innerHTML += `<div class="error">Error al parsear JSON: ${jsonError.message}</div>`;
+                    
+                    // Analizar si la respuesta contiene HTML
+                    if (responseText.includes('<')) {
+                        resultDiv.innerHTML += '<div class="error">La respuesta contiene HTML en lugar de JSON. Esto suele indicar un error en el servidor PHP.</div>';
+                    }
+                }
+            } catch (error) {
+                // Mostrar error de conexión
+                resultDiv.innerHTML = `<div class="error">Error de conexión: ${error.message}</div>`;
+            }
+        });
+    </script>
+</body>
+</html>

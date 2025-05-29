@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salutia - Plataforma de Gestión de Citas Médicas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --primary-dark: #0d47a1;
+            --secondary: #34a853;
+            --accent: #ea4335;
+            --light: #f8f9fa;
+            --dark: #202124;
+            --gray: #5f6368;
+        }
+        
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+        }
+        
+        /* Navbar styling */
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            margin: 0 5px;
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: white;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        /* Hero section styling */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #64b5f6 100%);
+            color: white;
+            padding: 80px 0;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transform: translate(200px, -200px);
+        }
+        
+        .hero:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transform: translate(-150px, 150px);
+        }
+        
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Card styling */
+        .card {
+            border: none;
+            transition: all 0.3s;
+        }
+        
+        .card.shadow {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+        }
+        
+        .card.shadow:hover {
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15) !important;
+        }
+        
+        /* Feature cards */
+        .feature-card {
+            border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            height: 100%;
+            border-top: 4px solid var(--primary);
+            overflow: hidden;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            background: rgba(26, 115, 232, 0.1);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+        
+        /* Button styling */
+        .btn {
+            padding: 12px 25px;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 115, 232, 0.4);
+        }
+        
+        .btn-light {
+            background-color: white;
+            color: var(--primary);
+            border-color: white;
+        }
+        
+        .btn-light:hover {
+            background-color: #f8f9fa;
+            color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.4);
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 115, 232, 0.4);
+        }
+        
+        /* Form styling */
+        .form-control {
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.25);
+        }
+        
+        .form-label {
+            font-weight: 500;
+            color: var(--gray);
+        }
+        
+        /* CTA section */
+        .cta-section {
+            background: linear-gradient(135deg, #34a853 0%, #4cd964 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 60px 40px;
+            margin: 80px 0;
+            box-shadow: 0 15px 30px rgba(52, 168, 83, 0.2);
+        }
+        
+        /* Testimonial section */
+        .testimonial-card {
+            background-color: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: '\201C';
+            font-size: 5rem;
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            color: rgba(26, 115, 232, 0.1);
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        /* Footer styling */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+        
+        .footer h5 {
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .footer a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer a:hover {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+        }
+        
+        /* Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+    
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-heartbeat"></i> Salutia
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="citas_db.html">Citas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Médicos</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-light px-3 mx-2" href="login.html"><i class="fas fa-sign-in-alt me-1"></i> Iniciar Sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="registro.html">Registrarse</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="views/auth/doctor_login.html"><i class="fas fa-user-md"></i> Acceso Médicos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Registration Form -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 text-center text-lg-start mb-5 mb-lg-0">
+                    <h1 class="display-4 fw-bold mb-4">Bienvenido a Salutia</h1>
+                    <p class="lead mb-4">La plataforma inteligente para gestionar tus citas médicas de forma rápida y eficiente</p>
+                    <div class="d-flex flex-column flex-sm-row gap-2 justify-content-center justify-content-lg-start">
+                        <a href="login.html" class="btn btn-primary btn-lg"><i class="fas fa-sign-in-alt me-2"></i>Iniciar sesión</a>
+                        <a href="citas_db.html" class="btn btn-light btn-lg">Gestionar Citas</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card shadow">
+                        <div class="card-body p-4">
+                            <h2 class="text-center mb-4">Regístrate ahora</h2>
+                            <form id="registerForm">
+                                <!-- Contenedor para mensajes de alerta -->
+                                <div id="messageContainer" class="alert" role="alert" style="display:none;"></div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="firstName" class="form-label">Nombre</label>
+                                        <input type="text" class="form-control" id="firstName" name="firstName" required>
+                                        <div class="invalid-feedback">El nombre es obligatorio</div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="lastName" class="form-label">Apellidos</label>
+                                        <input type="text" class="form-control" id="lastName" name="lastName" required>
+                                        <div class="invalid-feedback">Los apellidos son obligatorios</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Correo electrónico</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                    <div class="invalid-feedback">Introduce un correo electrónico válido</div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Contraseña</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                        <input type="password" class="form-control" id="password" name="password" required>
+                                        <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="form-text">La contraseña debe tener al menos 6 caracteres</div>
+                                    <div class="invalid-feedback">La contraseña es obligatoria</div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">Confirmar contraseña</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                                    </div>
+                                    <div class="invalid-feedback">Las contraseñas no coinciden</div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Teléfono</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Ej. 600123456">
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-4 form-check">
+                                    <input type="checkbox" class="form-check-input" id="terms" required>
+                                    <label class="form-check-label" for="terms" style="color: #000;">Acepto los <a href="terminos.html" target="_blank" style="color: #1a73e8; font-weight: 500; text-decoration: underline;">términos y condiciones</a></label>
+                                    <div class="invalid-feedback">Debes aceptar los términos y condiciones</div>
+                                </div>
+                                
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <i class="fas fa-user-plus me-2"></i>Registrarse
+                                    </button>
+                                </div>
+                                
+                                <div class="text-center mt-4">
+                                    <p class="mb-3">¿Ya tienes cuenta?</p>
+                                    <a href="login.html" class="btn btn-outline-primary px-4">
+                                        <i class="fas fa-sign-in-alt me-2"></i>Iniciar sesión
+                                    </a>
+                                </div>
+                            </form>
+                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="container mb-5">
+        <h2 class="text-center mb-5">Nuestras Funcionalidades</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card feature-card p-4">
+                    <div class="text-center">
+                        <i class="fas fa-calendar-check feature-icon"></i>
+                        <h3>Gestión de Citas</h3>
+                        <p>Programa, modifica y cancela tus citas médicas con unos pocos clics.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card feature-card p-4">
+                    <div class="text-center">
+                        <i class="fas fa-user-md feature-icon"></i>
+                        <h3>Encuentra Médicos</h3>
+                        <p>Accede a una amplia red de profesionales de la salud en diferentes especialidades.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card feature-card p-4">
+                    <div class="text-center">
+                        <i class="fas fa-robot feature-icon"></i>
+                        <h3>Asistente IA</h3>
+                        <p>Nuestro asistente inteligente te ayuda a resolver dudas y gestionar tu salud.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="container mb-5">
+        <h2 class="text-center mb-5">Lo que dicen nuestros usuarios</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <p class="mb-4">"Salutia ha simplificado completamente la forma en que gestiono mis citas médicas. La plataforma es intuitiva y me ahorra mucho tiempo."</p>
+                    <div class="d-flex align-items-center">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Testimonio" class="testimonial-avatar">
+                        <div>
+                            <h5 class="mb-0">María García</h5>
+                            <small class="text-muted">Paciente</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <p class="mb-4">"Como médico, Salutia me ha permitido organizar mejor mi agenda y comunicarme de manera más efectiva con mis pacientes."</p>
+                    <div class="d-flex align-items-center">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Testimonio" class="testimonial-avatar">
+                        <div>
+                            <h5 class="mb-0">Dr. Carlos Martínez</h5>
+                            <small class="text-muted">Cardiólogo</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <p class="mb-4">"El asistente de IA de Salutia es increíble. Me ha ayudado a resolver dudas médicas básicas sin tener que esperar a una cita."</p>
+                    <div class="d-flex align-items-center">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Testimonio" class="testimonial-avatar">
+                        <div>
+                            <h5 class="mb-0">Laura Sánchez</h5>
+                            <small class="text-muted">Paciente</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="container mb-5">
+        <h2 class="text-center mb-5">Preguntas frecuentes</h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item mb-3 border rounded-3 overflow-hidden">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                ¿Cómo puedo programar una cita médica?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Para programar una cita médica, simplemente inicia sesión en tu cuenta, ve a la sección "Citas" y selecciona "Nueva cita". Allí podrás elegir la especialidad, el médico, la fecha y la hora que prefieras.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item mb-3 border rounded-3 overflow-hidden">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                ¿Puedo cancelar o reprogramar una cita?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Sí, puedes cancelar o reprogramar una cita hasta 24 horas antes de la hora programada. Para hacerlo, ve a la sección "Mis citas" y selecciona la opción correspondiente junto a la cita que deseas modificar.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item mb-3 border rounded-3 overflow-hidden">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                ¿Cómo funciona el asistente de IA?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Nuestro asistente de IA está diseñado para responder preguntas médicas básicas, ayudarte a navegar por la plataforma y proporcionarte información sobre tu historial médico. No sustituye la consulta con un profesional, pero puede orientarte en casos no urgentes.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item mb-3 border rounded-3 overflow-hidden">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                ¿Mis datos médicos están seguros?
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Absolutamente. En Salutia nos tomamos muy en serio la privacidad y seguridad de tus datos. Utilizamos encriptación de extremo a extremo y cumplimos con todas las normativas de protección de datos sanitarios. Tus información médica solo es accesible para ti y los profesionales de la salud que tú autorices.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="container mb-5">
+        <div class="cta-section text-center">
+            <h2 class="mb-4">Comienza a gestionar tus citas ahora</h2>
+            <p class="lead mb-4">Regístrate gratis y accede a todas las funcionalidades de Salutia</p>
+            <a href="citas_db.html" class="btn btn-light btn-lg me-2">Gestionar Citas</a>
+            <a href="#" class="btn btn-outline-light btn-lg">Saber más</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>Salutia</h5>
+                    <p>Plataforma de gestión de citas médicas con inteligencia artificial.</p>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white">Inicio</a></li>
+                        <li><a href="citas_db.html" class="text-white">Citas</a></li>
+                        <li><a href="#" class="text-white">Médicos</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contacto</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope me-2"></i> info@salutia.com</li>
+                        <li><i class="fas fa-phone me-2"></i> +34 900 123 456</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 mb-4 bg-light">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 Salutia. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script de registro -->
+    js/register.jsfrontend/js/<script src=""></script>
+    <!-- Script para el modal -->
+    js/modal.jsfrontend/js/<script src=""></script>
+    
+    <script>
+        // Inicializar todos los modales de Bootstrap
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar que el enlace de términos y condiciones funcione correctamente
+            const termsLink = document.querySelector('a[data-bs-target="#termsModal"]');
+            if (termsLink) {
+                termsLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const termsModal = new bootstrap.Modal(document.getElementById('termsModal'));
+                    termsModal.show();
+                });
+            }
+        });
+    </script>
+    <!-- Modal de Términos y Condiciones -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="termsModalLabel">Términos y Condiciones</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="mb-3">1. Aceptación de los Términos</h5>
+                    <p class="mb-4">Al registrarte en Salutia, aceptas los siguientes términos y condiciones de uso de la plataforma. Estos términos constituyen un acuerdo legal entre tú y Salutia.</p>
+                    
+                    <h5 class="mb-3">2. Privacidad de Datos</h5>
+                    <p class="mb-4">Salutia se compromete a proteger la privacidad de tus datos personales y médicos conforme a la legislación vigente. Tus datos serán tratados con la máxima confidencialidad y solo se utilizarán para los fines específicos del servicio.</p>
+                    
+                    <h5 class="mb-3">3. Uso del Servicio</h5>
+                    <p class="mb-4">El servicio de Salutia está diseñado para facilitar la gestión de citas médicas y no sustituye la atención médica profesional. La plataforma no proporciona diagnósticos médicos y cualquier información obtenida a través del asistente de IA debe ser verificada por un profesional de la salud.</p>
+                    
+                    <h5 class="mb-3">4. Responsabilidad</h5>
+                    <p class="mb-4">Salutia no se hace responsable de los diagnósticos o tratamientos recomendados por los profesionales de la salud a través de la plataforma. La responsabilidad de cualquier decisión médica recae en el profesional de la salud y el paciente.</p>
+                    
+                    <h5 class="mb-3">5. Disponibilidad del Servicio</h5>
+                    <p class="mb-4">Salutia se esfuerza por mantener la plataforma disponible en todo momento, pero no garantiza que el servicio esté libre de interrupciones o errores. Nos reservamos el derecho de realizar mantenimientos programados o de emergencia cuando sea necesario.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="acceptTerms">Aceptar Términos</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

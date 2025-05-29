@@ -1,0 +1,58 @@
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos de entorno
+.env
+.env.*
+!.env.example
+
+# Dependencias
+/node_modules/
+/vendor/
+
+# Logs
+*.log
+/backend/logs/*
+
+# Archivos de IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Archivos temporales
+*.tmp
+*.temp
+
+# Archivos de configuración local
+/backend/config/database.php
+
+# Archivos de caché
+.cache/
+
+# Archivos generados
+/build/
+/dist/
+
+# Archivos de respaldo
+*.bak
+*.backup
+*~
+
+# Archivos de base de datos
+*.sql
+*.sqlite
+*.db
+
+# Archivos de Laragon
+/laragon/
+
+# Archivos de sesión
+/session/
+
+# Archivos de subida
+/uploads/
+/storage/*
+!/storage/.gitkeep

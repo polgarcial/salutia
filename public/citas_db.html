@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citas Médicas - Salutia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .card {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .doctor-card {
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
+        .doctor-card:hover {
+            background-color: #f1f8ff;
+        }
+        .doctor-card.selected {
+            border-color: #0d6efd;
+            background-color: #f1f8ff;
+        }
+        .time-slot {
+            display: inline-block;
+            padding: 6px 12px;
+            margin: 5px;
+            border: 1px solid #dee2e6;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .time-slot:hover {
+            border-color: #0d6efd;
+        }
+        .time-slot.selected {
+            background-color: #0d6efd;
+            color: white;
+            border-color: #0d6efd;
+        }
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .spinner-container {
+            text-align: center;
+        }
+        .spinner-text {
+            margin-top: 10px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-heartbeat"></i> Salutia
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="citas_db.html">Citas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Médicos</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user-circle"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Mi Perfil</a></li>
+                            <li><a class="dropdown-item" href="#">Configuración</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="login.html">Cerrar Sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="mb-4 text-center">Gestión de Citas Médicas - Salutia</h1>
+        
+        <div class="alert alert-info mb-4">
+            <strong><i class="fas fa-info-circle"></i> Información:</strong> Esta página se conecta a la base de datos para gestionar tus citas médicas.
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="fas fa-calendar-plus"></i> Crear Nueva Cita</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="specialty" class="form-label">Especialidad:</label>
+                            <select id="specialty" class="form-select">
+                                <option value="" selected disabled>Seleccione una especialidad</option>
+                                <option value="general">Medicina General</option>
+                                <option value="cardiology">Cardiología</option>
+                                <option value="dermatology">Dermatología</option>
+                                <option value="neurology">Neurología</option>
+                                <option value="pediatrics">Pediatría</option>
+                                <option value="psychology">Psicología</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Médico:</label>
+                            <div id="doctorsList" class="mb-3">
+                                <!-- Los médicos se cargarán aquí -->
+                            </div>
+                        </div>
+                        
+                        <div id="dateContainer" style="display: none;">
+                            <label for="appointmentDate" class="form-label">Fecha:</label>
+                            <input type="date" id="appointmentDate" class="form-control mb-3">
+                        </div>
+                        
+                        <div id="timeSlotContainer" style="display: none;">
+                            <h5 class="mb-3"><i class="fas fa-clock"></i> Seleccione un horario:</h5>
+                            <div id="timeSlots" class="mb-3">
+                                <!-- Los horarios se cargarán aquí -->
+                            </div>
+                        </div>
+                        
+                        <div id="notesContainer" style="display: none;">
+                            <div class="mb-3">
+                                <label for="appointmentNotes" class="form-label">Motivo de la consulta:</label>
+                                <textarea id="appointmentNotes" class="form-control" rows="3" placeholder="Describa brevemente el motivo de su consulta"></textarea>
+                            </div>
+                            
+                            <button id="createAppointment" class="btn btn-primary" disabled>
+                                <i class="fas fa-calendar-check"></i> Crear Cita
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="fas fa-calendar-alt"></i> Citas Programadas</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="nav nav-tabs mb-3" id="appointmentTabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="all-tab" data-bs-toggle="tab" href="#all">Todas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pending-tab" data-bs-toggle="tab" href="#pending">Pendientes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="confirmed-tab" data-bs-toggle="tab" href="#confirmed">Confirmadas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="completed-tab" data-bs-toggle="tab" href="#completed">Completadas</a>
+                            </li>
+                        </ul>
+                        
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="all">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Fecha</th>
+                                                <th>Hora</th>
+                                                <th>Médico</th>
+                                                <th>Especialidad</th>
+                                                <th>Estado</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="appointmentsTableBody">
+                                            <!-- Las citas se cargarán aquí -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- Otros tabs se implementarán más adelante -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="spinner-container">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status"></div>
+            <div id="loadingText" class="spinner-text">Cargando...</div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script>
+        // Variables globales
+        let selectedDoctor = null;
+        let selectedDate = null;
+        let selectedTimeSlot = null;
+        
+        // Al cargar el documento
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar elementos
+            document.getElementById('specialty').addEventListener('change', loadDoctors);
+            document.getElementById('appointmentDate').addEventListener('change', function() {
+                selectedDate = this.value;
+                if (selectedDoctor && selectedDate) {
+                    loadDoctorSlots(selectedDoctor, selectedDate);
+                }
+            });
+            document.getElementById('createAppointment').addEventListener('click', createAppointment);
+            
+            // Cargar citas existentes
+            loadAppointments();
+            
+            // Simular usuario logueado para pruebas
+            if (!localStorage.getItem('user_id')) {
+                localStorage.setItem('user_id', '1');
+                localStorage.setItem('user_role', 'patient');
+                localStorage.setItem('user_name', 'Juan Paciente');
+            }
+        });
+        
+        // Función para mostrar/ocultar el indicador de carga
+        function toggleLoading(show, message = 'Cargando...') {
+            const overlay = document.getElementById('loadingOverlay');
+            if (show) {
+                document.getElementById('loadingText').textContent = message;
+                overlay.style.display = 'flex';
+            } else {
+                overlay.style.display = 'none';
+            }
+        }
+        
+        // Función para mostrar alertas
+        function showAlert(type, message) {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
+            alertDiv.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            `;
+            
+            // Insertar al inicio del contenedor
+            const container = document.querySelector('.container');
+            container.insertBefore(alertDiv, container.firstChild);
+            
+            // Auto-cerrar después de 5 segundos
+            setTimeout(() => {
+                alertDiv.classList.remove('show');
+                setTimeout(() => alertDiv.remove(), 300);
+            }, 5000);
+        }
+        
+        // Función para cargar médicos según la especialidad
+        async function loadDoctors() {
+            try {
+                const specialty = document.getElementById('specialty').value;
+                if (!specialty) return;
+                
+                toggleLoading(true, 'Cargando médicos...');
+                
+                // En una aplicación real, estos datos vendrían de la base de datos
+                const doctors = {
+                    general: [
+                        { id: 1, name: "Dr. Juan Pérez", available: true },
+                        { id: 2, name: "Dra. María García", available: true }
+                    ],
+                    cardiology: [
+                        { id: 3, name: "Dr. Carlos Rodríguez", available: true },
+                        { id: 4, name: "Dra. Ana Martínez", available: false }
+                    ],
+                    dermatology: [
+                        { id: 5, name: "Dr. Luis Sánchez", available: true }
+                    ],
+                    neurology: [
+                        { id: 6, name: "Dra. Elena Gómez", available: true }
+                    ],
+                    pediatrics: [
+                        { id: 7, name: "Dr. Roberto Fernández", available: true },
+                        { id: 8, name: "Dra. Laura Torres", available: true }
+                    ],
+                    psychology: [
+                        { id: 9, name: "Dr. Miguel Ruiz", available: true },
+                        { id: 10, name: "Dra. Carmen López", available: true }
+                    ]
+                };
+                
+                const doctorsList = document.getElementById('doctorsList');
+                doctorsList.innerHTML = '';
+                
+                if (!doctors[specialty] || doctors[specialty].length === 0) {
+                    doctorsList.innerHTML = '<div class="alert alert-warning">No hay médicos disponibles para esta especialidad.</div>';
+                    return;
+                }
+                
+                doctors[specialty].forEach(doctor => {
+                    if (doctor.available) {
+                        const doctorCard = document.createElement('div');
+                        doctorCard.className = 'doctor-card';
+                        doctorCard.dataset.id = doctor.id;
+                        doctorCard.innerHTML = `
+                            <div class="d-flex align-items-center">
+                                <div class="me-3">
+                                    <i class="fas fa-user-md fa-2x text-primary"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">${doctor.name}</h6>
+                                    <small class="text-muted">Especialidad: ${specialty}</small>
+                                </div>
+                            </div>
+                        `;
+                        
+                        doctorCard.addEventListener('click', function() {
+                            document.querySelectorAll('.doctor-card').forEach(card => {
+                                card.classList.remove('selected');
+                            });
+                            this.classList.add('selected');
+                            selectedDoctor = this.dataset.id;
+                            document.getElementById('dateContainer').style.display = 'block';
+                            document.getElementById('appointmentDate').value = '';
+                            document.getElementById('timeSlotContainer').style.display = 'none';
+                            document.getElementById('notesContainer').style.display = 'none';
+                        });
+                        
+                        doctorsList.appendChild(doctorCard);
+                    }
+                });
+            } catch (error) {
+                document.getElementById('doctorsList').innerHTML = `
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-circle"></i> Error al cargar médicos: ${error.message}
+                    </div>
+                `;
+            } finally {
+                toggleLoading(false);
+            }
+        }
+        
+        // Función para cargar horarios disponibles de un médico
+        async function loadDoctorSlots(doctorId, date) {
+            try {
+                toggleLoading(true, 'Cargando horarios disponibles...');
+                document.getElementById('timeSlotContainer').style.display = 'block';
+                document.getElementById('timeSlots').innerHTML = '<div class="text-center"><div class="spinner-border text-primary" role="status"></div></div>';
+                
+                // En una aplicación real, estos datos vendrían de la base de datos
+                // Simulamos horarios disponibles
+                const availableSlots = generateTimeSlots(date, doctorId);
+                
+                const timeSlotsContainer = document.getElementById('timeSlots');
+                
+                if (availableSlots.length === 0) {
+                    timeSlotsContainer.innerHTML = `
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle"></i> No hay horarios disponibles para esta fecha.
+                            <p class="mb-0 mt-2">Por favor, seleccione otra fecha o consulte con otro médico.</p>
+                        </div>
+                    `;
+                    document.getElementById('notesContainer').style.display = 'none';
+                    document.getElementById('createAppointment').disabled = true;
+                    return;
+                }
+                
+                // Mostrar horarios
+                timeSlotsContainer.innerHTML = '';
+                availableSlots.forEach(timeSlot => {
+                    const timeSlotElement = document.createElement('div');
+                    timeSlotElement.className = 'time-slot';
+                    timeSlotElement.textContent = timeSlot;
+                    
+                    timeSlotElement.addEventListener('click', function() {
+                        document.querySelectorAll('.time-slot').forEach(slot => {
+                            slot.classList.remove('selected');
+                        });
+                        this.classList.add('selected');
+                        selectedTimeSlot = timeSlot;
+                        document.getElementById('notesContainer').style.display = 'block';
+                        document.getElementById('createAppointment').disabled = false;
+                    });
+                    
+                    timeSlotsContainer.appendChild(timeSlotElement);
+                });
+            } catch (error) {
+                document.getElementById('timeSlots').innerHTML = `
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-circle"></i> Error al cargar los horarios: ${error.message}
+                    </div>
+                `;
+            } finally {
+                toggleLoading(false);
+            }
+        }
+        
+        // Función para generar horarios disponibles (simulación)
+        function generateTimeSlots(date, doctorId) {
+            const slots = [];
+            const selectedDate = new Date(date);
+            const dayOfWeek = selectedDate.getDay(); // 0 = Domingo, 1 = Lunes, etc.
+            
+            // No generar horarios para domingos
+            if (dayOfWeek === 0) {
+                return slots;
+            }
+            
+            // Horarios para días laborables (lunes a viernes)
+            if (dayOfWeek >= 1 && dayOfWeek <= 5) {
+                const startHour = 9; // 9:00 AM
+                const endHour = 19; // 7:00 PM (última cita a las 7:00 PM)
+                
+                for (let hour = startHour; hour <= endHour; hour++) {
+                    // Añadir horarios cada hora
+                    const timeStr = `${hour.toString().padStart(2, '0')}:00`;
+                    
+                    // Simular algunos horarios no disponibles aleatoriamente
+                    if (Math.random() > 0.3) { // 70% de probabilidad de estar disponible
+                        slots.push(timeStr);
+                    }
+                }
+            } 
+            // Horarios para sábados
+            else if (dayOfWeek === 6) {
+                const startHour = 9; // 9:00 AM
+                const endHour = 13; // 1:00 PM (última cita a la 1:00 PM)
+                
+                for (let hour = startHour; hour <= endHour; hour++) {
+                    const timeStr = `${hour.toString().padStart(2, '0')}:00`;
+                    
+                    // Simular algunos horarios no disponibles aleatoriamente
+                    if (Math.random() > 0.3) {
+                        slots.push(timeStr);
+                    }
+                }
+            }
+            
+            return slots;
+        }
+        
+        // Función para crear una cita
+        async function createAppointment() {
+            try {
+                toggleLoading(true, 'Creando cita...');
+                
+                if (!selectedDoctor || !selectedDate || !selectedTimeSlot) {
+                    throw new Error('Por favor, complete todos los campos');
+                }
+                
+                const notes = document.getElementById('appointmentNotes').value;
+                
+                // Datos para enviar al servidor
+                const appointmentData = {
+                    patient_id: 1, // En una aplicación real, este sería el ID del usuario logueado
+                    doctor_id: selectedDoctor,
+                    date: selectedDate,
+                    time: selectedTimeSlot,
+                    reason: notes || 'Consulta general'
+                };
+                
+                // Enviar solicitud al servidor (usando el endpoint de prueba)
+                const response = await fetch('./backend/api/request_appointment_test.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(appointmentData)
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`Error HTTP: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Mostrar mensaje de éxito
+                    showAlert('success', 'Cita creada con éxito. El médico recibirá la notificación.');
+                    
+                    // Limpiar selecciones
+                    document.querySelectorAll('.doctor-card').forEach(card => {
+                        card.classList.remove('selected');
+                    });
+                    document.querySelectorAll('.time-slot').forEach(slot => {
+                        slot.classList.remove('selected');
+                    });
+                    document.getElementById('appointmentNotes').value = '';
+                    document.getElementById('appointmentDate').value = '';
+                    document.getElementById('timeSlotContainer').style.display = 'none';
+                    document.getElementById('notesContainer').style.display = 'none';
+                    document.getElementById('createAppointment').disabled = true;
+                    
+                    // Recargar las citas
+                    loadAppointments();
+                } else {
+                    throw new Error(data.message || 'Error al crear la cita');
+                }
+            } catch (error) {
+                showAlert('danger', `Error: ${error.message}`);
+            } finally {
+                toggleLoading(false);
+            }
+        }
+        
+        // Función para cargar las citas existentes
+        async function loadAppointments() {
+            try {
+                toggleLoading(true, 'Cargando citas...');
+                
+                // En una aplicación real, estos datos vendrían de la base de datos
+                // Simulamos citas existentes
+                const appointments = [
+                    {
+                        id: 1,
+                        date: '2025-05-25',
+                        time: '10:00',
+                        doctor_name: 'Dr. Juan Pérez',
+                        specialty: 'Medicina General',
+                        status: 'confirmed'
+                    },
+                    {
+                        id: 2,
+                        date: '2025-05-30',
+                        time: '15:30',
+                        doctor_name: 'Dra. María García',
+                        specialty: 'Medicina General',
+                        status: 'pending'
+                    },
+                    {
+                        id: 3,
+                        date: '2025-06-05',
+                        time: '11:00',
+                        doctor_name: 'Dr. Carlos Rodríguez',
+                        specialty: 'Cardiología',
+                        status: 'pending'
+                    }
+                ];
+                
+                const tableBody = document.getElementById('appointmentsTableBody');
+                tableBody.innerHTML = '';
+                
+                if (appointments.length === 0) {
+                    tableBody.innerHTML = `
+                        <tr>
+                            <td colspan="5" class="text-center py-4">
+                                <i class="fas fa-calendar-times fa-2x text-muted mb-3"></i>
+                                <p>No tienes citas programadas.</p>
+                            </td>
+                        </tr>
+                    `;
+                    return;
+                }
+                
+                appointments.forEach(appointment => {
+                    const row = document.createElement('tr');
+                    
+                    // Formatear fecha
+                    const dateObj = new Date(appointment.date);
+                    const formattedDate = dateObj.toLocaleDateString('es-ES', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+                    
+                    // Determinar estado
+                    let statusText, statusClass;
+                    switch (appointment.status) {
+                        case 'pending':
+                            statusText = 'Pendiente';
+                            statusClass = 'bg-warning text-dark';
+                            break;
+                        case 'confirmed':
+                            statusText = 'Confirmada';
+                            statusClass = 'bg-success text-white';
+                            break;
+                        case 'cancelled':
+                            statusText = 'Cancelada';
+                            statusClass = 'bg-danger text-white';
+                            break;
+                        case 'completed':
+                            statusText = 'Completada';
+                            statusClass = 'bg-info text-white';
+                            break;
+                        default:
+                            statusText = 'Desconocido';
+                            statusClass = 'bg-secondary text-white';
+                    }
+                    
+                    row.innerHTML = `
+                        <td>${formattedDate}</td>
+                        <td>${appointment.time}</td>
+                        <td>${appointment.doctor_name}</td>
+                        <td>${appointment.specialty}</td>
+                        <td><span class="status-badge ${statusClass}">${statusText}</span></td>
+                    `;
+                    
+                    tableBody.appendChild(row);
+                });
+                
+            } catch (error) {
+                document.getElementById('appointmentsTableBody').innerHTML = `
+                    <tr>
+                        <td colspan="5" class="text-center text-danger py-4">
+                            <i class="fas fa-exclamation-circle fa-2x mb-3"></i>
+                            <p>Error al cargar las citas: ${error.message}</p>
+                        </td>
+                    </tr>
+                `;
+            } finally {
+                toggleLoading(false);
+            }
+        }
+    </script>
+    
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
