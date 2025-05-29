@@ -1860,3 +1860,66 @@
 2025-05-29 16:38:26 - Médico encontrado: {"id":1,"name":"Dr. Juan Pérez"}
 2025-05-29 16:38:27 - Login exitoso: {"doctor_id":1}
 2025-05-29 16:38:27 - Respuesta enviada: {"success":true,"message":"Inicio de sesión exitoso","user":{"id":1,"email":"doctor@gmail.com","name":"Dr. Juan Pérez","role":"doctor","specialty":"Cardiología"},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImRvY3RvckBnbWFpbC5jb20iLCJyb2xlIjoiZG9jdG9yIiwiZXhwIjoxNzQ4NjIzMTA3fQ==.y5r2o9lnJZcf30xF4Gdv4lQ\/KStPYi9bDesDgYahYKw="}
+2025-05-29 17:03:18 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 17:03:18 - Especialidad solicitada: Cardiología
+2025-05-29 17:03:18 - Conexión a la base de datos establecida
+2025-05-29 17:03:18 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 17:03:18 - Médicos encontrados: 2
+2025-05-29 17:03:18 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 17:03:18 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 17:03:18 - Especialidad solicitada: Cardiología
+2025-05-29 17:03:18 - Conexión a la base de datos establecida
+2025-05-29 17:03:18 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 17:03:18 - Médicos encontrados: 2
+2025-05-29 17:03:18 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 17:03:18 - Solicitud recibida: {"specialty":"Cardiolog\u00eda"}
+2025-05-29 17:03:18 - Especialidad solicitada: Cardiología
+2025-05-29 17:03:18 - Conexión a la base de datos establecida
+2025-05-29 17:03:18 - Ejecutando consulta: SELECT u.id, u.name, u.email, ds.specialty
+        FROM users u
+        JOIN doctor_specialties ds ON u.id = ds.doctor_id
+        WHERE u.role = 'doctor' AND ds.specialty = :specialty
+        ORDER BY u.name ASC
+2025-05-29 17:03:18 - Médicos encontrados: 2
+2025-05-29 17:03:18 - Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salutia.doctor_availability' doesn't exist
+2025-05-29 17:03:37 - Datos recibidos como JSON: {"input":"{\"patient_id\":18,\"patient_name\":\"pol garcia\",\"patient_email\":\"pol@gmail.com\",\"doctor_id\":1,\"doctor_name\":\"Dr. Juan Pérez (Datos de emergencia)\",\"reason\":\"Consulta por dolor\",\"requested_date\":\"2025-06-02\",\"requested_time\":\"12:00\",\"details\":\"Dolor de rodilla\"}"}
+2025-05-29 17:03:37 - Datos procesados: {"patient_id":18,"patient_name":"pol garcia","doctor_id":1,"doctor_name":"Dr. Juan Pérez (Datos de emergencia)","date_str":"2025-06-02","time_str":"12:00","appointment_date":"2025-06-02","start_time":"12:00:00","end_time":"13:00:00"}
+2025-05-29 17:03:37 - Verificando restricciones de clave foránea
+2025-05-29 17:03:37 - No se encontraron restricciones de clave foránea en el formato esperado
+2025-05-29 17:03:37 - Tabla appointments recreada sin restricciones de clave foránea
+2025-05-29 17:03:37 - Paciente no encontrado, usando paciente de prueba: {"original_id":18}
+2025-05-29 17:03:37 - Médico no encontrado, usando médico de prueba: {"original_id":1}
+2025-05-29 17:03:37 - IDs verificados: {"patient_id":1,"doctor_id":1}
+2025-05-29 17:03:37 - Cita insertada correctamente: {"id":"32"}
+2025-05-29 17:03:50 - Inicio de solicitud doctor_auth.php: {"method":"POST","action":"login"}
+2025-05-29 17:03:50 - Datos recibidos: {"input":"{\"email\":\"doctor@salutia.com\",\"password\":\"123456\",\"role\":\"doctor\"}"}
+2025-05-29 17:03:50 - Datos decodificados: {"email":"doctor@salutia.com","password":"123456","role":"doctor"}
+2025-05-29 17:03:51 - Procesando acción: {"action":"login"}
+2025-05-29 17:03:51 - Procesando login de médico
+2025-05-29 17:03:51 - Iniciando proceso de login de médico: {"email":"doctor@salutia.com","password":"123456","role":"doctor"}
+2025-05-29 17:03:51 - Médico no encontrado: {"email":"doctor@salutia.com"}
+2025-05-29 17:03:51 - Respuesta enviada: {"success":false,"message":"Usuario no encontrado"}
+2025-05-29 17:03:59 - Inicio de solicitud doctor_auth.php: {"method":"POST","action":"login"}
+2025-05-29 17:03:59 - Datos recibidos: {"input":"{\"email\":\"doctor@salutia.com\",\"password\":\"123456\",\"role\":\"doctor\"}"}
+2025-05-29 17:03:59 - Datos decodificados: {"email":"doctor@salutia.com","password":"123456","role":"doctor"}
+2025-05-29 17:03:59 - Procesando acción: {"action":"login"}
+2025-05-29 17:03:59 - Procesando login de médico
+2025-05-29 17:03:59 - Iniciando proceso de login de médico: {"email":"doctor@salutia.com","password":"123456","role":"doctor"}
+2025-05-29 17:03:59 - Médico no encontrado: {"email":"doctor@salutia.com"}
+2025-05-29 17:03:59 - Respuesta enviada: {"success":false,"message":"Usuario no encontrado"}
+2025-05-29 17:04:14 - Inicio de solicitud doctor_auth.php: {"method":"POST","action":"login"}
+2025-05-29 17:04:14 - Datos recibidos: {"input":"{\"email\":\"doctor@salutia.com\",\"password\":\"123456\",\"role\":\"doctor\"}"}
+2025-05-29 17:04:14 - Datos decodificados: {"email":"doctor@salutia.com","password":"123456","role":"doctor"}
+2025-05-29 17:04:14 - Procesando acción: {"action":"login"}
+2025-05-29 17:04:14 - Procesando login de médico
+2025-05-29 17:04:14 - Iniciando proceso de login de médico: {"email":"doctor@salutia.com","password":"123456","role":"doctor"}
+2025-05-29 17:04:14 - Médico no encontrado: {"email":"doctor@salutia.com"}
+2025-05-29 17:04:14 - Respuesta enviada: {"success":false,"message":"Usuario no encontrado"}
